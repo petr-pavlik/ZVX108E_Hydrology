@@ -5,21 +5,19 @@
 ::: callout-warning
 ## Concepts
 
--  A hydrologic year,
--  data screening and cleaning,
--  summation and aggregation of data,
--  descriptive statistics,
--  visualization of statistical data.
+-   A hydrological year,
+-   data screening, cleaning and reframing,
+-   summation and aggregation of data,
+-   descriptive statistics,
+-   vizualization of data.
 :::
 
-A dataset is a collection of measurements which is used to create or evaluate 
-assumptions about a population. Within this session, only **univariate** data are studied.
+A dataset is a collection of measurements which is used to create or evaluate assumptions about a population. It may contain **univariate** or **multivariate** data.
+In R, the data is usually loaded into structure called `data.frame` (or using additional functionality, into other derived classes like `data.table` or `tibble`).
 
 ## Exploratory Data Analysis (EDA)
 
-EDA is not a strictly formalized set of procedures, rather it is an general approach 
-on how to study, describe, extract, evaluate and report about the data. 
-Hence the workflow is specific to data in process.\
+EDA is not a strictly formalized set of procedures, rather it is an general approach on how to study, describe, extract, evaluate and report about the data. Hence the workflow is specific to data in process.\
 When studying data, we will look at certain statistical features, which represent esteemed characteristics of the whole data set.
 
 ```{r, collapse=TRUE}
@@ -27,16 +25,14 @@ set.seed(123) #<1>
 x <- rnorm(n = 30, mean = 50, sd = 10) #<2> 
 x
 ```
-1. Using the set seed will ensure that we will get the same generated numbers every time.
-2. Some random-generated numbers from the Normal distribution.
+1.  Using the `set.seed()` will ensure that we will get the same generated numbers every time.
+2.  Some random-generated numbers from the Normal distribution.
 
 ::: callout-tip
 ## Exercise
 
-1. Try to play with the function `rnorm()` by chaging the parameters. What is the 
-   function of `set.seed()`?
+1.  Try to play with the function `rnorm()` by changing the parameters. What is the purpose of `set.seed()` function and how is it used? Find in the related help page.
 :::
-
 
 ### Measures of location
 
@@ -44,16 +40,15 @@ The farthest one can reduce data, while still retaining any information at all i
 
 #### Mean
 
-The **arithmetic mean** (or average) is simply the sum of observations devided by the number of observations.
+The **arithmetic mean** (or average) is simply the sum of observations divided by number of observations.
 
 $$
 \bar{x} = \dfrac{1}{n}\sum\limits_{i=1}^{n} x_i
 $$
 
-
 #### Median
 
-The **median** is another central tendency based on the *sorted* data set. It is the $50$th quantile in the data. A half of the values is smaller than median, and a half is larger.
+The **median** is another central tendency based on *sorted* data set. It is the $50$th quantile in the data. A half of the values is smaller than median, and a half is larger.
 
 ```{r, collapse=TRUE}
 median(x)
@@ -62,8 +57,7 @@ median(x)
 
 #### Mode
 
-For continuous variables in real numbers, computation of **mode** can be done either
-by cutting the values into meaningful bins or using the kernel density estimate.
+For continuous variables in real numbers, computation of **mode** can be done either by cutting the values into meaningful bins or using the kernel density estimate.
 
 ```{r}
 cut(x, breaks = 10)
@@ -75,8 +69,10 @@ barplot(height = table(y))
 ::: callout-tip
 ## Exercise
 
-1.    a) Change the `cut()` function up so that the vector $x$ is cut into 20 bins.
-      b) Add a single number to vector x so that the sample mean rises to `r fitb(c("64.131", "64,131"))`
+1.  
+
+    a)  Change the `cut()` function up so that the vector $x$ is cut into 20 bins.
+    b)  Add a single number to vector x so that the sample mean rises to `r fitb(c("64.131", "64,131"))`
 :::
 
 #### $n^{\mathrm{th}}$ quantile
@@ -85,13 +81,13 @@ barplot(height = table(y))
 quantile(x, probs = c(0.1, 0.9))
 ```
 
-### Measures of spread
+### Measures of dispersion
 
-With **measures of variability** we describe the spread of the data around its central tendency. Some degree of variability is a natural occurring phenomenon.
+With **measures of dispersion** we describe the spread of the data around its central tendency. Some degree of variability is a natural occurring phenomenon.
 
 #### Variation range
 
-The simples measure of spread is the **variation range**. It is computed as the difference of both end extremes of the data.
+The simplest measure of spread is the **variation range**. It is computed as the difference of both end extremes of the data.
 
 $$
 R = \max{x} - \min{x}
@@ -103,18 +99,14 @@ max(x) - min(x)
 
 #### Variance and sample variance
 
-We calculate the **variance** as the average of the squares of the deviations of 
-individual character values from their arithmetic mean $\bar{x}$.
+We calculate the **variance** as the average of the squares of the deviations of individual character values from their arithmetic mean $\bar{x}$.
 
 $$
 \begin{array}{rl}
 \sigma^2 =& \dfrac{1}{n}\sum\limits_{i=1}^{n}(x_i - \bar{x})^2\\
 s^2 =& \dfrac{1}{n-1}\sum\limits_{i=1}^{n}(x_i - \bar{x})^2
 \end{array}
-$$
-Usually we do not have the ability to work with the whole population data. 
-$s^2$, the **sample variance** formula needs to be used for and unbiased estimate.
-
+$$ Usually we do not have the ability to work with the whole population data. $s^2$, the **sample variance** formula needs to be used for and unbiased estimate.
 
 #### Standard deviation
 
@@ -148,19 +140,14 @@ IQR(x)
 ::: callout-tip
 ## Exercise
 
-  1.  Using the knowledge from the @sec-introduction create own function to 
-      calculate the sample variance according the formula.
-
+1.  Using the knowledge from the @sec-introduction create own function to calculate the sample variance according the formula.
 :::
 
 ## Hydrological data
 
-Datasets containing hydrological data are quite commonly, although not exclusively, in tabular (rectangular) shape.
-Let's take a look at sample data from **MOPEX**. It is a fairly extensive curated dataset.
+Datasets containing hydrological data are quite commonly, although not exclusively, in tabular (rectangular) shape. Let's take a look at sample data from **MOPEX**. It is a fairly extensive curated dataset.
 
-This dataset covered some 438 catchments in daily step with measured discharge. The dataset used 
-to be publicly available at https://hydrology.nws.noaa.gov/pub/gcip/mopex/US_Data/Us_438_Daily,
-the site is unavailable now. Several even more extensive datasets recently came out.
+This dataset covered some 438 catchments in daily step with measured discharge. The dataset used to be publicly available at https://hydrology.nws.noaa.gov/pub/gcip/mopex/US_Data/Us_438_Daily, the site is unavailable now. Several even more extensive datasets recently came out.
 
 ```{r, collapse=FALSE}
 url <- "data/01138000.dly" #<1>
@@ -177,49 +164,41 @@ mpx_01138000[which(mpx_01138000$r < 0), "r"] <- NA  #<5>
 rbind(head(mpx_01138000, n = 5), #<6> 
       tail(mpx_01138000, n = 5)) #<6>
 ```
-1. This file is stored locally as part of this site. You have to change to your path.
-2. Load the data in **fixed width format** using the `read.fwf()` function. 
-3. Provide variable names, since there aren't any.
-4. Now there is a trouble with dates. If you evaluate sequentially, you could see that
-   the date format expects **"YYYY-mm-dd"** format, we have to fill the blank spots with 
-   zeroes to comply.
-5. After that, some variables contain non-physical values like `-9999`, these would make
-   troubles in statistical processing, we have to replace them with `NA` (not assigned).
-6. Let's display the 5 first and 5 last rows of the result.
 
+1.  This file is stored locally as part of this site. You have to change to your path.
+2.  Load the data in **fixed width format** using the `read.fwf()` function.
+3.  Provide variable names, since there aren't any.
+4.  Now there is a trouble with dates. If you evaluate sequentially, you could see that the date format expects **"YYYY-mm-dd"** format, we have to fill the blank spots with zeroes to comply.
+5.  After that, some variables contain non-physical values like `-9999`, these would make troubles in statistical processing, we have to replace them with `NA` (not assigned).
+6.  Let's display the 5 first and 5 last rows of the result.
 
 ::: callout-tip
 ## Exercise
 
-1.    Data coming from field measurements are usually accompanied with *metadata*. 
-      This could be information about when the data were collected, the site location, 
-      precision, missing values etc. Sometimes the metadata are in a header of the file.
-      Download and process [this file](data/6242910_Q_Day.Cmd.txt) in a similar manner 
-      using help of this `read.txt()` function.
-      
+1.  Data coming from field measurements are usually accompanied with *metadata*. This could be information about when the data were collected, the site location, precision, missing values etc. Sometimes the metadata are in a header of the file. Download and process [this file](data/6242910_Q_Day.Cmd.txt) in a similar manner using help of this `read.txt()` function.
 :::
 
 ## Aggregation and summation
 
-Let's add some features to the data. For the purpose of the analysis it would be 
-beneficial to add `year`, `month`, `quarters`, `decade` and `hyear` as **hydrological year**.
-
+Let's add some features to the data. For the purpose of the analysis it would be beneficial to add `year`, `month`, `quarters`, `decade` and `hyear` as **hydrological year**.
 
 ```{r}
 mpx_01138000$year <- as.integer(format(mpx_01138000$date, "%Y")) #<1>
 mpx_01138000$month <- as.integer(format(mpx_01138000$date, "%m")) #<1>
 ```
-1. With the help of special characters we are extracting the years and months consecutively.
+
+1.  With the help of special characters we are extracting the years and months consecutively.
 
 ::: callout-tip
 ## Exercise
 
-1.  a) Add `quart` variable to `mpx_01138000` using `quarters()` function.
-    b) Provide the fraction of days with no precipitation: `r fitb(c("0.221277", "0,221277", "4526/20454"))`
-    c) How many freezing days (Tmin < 0) occured? `r fitb(10244)`
-    d) How many freezing days occured in late spring (May) and summer? `r fitb(308)`
-    e) Find 3 highest `r fitb("34.3056, 33.6333, 33.4889")` and 3 lowest temperatures `r fitb("-17.0000, -16.4889, -16.4611")` (delimit by a comma).
-    
+1.  
+
+    a)  Add `quart` variable to `mpx_01138000` using `quarters()` function.
+    b)  Provide the fraction of days with no precipitation: `r fitb(c("0.221277", "0,221277", "4526/20454"))`
+    c)  How many freezing days (Tmin \< 0) occured? `r fitb(10244)`
+    d)  How many freezing days occured in late spring (May) and summer? `r fitb(308)`
+    e)  Find 3 highest `r fitb("34.3056, 33.6333, 33.4889")` and 3 lowest temperatures `r fitb("-17.0000, -16.4889, -16.4611")` (delimit by a comma).
 :::
 
 ```{r}
@@ -227,10 +206,8 @@ mpx_01138000$hyear <- ifelse(test = mpx_01138000$month > 10, #<1>
                              yes = as.integer(mpx_01138000$year + 1), #<1>
                              no = as.integer(mpx_01138000$year)) #<1>
 ```
-1. The hydrological year in Czechia is defined from $1^{\mathrm{st}}$ November to $31^{\mathrm{st}}$ October next year. 
 
-
- 
+1.  The hydrological year in Czechia is defined from $1^{\mathrm{st}}$ November to $31^{\mathrm{st}}$ October next year.
 
 These functions are based on **grouping**. In hydrology, the natural groups involve - *stations/basins*, *decades/years/months*, *groundwater regions*, etc.
 
@@ -267,10 +244,8 @@ boxplot(data = station_agg,
 
 ### Q-Q plot
 
-The so called **rankit graph** produces a quantile-quantile graph of the values 
-from selected data. This one can compare if the distribution of the data fit
-with the assumed distribution, e.q. Normal. `qqline` then adds the theoretical line.
- 
+The so called **rankit graph** produces a quantile-quantile graph of the values from selected data. This one can compare if the distribution of the data fit with the assumed distribution, e.q. Normal. `qqline` then adds the theoretical line.
+
 ```{r, fig.align='center'}
 par(font.main = 1, 
     adj = 0.1, 
@@ -284,115 +259,147 @@ qqnorm(mpx_01138000$tmax,
 qqline(mpx_01138000$tmax)
 ```
 
-
 <!-- ```{r} -->
+
 <!-- plot(quantile(rnorm(1000), probs = 1:100/100), -->
+
 <!-- quantile(rnorm(1000), probs = 1:100/100), frame = FALSE, pch = 20) -->
+
 <!-- abline(0, 1, col = "red") -->
+
 <!-- ``` -->
 
 <!-- ### P-P plot -->
 
 <!-- ```{r} -->
+
 <!-- n <- 100 -->
+
 <!-- data <- rweibull(n, shape = 2, scale = 1) -->
 
 <!-- # Estimated parameters for Pareto -->
+
 <!-- shape_est <- 2 -->
+
 <!-- scale_est <- 1 -->
 
 <!-- # Calculate the theoretical quantiles for the Pareto distribution -->
+
 <!-- theoretical_quantiles <- qweibull(p = seq(0, 1, 0.01), shape = shape_est, scale = scale_est) -->
 
 <!-- # Create the Q-Q plot -->
+
 <!-- qqplot(theoretical_quantiles, data,  -->
+
 <!--        xlab = "Theoretical Quantiles",  -->
+
 <!--        ylab = "Sample Quantiles", ylim = c(0,2.5), xlim = c(0, 2.5)) -->
+
 <!-- abline(0, 1, col = "red")  # Add a 45-degree reference line -->
 
 <!-- ``` -->
 
 ### Empirical distribution function
 
-Large portion of the data which is processed in Hydrology originates from time series
-of streamflow or runoff. This enables us to construct empirical probability of exceeding
-certain value in the data $P(X\geq x_k)$, simply using the well know definition
+Large portion of the data which is processed in Hydrology originates from time series of streamflow or runoff. This enables us to construct empirical probability of exceeding certain value in the data $P(X\geq x_k)$, simply using the well know definition
 
 $$
 P = \dfrac{m}{n}
-$$
-where $m$ is the number of reaching or exceeding of value $x_k$ and $n$
-is the length of the series. This equation is valid strictly for $n \rightarrow \infty$.\
-There are several empirical formulas in use to calculate the empirical exceedance
-probability like the one from Čegodajev
+$$ where $m$ is the number of reaching or exceeding of value $x_k$ and $n$ is the length of the series. This equation is valid strictly for $n \rightarrow \infty$.\
+There are several empirical formulas in use to calculate the empirical exceedance probability like the one from Čegodajev
 
 $$
 P = \dfrac{m - 0.3}{n + 0.4}
-$$
-In R we can utilize a highe order function called `ecdf()`
+$$ In R we can utilize a highe order function called `ecdf()`
 
 ```{r, include=FALSE}
 plot(cumsum(1/rank(mpx_01138000$r)/length(mpx_01138000$r)))
 ```
 
-
 ```{r}
 ecdf_data <- ecdf(na.omit(mpx_01138000$r))   # <1>
 ecdf_data(35) #<2>
 ```
-1. # Create the empirical cumulative distribution function (ECDF) for the data.
-2. # Calculate percent of data lower than 35.
+
+1.  
+
+    # Create the empirical cumulative distribution function (ECDF) for the data.
+
+2.  
+
+    # Calculate percent of data lower than 35.
 
 <!-- ```{r, eval=FALSE} -->
+
 <!-- library(tidyverse) -->
 
 <!-- # ddd <- read_fwf("data/6242910_Q_Day.Cmd.txt",  -->
+
 <!-- #                 skip = 36,  -->
+
 <!-- #                 col_positions = fwf_widths(widths = c(8, 4, 4, 8, 2)), col_types = "cccdc") -->
+
 <!-- ddd <- read_csv2("data/6242910_Q_Day.Cmd.txt",  -->
+
 <!--                 skip = 36,  -->
+
 <!--                 col_types = "ccc") -->
+
 <!-- ddd |>  -->
+
 <!--   set_names(c("Date", "D", "Discharge")) |>  -->
+
 <!--   mutate(Date = as.Date(Date, format = "%Y-%m-%d"),  -->
+
 <!--          Discharge = as.numeric(Discharge)) |>  -->
+
 <!--   select(Date, Discharge) -> ddd -->
 
-
-
 <!-- ddd |>  -->
+
 <!--   mutate(ri = rank(Discharge),  -->
+
 <!--          s = sd(Discharge),  -->
+
 <!--          q = pweibull(Discharge, shape = 2, scale = 1)) -->
 
 <!-- pdfunc <- function(x, b = 0.44) { -->
+
 <!--   n <- length(x) -->
+
 <!--   m <- rank(x) -->
+
 <!--   (m - b)/(n + 1 - 2*b) -->
+
 <!-- } -->
+
 <!-- plot(pdfunc(x <- ddd$Discharge), type = "l") -->
 
 <!-- ddd |>  -->
+
 <!--   ggplot(aes(Date, Discharge)) + -->
+
 <!--   geom_line() -->
 
 <!-- ddd |>  -->
+
 <!--   ggplot(aes(Discharge, ri = rank(Discharge / length(Discharge)))) + -->
+
 <!--   geom_line() -->
 
 <!-- ddd |>  -->
+
 <!--   mutate(pi = rank(Discharge - 0.5)/length(Discharge)) -->
 
-
 <!-- x <- c(1, 6 ,6, 1, 2, 0) -->
+
 <!-- rank(x) -->
 
 <!-- ``` -->
 
 ### Exceedance curve
 
-Provides an information on how many times or for how long a streamflow value
-was reached or exceeded within a certain period.
+Provides an information on how many times or for how long a streamflow value was reached or exceeded within a certain period.
 
 ```{r, fig.align='center'}
 r_sorted <- na.omit(sort(mpx_01138000$r, decreasing = TRUE))
@@ -418,14 +425,21 @@ plot(x = exceedance_prob,
 <!-- We calculate the return period as inverse to the exceedance probability -->
 
 <!-- ```{r, fig.align='center'} -->
+
 <!-- # return_period <- 1/exceedance_prob  -->
 
 <!-- plot(x = return_period,  -->
+
 <!--      y = r_sorted,  -->
+
 <!--      type = "l",  -->
+
 <!--      xlab = "Return Period",  -->
+
 <!--      ylab = "Runoff Value",  -->
+
 <!--      main = "Empirical Return Period") -->
+
 <!-- ``` -->
 
 <!-- ### Frequency distribution curve -->
@@ -433,15 +447,18 @@ plot(x = exceedance_prob,
 <!-- ## Correlation and autocorrelation -->
 
 <!-- $$ -->
+
 <!-- \rho_{X, Y} = \dfrac{\mathrm{cov}(X,Y)}{\sigma_X\sigma_Y} -->
+
 <!-- $$ $$ -->
+
 <!-- \rho_{X,X} -->
+
 <!-- $$ -->
 
 ## Hydroclimatic indices
 
-Originated from the combination of aggregation and summation methods and the measures
-of location and dispersion. 
+Originated from the combination of aggregation and summation methods and the measures of location and dispersion.
 
 ### Runoff coefficient
 
@@ -449,10 +466,7 @@ The concept of runoff coefficient comes from the presumption, that over long-tim
 
 $$
 \varphi [-] = \dfrac{R}{P}
-$$ 
-where $R$ represents runoff and $P$ precipitation in long term, typically 30 year 
-so called **Climatic period**, which is a decadal 30 year reference moving window; 
-the latest being 1991--2020.
+$$ where $R$ represents runoff and $P$ precipitation in long term, typically 30 year so called **Climatic period**, which is a decadal 30 year reference moving window; the latest being 1991--2020.
 
 ```{r}
 R <- mean(aggregate(r ~ year, FUN = mean, data = mpx_01138000)[, "r"])
@@ -464,12 +478,12 @@ R/P
 ::: callout-tip
 ## Exercise
 
-1.    Calculate the runoff coefficient $\varphi$ for the two latest decades separately.
+1.  Calculate the runoff coefficient $\varphi$ for the two latest decades separately.
 :::
 
 ### Flow duration curve
 
-This is an essential curve in energy as well as river ecology sector. 
+This is an essential curve in energy as well as river ecology sector.
 
 ```{r, fig.align='center'}
 

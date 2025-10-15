@@ -34,7 +34,7 @@ P_e = \begin{cases}
       \end{cases}
 $$
 
-where $P_e$ is accumulated precipitation excess. $P$ is the accummulated precipitation depth, $I_a$ is the initial abstraction (loss) and $S$ is the potential maximum retention
+where $P_e$ is accumulated precipitation excess. $P$ is the accumulated precipitation depth, $I_a$ is the initial abstraction (loss) and $S$ is the potential maximum retention
 
 <!-- $$ -->
 <!-- \dfrac{F}{S} = \dfrac{Q}{P-I_a} -->

@@ -639,7 +639,7 @@ g) <span class="math inline">\(\int_{0}^{3\pi} \sin(x) dx\)</span></p>
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Hodnota nejblíže 0 z vektoru x je: -0.00756462</code></pre>
+<pre><code>Hodnota nejblíže 0 z vektoru x je: 0.01881842</code></pre>
 </div>
 </div>
 <p>We can test if we get the same result as the <em>primitive</em> function from R using <code>all.equal()</code> statement.</p>
@@ -876,14 +876,14 @@ Exercise
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>         [,1]     [,2]     [,3]     [,4]     [,5]     [,6]     [,7]     [,8]
-[1,] 79.85034 39.35162 45.08142 14.08098 314.5691 1315.004 14.31418 26.11836
+<pre><code>         [,1]     [,2]    [,3]     [,4]     [,5]     [,6]     [,7]     [,8]
+[1,] 442.1663 256.2098 1154.34 82.19331 94.33618 385.5086 678.0642 106.0194
          [,9]    [,10]
-[1,] 761.2817 511.2969
-        A         C         D         E         F         H         J 
- 8.935902  6.714270  3.752463 17.736097 36.262987  5.110613 22.611875 
+[1,] 29.34096 1224.797
+       A        G        H        J 
+21.02775 26.03966 10.29657 34.99709 
         A         B         C 
- 8.935902 -6.273087  6.714270 </code></pre>
+ 21.02775 -16.00655 -33.97558 </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -978,9 +978,9 @@ Exercise
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>M[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">2</span>)                <span class="co"># store random numbers to first two rows</span></span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(M) </span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  0.703141 -0.196859</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.1074673 0.2074673</span></span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(M)</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -1.0855828  1.5000000 -0.8830068  1.5000000  1.5000000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.6401174 1.5000000 1.4345554 1.5000000 1.5000000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>It is possible to have matrices containing any data type, e.g.</p>

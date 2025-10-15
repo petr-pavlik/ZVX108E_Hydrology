@@ -1,6 +1,6 @@
 # Introduction to R language {#sec-introduction}
 
-R is a **dynamically typed interpreted** language. It is a highly capable enviornment for computing and graphics, for which R is often labeled a *glue* language. It has built-in functions for statistical computing.
+R is a **dynamically typed interpreted** language. It is a highly capable environment for computing and graphics, for which R is often labeled a *glue* language. It comes with an extensive functionality for statistical computing.
 
 Many great sources for R language with the focus on data science and statistical data processing are already written and free online. We will just name a few and limit the introduction at this site to bare minimum, which we use within this class.
 
@@ -9,9 +9,9 @@ Many great sources for R language with the focus on data science and statistical
 -   CRAN manuals like **Introduction to R** at <https://cran.r-project.org/doc/manuals/R-intro.pdf>
 -   [The R Book](https://www.cs.upc.edu/~robert/teaching/estadistica/TheRBook.pdf) is a very comprehensive source, although strongly oriented towards statistics
 -   freeCodeCamp's [R programming tutorial](https://www.youtube.com/watch?v=_V8eKsto3Ug&t=4052s&pp=ygUWciBwcm9ncmFtbWluZyBsYW5ndWFnZQ%3D%3D) is a very mild introduction to scripting language
--   [Advanced R (2nd edition)](https://adv-r.hadley.nz/) from Hadley Wickham contains a lot of information about langugae fundamentals and extra information.
+-   [Advanced R (2nd edition)](https://adv-r.hadley.nz/) from Hadley Wickham contains a lot of information about language fundamentals and extra information.
 
-For the newcomer to R ecosystem we highly encourage to print and use the various official *cheat sheets*, created by the R community and **Posit Inc.**
+For newcomers to R ecosystem we highly encourage to print and use the various official *cheat sheets*, created by the R community and **Posit Inc.**
 
 [![](images/base-r-1.jpg){fig-align="center"}](images/base-r-cheat-sheet.pdf)
 
@@ -46,11 +46,7 @@ It is entered into the console in the form `help(<function name>)` or `?<functio
 ::: callout-tip
 ## Exercise
 
-Try to find help to `DateTimeClasses`.
-    a)  What do the `POSIXct` a `POSIXlt` represent?
-    b)  What is the difference between them?
-    c)  Find a function for calculating $5!$
-    
+Try to find help to `DateTimeClasses`. a) What do the `POSIXct` a `POSIXlt` represent? b) What is the difference between them? c) Find a function for calculating $5!$
 :::
 
 ## R as scientific calculator
@@ -160,14 +156,13 @@ The operators fall in arithmetic, relation, assign categories and we also put se
 ## Exercise {.unnumbered}
 
 Evaluate the following expressions:\
-    a)  $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3$\
-    b)  $\dfrac{\sin(2.3)}{\cos(\pi)}$\
-    c)  $\sum\limits_{i = 1}^{53}i$\
-    d)  $\dfrac{-\infty}{0}$, $\dfrac{-\infty}{\infty}$, $\dfrac{0}{0}$\
-    e)  $\left(\dfrac{2}{35}\right)^{0.5} \cdot 3 \cdot (2 / 3)$\
-    f)  $20!$\
-    g)  $\int_{0}^{3\pi} \sin(x) dx$
-
+a) $1 + 3 \cdot (2 / 3)\:\mathrm{mod}\:3$\
+b) $\dfrac{\sin(2.3)}{\cos(\pi)}$\
+c) $\sum\limits_{i = 1}^{53}i$\
+d) $\dfrac{-\infty}{0}$, $\dfrac{-\infty}{\infty}$, $\dfrac{0}{0}$\
+e) $\left(\dfrac{2}{35}\right)^{0.5} \cdot 3 \cdot (2 / 3)$\
+f) $20!$\
+g) $\int_{0}^{3\pi} \sin(x) dx$
 :::
 
 #### Matrix operations {.unnumbered}
@@ -251,14 +246,14 @@ Here is a different example:
 
 ```{r}
 x <- rnorm(100)
-nejblizsi_hodnota <- function(x, value) { # <1>
+nearest_value <- function(x, value) { # <1>
   x[which(abs(x - value) == min(abs(x - value)))] # <1>
 } # <1>
 
-cat("Hodnota nejblíže 0 z vektoru x je:" , nejblizsi_hodnota(x = x, value = 0))
+cat("The nearest value to 0 from vector x is:" , nearest_value(x = x, value = 0))
 ```
 
-1.  Example of function, which seeks the neares number from a vector `x` to a certain referential `value`.
+1.  Example of function, which seeks the nearest number from a vector `x` to a certain referential `value`.
 
 We can test if we get the same result as the *primitive* function from R using `all.equal()` statement.
 
@@ -271,7 +266,7 @@ Any argument without default value in the function definition has to be provided
 
 ### Data types
 
-The basic types are **logical**, **integer**, **numeric**, **complex**, **character** and **raw**. There are some additional types which we will encounter like **Date**. Since R is dynamically typed, it is not necessary for the user to declare variables before using them. Also the type changes without notice based on the stored values, where the chain goes from the least complex to the most. The summary is in the following table
+The basic types are **logical**, **integer**, **numeric**, **complex**, **character** and **raw**. There are some additional types which we will encounter like **Date**. Since R is dynamically typed, it is not necessary for the user to declare variables before using them. Also the type changes without notice based on the stored values, where the chain goes from the least complex to the most. The summary is in the following table.
 
 ```{r, collapse=TRUE}
 TRUE    # logical, also T as short version
@@ -313,7 +308,6 @@ a)  Create in any way a vector `x` of 10 different numerical values, where $x\in
 b)  Write an expression to select numbers between -5 and 5 from this vector.
 c)  Convert to integer type and discuss the result.
 d)  Add 3 positions "A", "B" and "C" to the vector, has the vector changed?
-
 :::
 
 ### Data structures
@@ -357,7 +351,7 @@ u * 2.3 # <3>
 
 1.  Adding two vectors while length of second is the multiple of the first
 2.  Multiplying two vectors while length of second is the multiple of the first
-3.  Multipling with single numeric value
+3.  Multiplying with single numeric value
 
 ##### Working with vectors {.unnumbered}
 
@@ -401,8 +395,8 @@ If the object has more than one *dimension*, it is treated as an array. A specia
 | `colnames()`       | column names in matrix               |
 | `rowSums()`        | row sums in matrix                   |
 | `colMeans()`       | column means of matrix               |
-| `M[m, ]`           | Selection of $m$-th row of matrix    |
-| `M[ ,n]`           | Selection of $n$-th column of matrix |
+| `M[m, ]`           | selection of $m$-th row of matrix    |
+| `M[ ,n]`           | selection of $n$-th column of matrix |
 
 : List of `matrix` bounded functions
 
@@ -439,7 +433,7 @@ $$
 
 #### Data frames {.unnumbered}
 
-`data.frame` structure is the workhorse of elementary data processing. It is a possibly heterogenic table-like structure, allowing storage of multiple data types (even other structures) in different columns. A *column* in any data frame is called a **variable** and *row* represents a single **observation**. If the data suffice this single condition, we say they are in **tidy** format. Processing *tidy* data is a big topic withing the R community and curious reader is encouraged to follow the development in **tidyverse** package ecosystem.
+`data.frame` structure is the workhorse of elementary data processing. It is a possibly heterogenic table-like structure, allowing storage of multiple data types (even other structures) in different columns. A *column* in any `data.frame` is called a **variable** and *row* represents a single **observation**. If the data suffice this single condition, we say they are in **tidy** format. Processing *tidy* data is a big topic withing the R community and curious reader is encouraged to follow the development in **tidyverse** package ecosystem.
 
 ```{r}
 thaya <- data.frame(date = NA, 
@@ -462,20 +456,15 @@ print(l)
 
 #### Other objects {.unnumbered}
 
-Although R is intended as functional programming language, more than one object oriented paradigm is implemented in the language. As new R users we encounter first OOP system in functions like `summary` and `plot`, which represent so called **S3 generic functions**. We will further work with **S4** system when processing geospatial data using proxy libraries like `sf` and `terra`. The OOP is very complex and will not be further discussed within this text. For further study we recommend OOP sections in **Advanced R** by Hadley Wickham.
-
-```{r}
-
-```
+Although R is mostly used as functional programming language, more than one object oriented paradigm is implemented in the language. As new R users we encounter first OOP system in functions like `summary` and `plot`, which represent so called **S3 generic functions**. Further in the following sessions we will work with **S4** system when processing geospatial data using proxy libraries like `sf` and `terra`. The OOP in R is quite complex and will not be further discussed within this text. For further study we recommend OOP sections in **Advanced R** by Hadley Wickham.
 
 ### Control flow
 
-Condition and cycles govern the run of the general flow of calculation, they are the building blocks of algorithms.
+Conditions and cycles govern the run of the general flow of calculation process, they are the building blocks of algorithms.
 
 #### Conditions
 
-A condition in code creates branching of computation. Placing a condition creates at least two options from which only one is to be satisfied. The condition is created either by `if()`/`ifelse()` or `switch()` construct. We can again call for a snippet from RStudio help resulting in
-
+A condition generates branch in computation. Placing a condition creates at least two options, from which only one is to be satisfied. The condition is created either by `if()`/`ifelse()` or `switch()` construct. We can again call for a snippet (just by typing the desired function name and let the hint mechanism catch) from RStudio help resulting in:
 
 ```{r, eval=FALSE}
 if (condition) {
@@ -488,7 +477,6 @@ switch (object,
 
 ifelse(test, TRUE, FALSE)
 ```
-
 
 ##### `if()` {.unnumbered}
 
@@ -512,15 +500,17 @@ if(A >= 2) { #<1>
 
 ##### `ifelse()` {.unnumbered}
 
-Vectorized condition, in general looks like
+As R runs on vectors, there is a vectorized condition. It is very useful in structures like data.frames, where e.g. a new column
+can be created by applying single `ifelse` call. In general it looks like
 
 ```{r}
 x <- -5:5
 cat("Element x + 3 is more than 0: ", ifelse(x - 3 > 0, yes = "Yes", no = "No"))
 ```
 
-
 #### `switch()` {.unnumbered}
+
+Switch is a branching mechanism, where the condition is implicitly hidden into comparison of equal objects.
 
 ```{r}
 variant <- "B"
@@ -544,12 +534,11 @@ Create a following grading scheme:
 | B     | 75 % - 89 %  |
 | C     | 60 % - 74 %  |
 | D     | \< 60 %      |
-
 :::
 
 ### Loops
 
-Loops (cycles) provide use with the ability to execute single statement of a block of code in `{}` multiple times. There are three key words for loop construction. They differ in use cases.
+Loops (cycles) provide use with the ability to execute single statement or a block of code encolsed in `{}` multiple times. There are three key words for loop construction. They differ in use cases.
 
 #### `for` cycle {.unnumbered}
 
@@ -605,6 +594,5 @@ There are two statements which controls the iteration flow. Anytime `break` is c
 a)  Create a cycle, which for the numbers $x={1, 2, 3, 4, 5}$ writes out $x^3$.
 b)  Calculates the cumulative sum for these.s
 c)  Calculates the factorial number for the number `x`.
-d)  Withe the help of `readline()` function (requests a number from the user), 
-prints the number. If the given number is negative, the loop ends.
+d)  Withe the help of `readline()` function (requests a number from the user), prints the number. If the given number is negative, the loop ends.
 :::

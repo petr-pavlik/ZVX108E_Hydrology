@@ -236,11 +236,10 @@ P_e = \begin{cases}
           \dfrac{(P-I_a)^2}{P - I_a + S}\qquad  \text{otherwise }        
       \end{cases}
 \]</span></p>
-<p>where <span class="math inline">\(P_e\)</span> is accumulated precipitation excess. <span class="math inline">\(P\)</span> is the accummulated precipitation depth, <span class="math inline">\(I_a\)</span> is the initial abstraction (loss) and <span class="math inline">\(S\)</span> is the potential maximum retention</p>
-<p>We have to start with some initial data.</p>
-<p><span class="math display">\[
-\dfrac{F}{S} = \dfrac{Q}{P-I_a}
-\]</span></p>
+<p>where <span class="math inline">\(P_e\)</span> is accumulated precipitation excess. <span class="math inline">\(P\)</span> is the accumulated precipitation depth, <span class="math inline">\(I_a\)</span> is the initial abstraction (loss) and <span class="math inline">\(S\)</span> is the potential maximum retention</p>
+<!-- $$ -->
+<!-- \dfrac{F}{S} = \dfrac{Q}{P-I_a} -->
+<!-- $$ -->
 <p><span class="math display">\[
 I_a = rS\approx0.2\cdot S
 \]</span></p>
@@ -272,13 +271,13 @@ Q = \dfrac{(P-I_a)^2}{(P-I_a)+S}
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(weather_db)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>         dtm         P
-1 2024-01-01 0.0000000
-2 2024-01-02 1.8577843
-3 2024-01-03 0.6540523
-4 2024-01-04 0.1640230
-5 2024-01-05 0.8747414
-6 2024-01-06 0.0000000</code></pre>
+<pre><code>         dtm        P
+1 2024-01-01 0.000000
+2 2024-01-02 0.000000
+3 2024-01-03 0.000000
+4 2024-01-04 0.000000
+5 2024-01-05 1.074019
+6 2024-01-06 2.337782</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -298,11 +297,11 @@ Q = \dfrac{(P-I_a)^2}{(P-I_a)+S}
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-annotation="1" data-code-cell="annotated-cell-3" data-code-lines="4,6">Maximum potential retention (mm)</span>
+<span data-code-lines="4,6" data-code-cell="annotated-cell-3" data-code-annotation="1">Maximum potential retention (mm)</span>
 </dd>
 <dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-annotation="3" data-code-cell="annotated-cell-3" data-code-lines="8">Calculate runoff</span>
+<span data-code-lines="8" data-code-cell="annotated-cell-3" data-code-annotation="3">Calculate runoff</span>
 </dd>
 </dl>
 </div>
@@ -346,7 +345,7 @@ Q = \dfrac{(P-I_a)^2}{(P-I_a)+S}
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
 <dd>
-<span data-code-annotation="5" data-code-cell="annotated-cell-4" data-code-lines="18">Add lines for each CN</span>
+<span data-code-lines="18" data-code-cell="annotated-cell-4" data-code-annotation="5">Add lines for each CN</span>
 </dd>
 </dl>
 </div>
@@ -471,7 +470,7 @@ Exercise
 <p>Compare two approaches to calculate runoff.<br>
 </p>
 <ol type="a">
-<li>Weighted average of CN curves<br>
+<li>Weighted average CN curve.<br>
 </li>
 <li>Weighted contribution to discharge (separate contribution, first compute runoff and weight apply weights by fraction of area).</li>
 </ol>
