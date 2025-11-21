@@ -37,7 +37,9 @@ $$
 where $P_e$ is accumulated precipitation excess. $P$ is the accumulated precipitation depth, $I_a$ is the initial abstraction (loss) and $S$ is the potential maximum retention
 
 <!-- $$ -->
+
 <!-- \dfrac{F}{S} = \dfrac{Q}{P-I_a} -->
+
 <!-- $$ -->
 
 $$
@@ -114,10 +116,11 @@ legend("topright",
        lwd = 1)
 
 ```
-5. Add lines for each CN
-1.  Theoretical rainfall from 0 to 200 mm
-2.  CN values
-3.  Compute runoff using the SCS CN method
+
+5.  Add lines for each CN
+6.  Theoretical rainfall from 0 to 200 mm
+7.  CN values
+8.  Compute runoff using the SCS CN method
 
 ```{r}
 dat01138000 <- read.fwf("data/01138000.dly", 
@@ -216,23 +219,18 @@ legend("topright",
 <!-- Now we have domain, created from using a convex hull of sampled points.  -->
 
 ::: callout-tip
-
 ## Exercise
 
-In practice we would have more than one CN type in the watershed. Estimate the 
-runoff from the watershed using the SCS CN method. Using the following
-data.
-  
+In practice we would have more than one CN type in the watershed. Estimate the runoff from the watershed using the SCS CN method. Using the following data.
 
-| HRU | Area | CN$_i$    |
-|-----|------|-----------|
-| 1   | 20   | 70        |
-| 2   | 16   | 84        |
-| 3   | 64   | 74        |
+| HRU | Area | CN$_i$ |
+|-----|------|--------|
+| 1   | 20   | 70     |
+| 2   | 16   | 84     |
+| 3   | 64   | 74     |
 
 Compare two approaches to calculate runoff.\
 
-  a) Weighted average CN curve.\
-  b) Weighted contribution to discharge (separate contribution, first compute 
-  runoff and weight apply weights by fraction of area).
+a)  Weighted average CN curve.\
+b)  Weighted contribution to discharge (separate contribution, first compute runoff and weight apply weights by fraction of area).
 :::

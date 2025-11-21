@@ -10,10 +10,7 @@ The point value $Z_p$ is calculated with the knowledge of $z_i$ and distance $d_
 
 $$
 Z_L = \dfrac{\sum\limits_{i=1}^{n}\dfrac{z_i}{d_i^p}}{\sum\limits_{i=1}^{n}\dfrac{1}{d_i^p}}
-$$ 
-Let's imagine we have three values $z_1 = 10$, $z_2 = 15$, $z_3 = 20$ and we need to estimate
-a value in a location $L$. The distances to the location from these points are:
-$d_1 = 3.0$, $d_2 = 2.0$, $d_3 = 1.5$. The commonly used power $p$ is $2$.\
+$$ Let's imagine we have three values $z_1 = 10$, $z_2 = 15$, $z_3 = 20$ and we need to estimate a value in a location $L$. The distances to the location from these points are: $d_1 = 3.0$, $d_2 = 2.0$, $d_3 = 1.5$. The commonly used power $p$ is $2$.\
 So the respective values of weights for these are:
 
 $$
@@ -41,8 +38,7 @@ Since this method is very simple, let's calculate it on our own, in a step-by-st
 
 ### Generation of random measurements network
 
-We will create 25 points in the space and also assign some coordinate reference system. 
-These points will be used for both of the methods.
+We will create 25 points in the space and also assign some coordinate reference system. These points will be used for both of the methods.
 
 ```{r, fig.align='center', message=FALSE}
 library(sf)          # Spatial Feature library for spatial data
@@ -142,9 +138,9 @@ results$value[is.nan(results$value)] <- NA
 # Join results with the grid for visualization
 join <- st_join(grid, results)
 ```
-1. Set a tolerance for when the distance is equal to 0. 
-2. A power for the distance.
 
+1.  Set a tolerance for when the distance is equal to 0.
+2.  A power for the distance.
 
 At last we visualize the results.
 
@@ -200,9 +196,11 @@ weighted_sum <- apply(distances, 1, function(d) sum(dom$value / (d^power)))
 weighted_sum
 ```
 
-## Krigging
+## Kriging
 
-Another interpolation technique is called **Krigging**. Opposing to the Inverse Distance Weighted method.
+Another interpolation technique is called Kriging. In contrast to the Inverse Distance Weighted (IDW) method, kriging is not a purely deterministic procedure. Instead, it assumes an underlying stochastic (statistical) model for the spatial process.\
+The key idea is that observations that are closer together in space tend to be more similar, and this spatial autocorrelation can be explicitly quantified and used to produce statistically optimal predictions at unsampled locations.\
+Before applying kriging, we need to prepare our data in a suitable coordinate reference system and define the set of points that will serve as input to the interpolation.
 
 ```{r, eval=TRUE, fig.align='center'}
 projected_crs <- 32633  # Replace with the appropriate UTM zone for your data
@@ -222,14 +220,12 @@ combined_points <- rbind(
 combined_points <- st_transform(combined_points, crs = projected_crs)
 ```
 
-An essential part of kriging is definition of a variogram, which is a function
-describing the degree of spatial dependence of a spatial process. Due to the `range`
-parameter, the spatial data needs to be projected. 
+An essential part of kriging is the definition (and estimation) of a variogram (or semivariogram). The variogram is a function that describes the degree of spatial dependence of the variable as a function of distance.
+Intuitively, it answers: *"How quickly do values become dissimilar as we move farther apart in space?"* Due to the `range` parameter, the spatial data needs to be projected. The distance (in meters, because of the projection) at which spatial correlation effectively becomes negligible. Beyond this range, points are considered essentially uncorrelated.
 
 ```{r, eval=TRUE, fig.align='center'}
 variogram <- vgm(psill = 5.05, model = "Exp", range = 300000, nugget = 0.15)
 ```
-
 
 ```{r, eval=TRUE, fig.align='center'}
 krig_res <- gstat::krige(
