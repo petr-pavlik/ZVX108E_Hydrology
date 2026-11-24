@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-EN" xml:lang="en-EN"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Processing of hydrological dataset – ZVX108E Hydrology</title>
+<title>3&nbsp; Processing of a hydrological dataset – ZVX108E Hydrology</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,15 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-19724cff3ffd65c8d5774837ab6a4dbd.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-1bdb090332f57d0ae3bda32c3b3ef872.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1da0855bab4d02df59e90987ce711be7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e1fbe40cf926446f81e59dd74e2645b5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -106,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -147,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_statistics.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing of hydrological dataset</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_statistics.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing of a hydrological dataset</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -160,9 +162,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Hydrology ZVX108E</a> 
         <div class="sidebar-tools-main">
@@ -215,7 +215,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_statistics.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing of hydrological dataset</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing of a hydrological dataset</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -233,7 +233,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_CN.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SCS Curve number method</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SCS Curve Number method</span></span></a>
   </div>
 </li>
     </ul>
@@ -251,18 +251,27 @@ window.Quarto = {
   <li><a href="#measures-of-location" id="toc-measures-of-location" class="nav-link" data-scroll-target="#measures-of-location"><span class="header-section-number">3.1.1</span> Measures of location</a></li>
   <li><a href="#measures-of-dispersion" id="toc-measures-of-dispersion" class="nav-link" data-scroll-target="#measures-of-dispersion"><span class="header-section-number">3.1.2</span> Measures of dispersion</a></li>
   </ul></li>
-  <li><a href="#hydrological-data" id="toc-hydrological-data" class="nav-link" data-scroll-target="#hydrological-data"><span class="header-section-number">3.2</span> Hydrological data</a></li>
+  <li><a href="#hydrological-data" id="toc-hydrological-data" class="nav-link" data-scroll-target="#hydrological-data"><span class="header-section-number">3.2</span> Hydrological data</a>
+  <ul class="collapse">
+  <li><a href="#import-and-data-screening" id="toc-import-and-data-screening" class="nav-link" data-scroll-target="#import-and-data-screening"><span class="header-section-number">3.2.1</span> Import and data screening</a></li>
+  <li><a href="#hydrograph" id="toc-hydrograph" class="nav-link" data-scroll-target="#hydrograph"><span class="header-section-number">3.2.2</span> Hydrograph</a></li>
+  </ul></li>
   <li><a href="#aggregation-and-summation" id="toc-aggregation-and-summation" class="nav-link" data-scroll-target="#aggregation-and-summation"><span class="header-section-number">3.3</span> Aggregation and summation</a>
   <ul class="collapse">
-  <li><a href="#box-plot" id="toc-box-plot" class="nav-link" data-scroll-target="#box-plot"><span class="header-section-number">3.3.1</span> Box-plot</a></li>
-  <li><a href="#q-q-plot" id="toc-q-q-plot" class="nav-link" data-scroll-target="#q-q-plot"><span class="header-section-number">3.3.2</span> Q-Q plot</a></li>
-  <li><a href="#empirical-distribution-function" id="toc-empirical-distribution-function" class="nav-link" data-scroll-target="#empirical-distribution-function"><span class="header-section-number">3.3.3</span> Empirical distribution function</a></li>
-  <li><a href="#exceedance-curve" id="toc-exceedance-curve" class="nav-link" data-scroll-target="#exceedance-curve"><span class="header-section-number">3.3.4</span> Exceedance curve</a></li>
+  <li><a href="#calendar-and-hydrological-groups" id="toc-calendar-and-hydrological-groups" class="nav-link" data-scroll-target="#calendar-and-hydrological-groups"><span class="header-section-number">3.3.1</span> Calendar and hydrological groups</a></li>
+  <li><a href="#annual-summaries-and-completeness" id="toc-annual-summaries-and-completeness" class="nav-link" data-scroll-target="#annual-summaries-and-completeness"><span class="header-section-number">3.3.2</span> Annual summaries and completeness</a></li>
   </ul></li>
-  <li><a href="#hydroclimatic-indices" id="toc-hydroclimatic-indices" class="nav-link" data-scroll-target="#hydroclimatic-indices"><span class="header-section-number">3.4</span> Hydroclimatic indices</a>
+  <li><a href="#visualizing-distributions" id="toc-visualizing-distributions" class="nav-link" data-scroll-target="#visualizing-distributions"><span class="header-section-number">3.4</span> Visualizing distributions</a>
   <ul class="collapse">
-  <li><a href="#runoff-coefficient" id="toc-runoff-coefficient" class="nav-link" data-scroll-target="#runoff-coefficient"><span class="header-section-number">3.4.1</span> Runoff coefficient</a></li>
-  <li><a href="#flow-duration-curve" id="toc-flow-duration-curve" class="nav-link" data-scroll-target="#flow-duration-curve"><span class="header-section-number">3.4.2</span> Flow duration curve</a></li>
+  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot"><span class="header-section-number">3.4.1</span> Boxplot</a></li>
+  <li><a href="#q-q-plot" id="toc-q-q-plot" class="nav-link" data-scroll-target="#q-q-plot"><span class="header-section-number">3.4.2</span> Q-Q plot</a></li>
+  <li><a href="#empirical-cumulative-distribution-function" id="toc-empirical-cumulative-distribution-function" class="nav-link" data-scroll-target="#empirical-cumulative-distribution-function"><span class="header-section-number">3.4.3</span> Empirical cumulative distribution function</a></li>
+  <li><a href="#exceedance-curve" id="toc-exceedance-curve" class="nav-link" data-scroll-target="#exceedance-curve"><span class="header-section-number">3.4.4</span> Exceedance curve</a></li>
+  </ul></li>
+  <li><a href="#hydroclimatic-indices" id="toc-hydroclimatic-indices" class="nav-link" data-scroll-target="#hydroclimatic-indices"><span class="header-section-number">3.5</span> Hydroclimatic indices</a>
+  <ul class="collapse">
+  <li><a href="#runoff-coefficient" id="toc-runoff-coefficient" class="nav-link" data-scroll-target="#runoff-coefficient"><span class="header-section-number">3.5.1</span> Runoff coefficient</a></li>
+  <li><a href="#flow-duration-curve-and-m-day-values" id="toc-flow-duration-curve-and-m-day-values" class="nav-link" data-scroll-target="#flow-duration-curve-and-m-day-values"><span class="header-section-number">3.5.2</span> Flow duration curve and M-day values</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/petr-pavlik/Hydrology_ZVX108E/edit/main/02_statistics.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/petr-pavlik/Hydrology_ZVX108E/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
@@ -272,7 +281,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-processing" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing of hydrological dataset</span></span></h1>
+<h1 class="title"><span id="sec-processing" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing of a hydrological dataset</span></span></h1>
 </div>
 
 
@@ -291,31 +300,34 @@ window.Quarto = {
 
 <section id="the-following-concepts-will-be-discussed" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="the-following-concepts-will-be-discussed">The following concepts will be discussed:</h4>
-<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Concepts
+<span class="screen-reader-only">Note</span>Learning objectives
 </div>
 </div>
 <div class="callout-body-container callout-body">
+<p>By the end of this session, you should be able to:</p>
 <ul>
-<li>A hydrological year,</li>
-<li>data screening, cleaning and reframing,</li>
-<li>summation and aggregation of data,</li>
-<li>descriptive statistics,</li>
-<li>vizualization of data.</li>
+<li>describe the location and dispersion of observations;</li>
+<li>import daily hydrological data and identify missing measurements;</li>
+<li>distinguish calendar years from hydrological years;</li>
+<li>choose between sums and means and check the completeness of an aggregation;</li>
+<li>interpret a hydrograph, boxplot, Q-Q plot and flow duration curve;</li>
+<li>calculate a runoff coefficient for a common observation period.</li>
 </ul>
 </div>
 </div>
-<p>A dataset is a collection of measurements which is used to create or evaluate assumptions about a population. It may contain <strong>univariate</strong> or <strong>multivariate</strong> data. In R, the data is usually loaded into structure called <code>data.frame</code> (or using additional functionality, into other derived classes like <code>data.table</code> or <code>tibble</code>).</p>
+<p>A dataset is a collection of observations used to describe a population or investigate assumptions about it. It may contain <strong>univariate</strong> or <strong>multivariate</strong> data. In R, tabular data are commonly stored in a <code>data.frame</code> or a related class such as <code>data.table</code> or <code>tibble</code>.</p>
+<p>The examples use base R. The interactive answer fields use the <code>webexercises</code> package, which must be installed before rendering this chapter. Run the examples from the project directory so that the relative paths to <code>data/</code> work.</p>
 </section>
 <section id="exploratory-data-analysis-eda" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="exploratory-data-analysis-eda"><span class="header-section-number">3.1</span> Exploratory Data Analysis (EDA)</h2>
-<p>EDA is not a strictly formalized set of procedures, rather it is an general approach on how to study, describe, extract, evaluate and report about the data. Hence the workflow is specific to data in process.<br>
-When studying data, we will look at certain statistical features, which represent esteemed characteristics of the whole data set.</p>
+<p>EDA is an approach to inspecting, describing and visualizing data. The workflow depends on the question and the dataset. Before interpreting a statistic, check what was measured, its units, the observation period and the treatment of missing values.</p>
+<p>We begin with a reproducible sample from a normal distribution.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -331,11 +343,11 @@ When studying data, we will look at certain statistical features, which represen
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Using the <code>set.seed()</code> will ensure that we will get the same generated numbers every time.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="1" data-code-annotation="1">Setting the seed makes the subsequent random generation reproducible when the same code and random number generator settings are used.</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2">Some random-generated numbers from the Normal distribution.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="2" data-code-annotation="2">Generate 30 observations from a normal distribution with mean 50 and standard deviation 10. The sample mean and standard deviation will generally differ from these population parameters.</span>
 </dd>
 </dl>
 </div>
@@ -351,69 +363,97 @@ When studying data, we will look at certain statistical features, which represen
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Try to play with the function <code>rnorm()</code> by changing the parameters. What is the purpose of <code>set.seed()</code> function and how is it used? Find in the related help page.</li>
+<li>Change the parameters of <code>rnorm()</code> and describe their effects. Use <code>?rnorm</code> and <code>?set.seed</code> for help.</li>
+<li>Run <code>rnorm()</code> twice, first without resetting the seed and then resetting it before each call. Explain the difference.</li>
 </ol>
 </div>
 </div>
 <section id="measures-of-location" class="level3" data-number="3.1.1">
 <h3 data-number="3.1.1" class="anchored" data-anchor-id="measures-of-location"><span class="header-section-number">3.1.1</span> Measures of location</h3>
-<p>The farthest one can reduce data, while still retaining any information at all is by a single value. They describe a central tendency of the data.</p>
+<p>Measures of location summarize where observations lie. The mean, median and mode describe different aspects of a distribution and may differ substantially in skewed data.</p>
 <section id="mean" class="level4" data-number="3.1.1.1">
 <h4 data-number="3.1.1.1" class="anchored" data-anchor-id="mean"><span class="header-section-number">3.1.1.1</span> Mean</h4>
-<p>The <strong>arithmetic mean</strong> (or average) is simply the sum of observations divided by number of observations.</p>
-<p><span class="math display">\[
-\bar{x} = \dfrac{1}{n}\sum\limits_{i=1}^{n} x_i
-\]</span></p>
-</section>
-<section id="median" class="level4" data-number="3.1.1.2">
-<h4 data-number="3.1.1.2" class="anchored" data-anchor-id="median"><span class="header-section-number">3.1.1.2</span> Median</h4>
-<p>The <strong>median</strong> is another central tendency based on <em>sorted</em> data set. It is the <span class="math inline">\(50\)</span>th quantile in the data. A half of the values is smaller than median, and a half is larger.</p>
+<p>The <strong>arithmetic mean</strong> is the sum of the observations divided by their number:</p>
+<p><span class="math display">\[\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i.\]</span></p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 49.26267</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>(<span class="fu">sort</span>(x)[<span class="fu">length</span>(x)<span class="sc">/</span><span class="dv">2</span>] <span class="sc">+</span> <span class="fu">sort</span>(x)[<span class="fu">length</span>(x)<span class="sc">/</span><span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span>])<span class="sc">/</span><span class="dv">2</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 49.26267</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 49.52896</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(x) <span class="sc">/</span> <span class="fu">length</span>(x)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 49.52896</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Append a single number to the original, unchanged vector <code>x</code> so that the new sample mean is <strong>64.131</strong>. What number must you append? Round your answer to four decimal places: <input class="webex-solveme nospaces" size="8" data-answer="[&quot;502.1921&quot;,&quot;502,1921&quot;]">.</li>
+<li>Derive the answer using the definition of the arithmetic mean. Does the required number resemble the other observations? What does this show about the sensitivity of the mean to extreme values?</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="median" class="level4" data-number="3.1.1.2">
+<h4 data-number="3.1.1.2" class="anchored" data-anchor-id="median"><span class="header-section-number">3.1.1.2</span> Median</h4>
+<p>The <strong>median</strong> is the 50th percentile, or quantile of probability 0.5. At least half of the observations are less than or equal to it, and at least half are greater than or equal to it. For an odd sample size, it is the middle sorted observation; for an even sample size, R uses the mean of the two middle observations.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(x)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 49.26267</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>x_sorted <span class="ot">&lt;-</span> <span class="fu">sort</span>(x)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>n_x <span class="ot">&lt;-</span> <span class="fu">length</span>(x_sorted)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (n_x <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  median_manual <span class="ot">&lt;-</span> <span class="fu">mean</span>(x_sorted[<span class="fu">c</span>(n_x <span class="sc">/</span> <span class="dv">2</span>, n_x <span class="sc">/</span> <span class="dv">2</span> <span class="sc">+</span> <span class="dv">1</span>)])</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  median_manual <span class="ot">&lt;-</span> x_sorted[(n_x <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> <span class="dv">2</span>]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>median_manual</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 49.26267</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="mode" class="level4" data-number="3.1.1.3">
 <h4 data-number="3.1.1.3" class="anchored" data-anchor-id="mode"><span class="header-section-number">3.1.1.3</span> Mode</h4>
-<p>For continuous variables in real numbers, computation of <strong>mode</strong> can be done either by cutting the values into meaningful bins or using the kernel density estimate.</p>
+<p>The <strong>mode</strong> is a value occurring with the highest frequency. For continuous data, exact repetitions may be rare, so we often identify a modal interval using bins or estimate a mode from a density curve. The result depends on the bin boundaries or smoothing settings. R’s <code>mode()</code> function describes an object’s storage mode; it does not calculate the statistical mode.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code> [1] (41.6,45.3] (45.3,49.1] (64.1,67.9] (49.1,52.9] (49.1,52.9] (64.1,67.9]
- [7] (52.9,56.6] (34.1,37.8] (41.6,45.3] (45.3,49.1] (60.4,64.1] (52.9,56.6]
-[13] (52.9,56.6] (49.1,52.9] (41.6,45.3] (64.1,67.9] (52.9,56.6] (30.3,34.1]
-[19] (56.6,60.4] (41.6,45.3] (37.8,41.6] (45.3,49.1] (37.8,41.6] (41.6,45.3]
-[25] (41.6,45.3] (30.3,34.1] (56.6,60.4] (49.1,52.9] (37.8,41.6] (60.4,64.1]
-10 Levels: (30.3,34.1] (34.1,37.8] (37.8,41.6] (41.6,45.3] ... (64.1,67.9]</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="sc">-</span><span class="dv">10</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>))</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">cut</span>(x, <span class="at">breaks =</span> <span class="dv">10</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(y)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>y
- (-10,0]   (0,10]  (10,20]  (20,30]  (30,40]  (40,50]  (50,60]  (60,70] 
-       0        0        0        0        6        9       10        5 
- (70,80]  (80,90] (90,100] 
-       0        0        0 </code></pre>
+(30.3,34.1] (34.1,37.8] (37.8,41.6] (41.6,45.3] (45.3,49.1] (49.1,52.9] 
+          2           1           3           6           3           4 
+(52.9,56.6] (56.6,60.4] (60.4,64.1] (64.1,67.9] 
+          4           2           2           3 </code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="at">height =</span> <span class="fu">table</span>(y))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(<span class="fu">which.max</span>(<span class="fu">table</span>(y))) <span class="co"># The first most frequent interval, if there is a tie.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "(41.6,45.3]"</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">breaks =</span> <span class="dv">10</span>,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Distribution of the simulated sample"</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Simulated value"</span>, <span class="at">ylab =</span> <span class="st">"Frequency"</span>, <span class="at">col =</span> <span class="st">"lightgray"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="02_statistics_files/figure-html/unnamed-chunk-3-1.svg" class="img-fluid figure-img"></p>
+<p><img src="02_statistics_files/figure-html/unnamed-chunk-4-1.svg" class="img-fluid figure-img"></p>
 </figure>
 </div>
 </div>
@@ -429,87 +469,86 @@ When studying data, we will look at certain statistical features, which represen
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><ol type="a">
-<li>Change the <code>cut()</code> function up so that the vector <span class="math inline">\(x\)</span> is cut into 20 bins.</li>
-<li>Add a single number to vector x so that the sample mean rises to <input class="webex-solveme nospaces" size="6" data-answer="[&quot;64.131&quot;,&quot;64,131&quot;]"></li>
-</ol></li>
+<li>Use <code>cut(x, breaks = 20)</code> and compare the frequency table with the previous result. How sensitive is the modal interval to the number of bins?</li>
+<li>Compare the histogram with <code>plot(density(x))</code>. Note that <code>hist()</code> may choose convenient boundaries rather than exactly the requested number of bins.</li>
 </ol>
 </div>
 </div>
 </section>
-<section id="nmathrmth-quantile" class="level4" data-number="3.1.1.4">
-<h4 data-number="3.1.1.4" class="anchored" data-anchor-id="nmathrmth-quantile"><span class="header-section-number">3.1.1.4</span> <span class="math inline">\(n^{\mathrm{th}}\)</span> quantile</h4>
+<section id="quantiles" class="level4" data-number="3.1.1.4">
+<h4 data-number="3.1.1.4" class="anchored" data-anchor-id="quantiles"><span class="header-section-number">3.1.1.4</span> Quantiles</h4>
+<p>A quantile of probability <span class="math inline">\(p\)</span> identifies a location in the ordered data. For example, the 0.1 and 0.9 quantiles describe the lower and upper parts of a distribution. Sample quantiles may involve interpolation; R’s default is <code>type = 7</code>.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.9</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(x, <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">0.9</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>     10%      90% 
-38.49171 62.84304 </code></pre>
+<pre><code>     10%      50%      90% 
+38.49171 49.26267 62.84304 </code></pre>
 </div>
 </div>
 </section>
 </section>
 <section id="measures-of-dispersion" class="level3" data-number="3.1.2">
 <h3 data-number="3.1.2" class="anchored" data-anchor-id="measures-of-dispersion"><span class="header-section-number">3.1.2</span> Measures of dispersion</h3>
-<p>With <strong>measures of dispersion</strong> we describe the spread of the data around its central tendency. Some degree of variability is a natural occurring phenomenon.</p>
-<section id="variation-range" class="level4" data-number="3.1.2.1">
-<h4 data-number="3.1.2.1" class="anchored" data-anchor-id="variation-range"><span class="header-section-number">3.1.2.1</span> Variation range</h4>
-<p>The simplest measure of spread is the <strong>variation range</strong>. It is computed as the difference of both end extremes of the data.</p>
-<p><span class="math display">\[
-R = \max{x} - \min{x}
-\]</span></p>
+<p>Measures of dispersion describe the spread of observations. Always interpret them together with the location, units and shape of the distribution.</p>
+<section id="range" class="level4" data-number="3.1.2.1">
+<h4 data-number="3.1.2.1" class="anchored" data-anchor-id="range"><span class="header-section-number">3.1.2.1</span> Range</h4>
+<p>The <strong>range width</strong> is the difference between the largest and smallest observation:</p>
+<p><span class="math display">\[R_x = \max(x) - \min(x).\]</span></p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(x) <span class="sc">-</span> <span class="fu">min</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(x) <span class="co"># The two endpoints.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 30.33383 67.86913</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(x)) <span class="co"># Their difference.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 37.5353</code></pre>
 </div>
 </div>
 </section>
-<section id="variance-and-sample-variance" class="level4" data-number="3.1.2.2">
-<h4 data-number="3.1.2.2" class="anchored" data-anchor-id="variance-and-sample-variance"><span class="header-section-number">3.1.2.2</span> Variance and sample variance</h4>
-<p>We calculate the <strong>variance</strong> as the average of the squares of the deviations of individual character values from their arithmetic mean <span class="math inline">\(\bar{x}\)</span>.</p>
-<p><span class="math display">\[
-\begin{array}{rl}
-\sigma^2 =&amp; \dfrac{1}{n}\sum\limits_{i=1}^{n}(x_i - \bar{x})^2\\
-s^2 =&amp; \dfrac{1}{n-1}\sum\limits_{i=1}^{n}(x_i - \bar{x})^2
-\end{array}
-\]</span> Usually we do not have the ability to work with the whole population data. <span class="math inline">\(s^2\)</span>, the <strong>sample variance</strong> formula needs to be used for and unbiased estimate.</p>
+<section id="population-variance-and-sample-variance" class="level4" data-number="3.1.2.2">
+<h4 data-number="3.1.2.2" class="anchored" data-anchor-id="population-variance-and-sample-variance"><span class="header-section-number">3.1.2.2</span> Population variance and sample variance</h4>
+<p>For a finite population of size <span class="math inline">\(N\)</span>, with population mean <span class="math inline">\(\mu\)</span>, the population variance is</p>
+<p><span class="math display">\[\sigma^2 = \frac{1}{N}\sum_{i=1}^{N}(x_i - \mu)^2.\]</span></p>
+<p>For a sample of size <span class="math inline">\(n &gt; 1\)</span>, the usual sample variance is</p>
+<p><span class="math display">\[s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2.\]</span></p>
+<p>Under independent sampling from the same population with finite variance, the <span class="math inline">\(n-1\)</span> denominator makes <span class="math inline">\(s^2\)</span> an unbiased estimator of the population variance. Daily hydrological observations often exhibit serial dependence, so this sampling assumption should not be taken for granted. R’s <code>var()</code> calculates the sample variance with denominator <span class="math inline">\(n-1\)</span>.</p>
 </section>
 <section id="standard-deviation" class="level4" data-number="3.1.2.3">
 <h4 data-number="3.1.2.3" class="anchored" data-anchor-id="standard-deviation"><span class="header-section-number">3.1.2.3</span> Standard deviation</h4>
-<p>The <strong>standard deviation</strong> is defined as square root of variance.</p>
+<p>The <strong>standard deviation</strong> is the square root of the variance and has the same units as the observations. Variance has squared units.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 9.810307</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(x)<span class="sc">^</span><span class="fl">0.5</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 9.810307</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(x)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 9.810307</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">var</span>(x))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 9.810307</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 </section>
 <section id="coefficient-of-variation" class="level4" data-number="3.1.2.4">
 <h4 data-number="3.1.2.4" class="anchored" data-anchor-id="coefficient-of-variation"><span class="header-section-number">3.1.2.4</span> Coefficient of variation</h4>
-<p>The <strong>coefficient of variation</strong> is given by the ratio of the standard deviation and the arithmetic mean, and it follows from the definition of this ratio that it is a dimensionless indicator.</p>
-<p><span class="math display">\[
-\nu = \frac{s}{\bar{x}}
-\]</span></p>
+<p>The <strong>coefficient of variation</strong> relates the standard deviation to the mean:</p>
+<p><span class="math display">\[CV = \frac{s}{\bar{x}}.\]</span></p>
+<p>It is dimensionless and may be multiplied by 100 to express it as a percentage. It is useful for quantities with a meaningful zero and a positive mean, such as runoff. It is undefined when the mean is zero and unstable when the mean is close to zero. A conventional relative-variability interpretation is unsuitable for temperature in degrees Celsius, whose zero is arbitrary.</p>
 </section>
 <section id="interquartile-range" class="level4" data-number="3.1.2.5">
 <h4 data-number="3.1.2.5" class="anchored" data-anchor-id="interquartile-range"><span class="header-section-number">3.1.2.5</span> Interquartile range</h4>
-<p>The <span class="math inline">\(\text{IQR}\)</span> is the <strong>upper quartile</strong> (<span class="math inline">\(75\)</span>th percentile) minus the <strong>lower quartile</strong> (<span class="math inline">\(25\)</span>th percentile)</p>
-<p><span class="math display">\[
-\text{IQR} = Q_{\text{III}} - Q_{\text{I}}
-\]</span></p>
+<p>The <strong>interquartile range</strong> is the difference between the upper and lower quartiles:</p>
+<p><span class="math display">\[\mathrm{IQR} = Q_{0.75} - Q_{0.25}.\]</span></p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">IQR</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 11.60016</code></pre>
@@ -526,7 +565,8 @@ s^2 =&amp; \dfrac{1}{n-1}\sum\limits_{i=1}^{n}(x_i - \bar{x})^2
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Using the knowledge from the <a href="#sec-introduction" class="quarto-xref"><span class="quarto-unresolved-ref">sec-introduction</span></a> create own function to calculate the sample variance according the formula.</li>
+<li>Using the functions introduced in <a href="01_R.html" class="quarto-xref"><span>Chapter 2</span></a>, write a function that calculates sample variance from its formula. State how it handles missing values and samples with fewer than two valid observations. Compare its output with <code>var()</code>.</li>
+<li>Compare the mean, median, standard deviation and IQR before and after appending an extreme value to <code>x</code>. Keep the original <code>x</code> unchanged for later comparisons.</li>
 </ol>
 </div>
 </div>
@@ -535,50 +575,82 @@ s^2 =&amp; \dfrac{1}{n-1}\sum\limits_{i=1}^{n}(x_i - \bar{x})^2
 </section>
 <section id="hydrological-data" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="hydrological-data"><span class="header-section-number">3.2</span> Hydrological data</h2>
-<p>Datasets containing hydrological data are quite commonly, although not exclusively, in tabular (rectangular) shape. Let’s take a look at sample data from <strong>MOPEX</strong>. It is a fairly extensive curated dataset.</p>
-<p>This dataset covered some 438 catchments in daily step with measured discharge. The dataset used to be publicly available at https://hydrology.nws.noaa.gov/pub/gcip/mopex/US_Data/Us_438_Daily, the site is unavailable now. Several even more extensive datasets recently came out.</p>
+<p>We will use a local daily dataset for catchment <strong>01138000</strong> from <strong>MOPEX</strong>, a collection of hydrometeorological observations for US catchments. The file contains 20,454 daily records from 1 January 1948 to 31 December 2003. The presence of a date does not imply that every variable was measured on that date.</p>
+<p>The original collection was distributed through NOAA. Background is available in <a href="https://iahs.info/uploads/dms/13600.04-9-28-SCHAAKE.pdf">The US MOPEX Data Set</a>, and a <a href="https://hydroshare.cuahsi.org/resource/99d5c1a238134ea6b8b767a65f440cb7/">preserved description of the daily file format</a> documents the variables. Use the copy supplied with these materials.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable</th>
+<th style="text-align: left;">Meaning</th>
+<th style="text-align: left;">Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>date</code></td>
+<td style="text-align: left;">Observation date</td>
+<td style="text-align: left;">day</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>prec</code></td>
+<td style="text-align: left;">Mean areal precipitation</td>
+<td style="text-align: left;">mm per day</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>pet</code></td>
+<td style="text-align: left;">Climatological potential evaporation</td>
+<td style="text-align: left;">mm per day</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>r</code></td>
+<td style="text-align: left;">Runoff expressed as a depth over the catchment</td>
+<td style="text-align: left;">mm per day</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>tmax</code></td>
+<td style="text-align: left;">Daily maximum air temperature</td>
+<td style="text-align: left;">°C</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>tmin</code></td>
+<td style="text-align: left;">Daily minimum air temperature</td>
+<td style="text-align: left;">°C</td>
+</tr>
+</tbody>
+</table>
+<p>Runoff depth and volumetric discharge are different quantities. Discharge in <span class="math inline">\(\mathrm{m^3\,s^{-1}}\)</span> must be converted using catchment area and the duration of the time step before it can be compared with precipitation depth.</p>
+<section id="import-and-data-screening" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="import-and-data-screening"><span class="header-section-number">3.2.1</span> Import and data screening</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-10"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="1">1</button><span id="annotated-cell-10-1" class="code-annotation-target"><a href="#annotated-cell-10-1" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="st">"data/01138000.dly"</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="2">2</button><span id="annotated-cell-10-2" class="code-annotation-target"><a href="#annotated-cell-10-2" aria-hidden="true" tabindex="-1"></a>mpx_01138000 <span class="ot">&lt;-</span> <span class="fu">read.fwf</span>(<span class="at">file =</span> url,</span>
-<span id="annotated-cell-10-3"><a href="#annotated-cell-10-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="fu">rep</span>(<span class="dv">10</span>, <span class="at">times =</span> <span class="dv">5</span>)),</span>
-<span id="annotated-cell-10-4"><a href="#annotated-cell-10-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">header =</span> <span class="cn">FALSE</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="3">3</button><span id="annotated-cell-10-5" class="code-annotation-target"><a href="#annotated-cell-10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mpx_01138000) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"date"</span>, <span class="st">"prec"</span>, <span class="st">"pet"</span>, <span class="st">"r"</span>, <span class="st">"tmax"</span>, <span class="st">"tmin"</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="4">4</button><span id="annotated-cell-10-6" class="code-annotation-target"><a href="#annotated-cell-10-6" aria-hidden="true" tabindex="-1"></a>mpx_01138000<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">gsub</span>(<span class="at">x =</span> mpx_01138000<span class="sc">$</span>date,</span>
-<span id="annotated-cell-10-7"><a href="#annotated-cell-10-7" aria-hidden="true" tabindex="-1"></a>                          <span class="at">pattern =</span> <span class="st">" "</span>,</span>
-<span id="annotated-cell-10-8"><a href="#annotated-cell-10-8" aria-hidden="true" tabindex="-1"></a>                          <span class="at">replacement =</span> <span class="st">"0"</span>)</span>
-<span id="annotated-cell-10-9"><a href="#annotated-cell-10-9" aria-hidden="true" tabindex="-1"></a>mpx_01138000<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="at">x =</span> mpx_01138000<span class="sc">$</span>date,</span>
-<span id="annotated-cell-10-10"><a href="#annotated-cell-10-10" aria-hidden="true" tabindex="-1"></a>                             <span class="at">format =</span> <span class="st">"%Y%m%d"</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="5">5</button><span id="annotated-cell-10-11" class="code-annotation-target"><a href="#annotated-cell-10-11" aria-hidden="true" tabindex="-1"></a>mpx_01138000[<span class="fu">which</span>(mpx_01138000<span class="sc">$</span>r <span class="sc">&lt;</span> <span class="dv">0</span>), <span class="st">"r"</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-10" data-target-annotation="6">6</button><span id="annotated-cell-10-12" class="code-annotation-target"><a href="#annotated-cell-10-12" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="fu">head</span>(mpx_01138000, <span class="at">n =</span> <span class="dv">5</span>),</span>
-<span id="annotated-cell-10-13"><a href="#annotated-cell-10-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">tail</span>(mpx_01138000, <span class="at">n =</span> <span class="dv">5</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a>data_path <span class="ot">&lt;-</span> <span class="st">"data/01138000.dly"</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="2">2</button><span id="annotated-cell-12-2" class="code-annotation-target"><a href="#annotated-cell-12-2" aria-hidden="true" tabindex="-1"></a>mpx_01138000 <span class="ot">&lt;-</span> <span class="fu">read.fwf</span>(<span class="at">file =</span> data_path,</span>
+<span id="annotated-cell-12-3"><a href="#annotated-cell-12-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="fu">rep</span>(<span class="dv">10</span>, <span class="at">times =</span> <span class="dv">5</span>)),</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="3">3</button><span id="annotated-cell-12-4" class="code-annotation-target"><a href="#annotated-cell-12-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">header =</span> <span class="cn">FALSE</span>, <span class="at">strip.white =</span> <span class="cn">TRUE</span>,</span>
+<span id="annotated-cell-12-5"><a href="#annotated-cell-12-5" aria-hidden="true" tabindex="-1"></a>                        <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">"-99"</span>, <span class="st">"-99.0000"</span>))</span>
+<span id="annotated-cell-12-6"><a href="#annotated-cell-12-6" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(mpx_01138000) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"date"</span>, <span class="st">"prec"</span>, <span class="st">"pet"</span>, <span class="st">"r"</span>, <span class="st">"tmax"</span>, <span class="st">"tmin"</span>)</span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="4">4</button><span id="annotated-cell-12-7" class="code-annotation-target"><a href="#annotated-cell-12-7" aria-hidden="true" tabindex="-1"></a>mpx_01138000<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(</span>
+<span id="annotated-cell-12-8"><a href="#annotated-cell-12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gsub</span>(<span class="st">" "</span>, <span class="st">"0"</span>, mpx_01138000<span class="sc">$</span>date), <span class="at">format =</span> <span class="st">"%Y%m%d"</span>)</span>
+<span id="annotated-cell-12-9"><a href="#annotated-cell-12-9" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(<span class="fu">head</span>(mpx_01138000, <span class="at">n =</span> <span class="dv">5</span>), <span class="fu">tail</span>(mpx_01138000, <span class="at">n =</span> <span class="dv">5</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-10" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="1" data-code-annotation="1">This file is stored locally as part of this site. You have to change to your path.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="1" data-code-annotation="1">The path is relative to the project directory. Change it if your data are stored elsewhere.</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="2">2</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="2,3,4" data-code-annotation="2">Load the data in <strong>fixed width format</strong> using the <code>read.fwf()</code> function.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="2,3" data-code-annotation="2">Read the fixed-width file: eight characters for the date and ten for each measurement.</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="3">3</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="5" data-code-annotation="3">Provide variable names, since there aren’t any.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="4,5" data-code-annotation="3">The missing-value code in this dataset is <code>-99</code>, written as <code>-99.0000</code> in the measurement fields. Use <code>strip.white = TRUE</code> to remove padding around fields and supply the text representations to <code>na.strings</code> to convert them to <code>NA</code> (<em>not available</em>) in all measurement columns, including precipitation. Negative temperatures are valid observations and must be retained.</span>
 </dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="4">4</dt>
+<dt data-target-cell="annotated-cell-12" data-target-annotation="4">4</dt>
 <dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="6,7,8,9,10" data-code-annotation="4">Now there is a trouble with dates. If you evaluate sequentially, you could see that the date format expects <strong>“YYYY-mm-dd”</strong> format, we have to fill the blank spots with zeroes to comply.</span>
-</dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="11" data-code-annotation="5">After that, some variables contain non-physical values like <code>-9999</code>, these would make troubles in statistical processing, we have to replace them with <code>NA</code> (not assigned).</span>
-</dd>
-<dt data-target-cell="annotated-cell-10" data-target-annotation="6">6</dt>
-<dd>
-<span data-code-cell="annotated-cell-10" data-code-lines="12,13" data-code-annotation="6">Let’s display the 5 first and 5 last rows of the result.</span>
+<span data-code-cell="annotated-cell-12" data-code-lines="7,8" data-code-annotation="4">In the source, a single-digit month or day is padded with a space. Replace the spaces with zeroes and parse the result with the explicit input format <code>%Y%m%d</code> (YYYYMMDD). The printed <code>Date</code> values use YYYY-MM-DD.</span>
 </dd>
 </dl>
 </div>
@@ -596,6 +668,71 @@ s^2 =&amp; \dfrac{1}{n-1}\sum\limits_{i=1}^{n}(x_i - \bar{x})^2
 20454 2003-12-31 0.84 0.084     NA  3.5278  -1.7500</code></pre>
 </div>
 </div>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check dates before grouping or plotting.</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="sc">!</span><span class="fu">anyNA</span>(mpx_01138000<span class="sc">$</span>date),</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>          <span class="sc">!</span><span class="fu">anyDuplicated</span>(mpx_01138000<span class="sc">$</span>date),</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>          <span class="fu">all</span>(<span class="fu">diff</span>(mpx_01138000<span class="sc">$</span>date) <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Count missing values separately for each variable.</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(mpx_01138000))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>date prec  pet    r tmax tmin 
+   0    2    0 8492    0    0 </code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(mpx_01138000<span class="sc">$</span>date[<span class="sc">!</span><span class="fu">is.na</span>(mpx_01138000<span class="sc">$</span>r)])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "1948-01-01" "1980-09-30"</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These quantities cannot be negative; temperatures can.</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>nonnegative_vars <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"prec"</span>, <span class="st">"pet"</span>, <span class="st">"r"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(mpx_01138000[nonnegative_vars], <span class="cf">function</span>(z) <span class="fu">sum</span>(z <span class="sc">&lt;</span> <span class="dv">0</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>prec  pet    r 
+   0    0    0 </code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(mpx_01138000<span class="sc">$</span>tmin <span class="sc">&gt;</span> mpx_01138000<span class="sc">$</span>tmax, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 353</code></pre>
+</div>
+</div>
+<p>There are <strong>2 missing precipitation values</strong> and <strong>8,492 missing runoff values</strong>. Runoff observations end on <strong>30 September 1980</strong>, although the file continues to 2003. A missing measurement is not a zero. Investigate failed quality checks against the metadata rather than automatically deleting unusual observations.</p>
+</section>
+<section id="hydrograph" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="hydrograph"><span class="header-section-number">3.2.2</span> Hydrograph</h3>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mpx_01138000<span class="sc">$</span>date, mpx_01138000<span class="sc">$</span>r, <span class="at">type =</span> <span class="st">"l"</span>,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Date"</span>, <span class="at">ylab =</span> <span class="st">"Runoff depth (mm/day)"</span>,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Daily runoff, catchment 01138000"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-mopex-hydrograph" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mopex-hydrograph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02_statistics_files/figure-html/fig-mopex-hydrograph-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mopex-hydrograph-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.1: Daily runoff depth in the MOPEX file. The line ends when runoff observations cease; the date axis covers the entire file.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The time axis reveals coverage and temporal patterns that a single summary statistic cannot show. Here, the blank period after September 1980 represents missing observations. It does not represent a dry river.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -607,29 +744,32 @@ s^2 =&amp; \dfrac{1}{n-1}\sum\limits_{i=1}^{n}(x_i - \bar{x})^2
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Data coming from field measurements are usually accompanied with <em>metadata</em>. This could be information about when the data were collected, the site location, precision, missing values etc. Sometimes the metadata are in a header of the file. Download and process <a href="data/6242910_Q_Day.Cmd.txt">this file</a> in a similar manner using help of this <code>read.txt()</code> function.</li>
+<li>Measurement files are often accompanied by <strong>metadata</strong> describing location, units, time coverage and missing-value codes. Inspect the header of <a href="data/6242910_Q_Day.Cmd.txt">this GRDC file</a> and import it using <code>read.table()</code> or <code>read.delim()</code>. Determine the delimiter, number of header lines and missing-value code before importing it.</li>
+<li>Explain why replacing every negative number in a hydrometeorological dataset with <code>NA</code> would be incorrect.</li>
 </ol>
 </div>
 </div>
+</section>
 </section>
 <section id="aggregation-and-summation" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="aggregation-and-summation"><span class="header-section-number">3.3</span> Aggregation and summation</h2>
-<p>Let’s add some features to the data. For the purpose of the analysis it would be beneficial to add <code>year</code>, <code>month</code>, <code>quarters</code>, <code>decade</code> and <code>hyear</code> as <strong>hydrological year</strong>.</p>
+<p>Choose the summary according to the quantity. Daily precipitation and runoff depths are <strong>summed</strong> to obtain annual depths in mm. Temperatures and volumetric discharge are commonly <strong>averaged</strong> over time; these means retain the original units. Missing observations must be counted before interpreting either result.</p>
+<section id="calendar-and-hydrological-groups" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="calendar-and-hydrological-groups"><span class="header-section-number">3.3.1</span> Calendar and hydrological groups</h3>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-11"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-11" data-target-annotation="1">1</button><span id="annotated-cell-11-1" class="code-annotation-target"><a href="#annotated-cell-11-1" aria-hidden="true" tabindex="-1"></a>mpx_01138000<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">format</span>(mpx_01138000<span class="sc">$</span>date, <span class="st">"%Y"</span>))</span>
-<span id="annotated-cell-11-2"><a href="#annotated-cell-11-2" aria-hidden="true" tabindex="-1"></a>mpx_01138000<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">format</span>(mpx_01138000<span class="sc">$</span>date, <span class="st">"%m"</span>))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mpx_01138000<span class="sc">$</span>year <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">format</span>(mpx_01138000<span class="sc">$</span>date, <span class="st">"%Y"</span>))</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mpx_01138000<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">format</span>(mpx_01138000<span class="sc">$</span>date, <span class="st">"%m"</span>))</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>mpx_01138000<span class="sc">$</span>decade <span class="ot">&lt;-</span> <span class="dv">10</span>L <span class="sc">*</span> (mpx_01138000<span class="sc">$</span>year <span class="sc">%/%</span> <span class="dv">10</span>L)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>mpx_01138000<span class="sc">$</span>hyear <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(mpx_01138000<span class="sc">$</span>month <span class="sc">&gt;=</span> <span class="dv">11</span>,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>                           mpx_01138000<span class="sc">$</span>year <span class="sc">+</span> <span class="dv">1</span>L,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>                           mpx_01138000<span class="sc">$</span>year)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>mpx_01138000<span class="sc">$</span>tmean <span class="ot">&lt;-</span> (mpx_01138000<span class="sc">$</span>tmax <span class="sc">+</span> mpx_01138000<span class="sc">$</span>tmin) <span class="sc">/</span> <span class="dv">2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-11" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-11" data-code-lines="1,2" data-code-annotation="1">With the help of special characters we are extracting the years and months consecutively.</span>
-</dd>
-</dl>
 </div>
-</div>
+<p><code>format()</code> extracts calendar components. Here, <code>decade = 1960</code> denotes <strong>1960–1969</strong>. The derived <code>tmean</code> is an approximation to daily mean temperature using the two daily extremes; it is not an independently measured daily mean.</p>
+<p>The hydrological year in Czechia runs from <strong>1 November to 31 October</strong> and is labelled by its ending year. For example, hydrological year 1980 starts on 1 November 1979. We apply this convention to the US dataset as a teaching example; hydrological-year boundaries depend on the region and purpose of the analysis.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -641,258 +781,85 @@ s^2 =&amp; \dfrac{1}{n-1}\sum\limits_{i=1}^{n}(x_i - \bar{x})^2
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li><ol type="a">
-<li>Add <code>quart</code> variable to <code>mpx_01138000</code> using <code>quarters()</code> function.</li>
-<li>Provide the fraction of days with no precipitation: <input class="webex-solveme nospaces" size="10" data-answer="[&quot;0.221277&quot;,&quot;0,221277&quot;,&quot;4526/20454&quot;]"></li>
-<li>How many freezing days (Tmin &lt; 0) occured? <input class="webex-solveme nospaces" size="5" data-answer="[&quot;10244&quot;]"></li>
-<li>How many freezing days occured in late spring (May) and summer? <input class="webex-solveme nospaces" size="3" data-answer="[&quot;308&quot;]"></li>
-<li>Find 3 highest <input class="webex-solveme nospaces" size="25" data-answer="[&quot;34.3056, 33.6333, 33.4889&quot;]"> and 3 lowest temperatures <input class="webex-solveme nospaces" size="28" data-answer="[&quot;-17.0000, -16.4889, -16.4611&quot;]"> (delimit by a comma).</li>
-</ol></li>
+<li>Add a <code>quart</code> column using <code>quarters()</code>.</li>
+<li>What fraction of days <strong>with valid precipitation measurements</strong> had no precipitation? Round to six decimal places: <input class="webex-solveme nospaces" size="10" data-answer="[&quot;0.221299&quot;,&quot;0,221299&quot;,&quot;4526/20452&quot;]">.</li>
+<li>How many days had <code>tmin &lt; 0</code> °C? <input class="webex-solveme nospaces" size="5" data-answer="[&quot;10244&quot;]">.</li>
+<li>How many days had <code>tmin &lt; 0</code> °C during <strong>May, June, July or August</strong>? <input class="webex-solveme nospaces" size="3" data-answer="[&quot;307&quot;]">.</li>
+<li>Find the three largest daily maximum temperatures (<code>tmax</code>), in descending order: <input class="webex-solveme nospaces" size="25" data-answer="[&quot;34.3056, 33.6333, 33.4889&quot;]">. Find the three smallest daily minimum temperatures (<code>tmin</code>), in ascending order: <input class="webex-solveme nospaces" size="28" data-answer="[&quot;-17.0000, -16.4889, -16.4611&quot;]">. Separate the values with commas.</li>
 </ol>
 </div>
 </div>
+</section>
+<section id="annual-summaries-and-completeness" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="annual-summaries-and-completeness"><span class="header-section-number">3.3.2</span> Annual summaries and completeness</h3>
+<p>For this exercise, an annual statistic is reported only if <strong>every expected day has a valid measurement of that variable</strong>. This deliberately strict rule prevents an incomplete year from appearing to have a small annual total. Other completeness rules are possible, but must be specified and justified.</p>
+<p>The function below uses <code>split()</code> to group daily records, <code>lapply()</code> to summarize each group and <code>do.call(rbind, ...)</code> to combine the results. The expected number of days is calculated from year boundaries, so leap years and partial first or last years are handled explicitly.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-12"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-12" data-target-annotation="1">1</button><span id="annotated-cell-12-1" class="code-annotation-target"><a href="#annotated-cell-12-1" aria-hidden="true" tabindex="-1"></a>mpx_01138000<span class="sc">$</span>hyear <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="at">test =</span> mpx_01138000<span class="sc">$</span>month <span class="sc">&gt;</span> <span class="dv">10</span>,</span>
-<span id="annotated-cell-12-2"><a href="#annotated-cell-12-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">yes =</span> <span class="fu">as.integer</span>(mpx_01138000<span class="sc">$</span>year <span class="sc">+</span> <span class="dv">1</span>),</span>
-<span id="annotated-cell-12-3"><a href="#annotated-cell-12-3" aria-hidden="true" tabindex="-1"></a>                             <span class="at">no =</span> <span class="fu">as.integer</span>(mpx_01138000<span class="sc">$</span>year))</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-12" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-12" data-code-lines="1,2,3" data-code-annotation="1">The hydrological year in Czechia is defined from <span class="math inline">\(1^{\mathrm{st}}\)</span> November to <span class="math inline">\(31^{\mathrm{st}}\)</span> October next year.</span>
-</dd>
-</dl>
-</div>
-</div>
-<p>These functions are based on <strong>grouping</strong>. In hydrology, the natural groups involve - <em>stations/basins</em>, <em>decades/years/months</em>, <em>groundwater regions</em>, etc.</p>
-<section id="box-plot" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="box-plot"><span class="header-section-number">3.3.1</span> Box-plot</h3>
-<p>Come handy, when we want to visualize the important quantiles related to any categorical variable.</p>
-<div class="cell" data-layout-align="center">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>station <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">"./data/6242910_Q_Day.Cmd.txt"</span>, </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">skip =</span> <span class="dv">36</span>, </span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">header =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">sep =</span> <span class="st">";"</span>, </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"date"</span>, <span class="st">"time"</span>, <span class="st">"value"</span>))</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>station<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(station<span class="sc">$</span>date, </span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>station_agg <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(station<span class="sc">$</span>value <span class="sc">~</span> <span class="fu">as.factor</span>(data.table<span class="sc">::</span><span class="fu">month</span>(station<span class="sc">$</span>date)), </span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                         <span class="at">FUN =</span> <span class="st">"quantile"</span>, </span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                         <span class="at">probs =</span> <span class="fu">c</span>(<span class="fl">0.1</span>, <span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>, <span class="fl">0.9</span>))</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(station_agg) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Month"</span>, <span class="st">"Discharge"</span>)</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">font.main =</span> <span class="dv">1</span>, </span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">adj =</span> <span class="fl">0.1</span>, </span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">xaxs =</span> <span class="st">"i"</span>, </span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">yaxs =</span> <span class="st">"i"</span>)</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(<span class="at">data =</span> station_agg, </span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>        Discharge <span class="sc">~</span> Month, </span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Distribution of discharge in months"</span>, </span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">frame =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">20</span>), </span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">""</span>, </span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="fu">bquote</span>(Discharge), <span class="at">font.main =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="02_statistics_files/figure-html/unnamed-chunk-11-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="q-q-plot" class="level3" data-number="3.3.2">
-<h3 data-number="3.3.2" class="anchored" data-anchor-id="q-q-plot"><span class="header-section-number">3.3.2</span> Q-Q plot</h3>
-<p>The so called <strong>rankit graph</strong> produces a quantile-quantile graph of the values from selected data. This one can compare if the distribution of the data fit with the assumed distribution, e.q. Normal. <code>qqline</code> then adds the theoretical line.</p>
-<div class="cell" data-layout-align="center">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">font.main =</span> <span class="dv">1</span>, </span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">adj =</span> <span class="fl">0.1</span>, </span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">xaxs =</span> <span class="st">"i"</span>, </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">yaxs =</span> <span class="st">"i"</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(mpx_01138000<span class="sc">$</span>tmax, </span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">21</span>, </span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"black"</span>, </span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">bg =</span> <span class="st">"lightgray"</span>, <span class="at">cex =</span> <span class="fl">0.5</span>, </span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">""</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(mpx_01138000<span class="sc">$</span>tmax)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="02_statistics_files/figure-html/unnamed-chunk-12-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<!-- ```{r} -->
-<!-- plot(quantile(rnorm(1000), probs = 1:100/100), -->
-<!-- quantile(rnorm(1000), probs = 1:100/100), frame = FALSE, pch = 20) -->
-<!-- abline(0, 1, col = "red") -->
-<!-- ``` -->
-<!-- ### P-P plot -->
-<!-- ```{r} -->
-<!-- n <- 100 -->
-<!-- data <- rweibull(n, shape = 2, scale = 1) -->
-<!-- # Estimated parameters for Pareto -->
-<!-- shape_est <- 2 -->
-<!-- scale_est <- 1 -->
-<!-- # Calculate the theoretical quantiles for the Pareto distribution -->
-<!-- theoretical_quantiles <- qweibull(p = seq(0, 1, 0.01), shape = shape_est, scale = scale_est) -->
-<!-- # Create the Q-Q plot -->
-<!-- qqplot(theoretical_quantiles, data,  -->
-<!--        xlab = "Theoretical Quantiles",  -->
-<!--        ylab = "Sample Quantiles", ylim = c(0,2.5), xlim = c(0, 2.5)) -->
-<!-- abline(0, 1, col = "red")  # Add a 45-degree reference line -->
-<!-- ``` -->
-</section>
-<section id="empirical-distribution-function" class="level3" data-number="3.3.3">
-<h3 data-number="3.3.3" class="anchored" data-anchor-id="empirical-distribution-function"><span class="header-section-number">3.3.3</span> Empirical distribution function</h3>
-<p>Large portion of the data which is processed in Hydrology originates from time series of streamflow or runoff. This enables us to construct empirical probability of exceeding certain value in the data <span class="math inline">\(P(X\geq x_k)\)</span>, simply using the well know definition</p>
-<p><span class="math display">\[
-P = \dfrac{m}{n}
-\]</span> where <span class="math inline">\(m\)</span> is the number of reaching or exceeding of value <span class="math inline">\(x_k\)</span> and <span class="math inline">\(n\)</span> is the length of the series. This equation is valid strictly for <span class="math inline">\(n \rightarrow \infty\)</span>.<br>
-There are several empirical formulas in use to calculate the empirical exceedance probability like the one from Čegodajev</p>
-<p><span class="math display">\[
-P = \dfrac{m - 0.3}{n + 0.4}
-\]</span> In R we can utilize a highe order function called <code>ecdf()</code></p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-15"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="1">1</button><span id="annotated-cell-15-1" class="code-annotation-target"><a href="#annotated-cell-15-1" aria-hidden="true" tabindex="-1"></a>ecdf_data <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(<span class="fu">na.omit</span>(mpx_01138000<span class="sc">$</span>r))</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-15" data-target-annotation="2">2</button><span id="annotated-cell-15-2" class="code-annotation-target"><a href="#annotated-cell-15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ecdf_data</span>(<span class="dv">35</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-15" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="1" data-code-annotation="1">Create the empirical cumulative distribution function (ECDF) for the data.</span>
-</dd>
-<dt data-target-cell="annotated-cell-15" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-15" data-code-lines="2" data-code-annotation="2">Calculate percent of data lower than 35.</span>
-</dd>
-</dl>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9998328</code></pre>
-</div>
-</div>
-<!-- ```{r, eval=FALSE} -->
-<!-- library(tidyverse) -->
-<!-- # ddd <- read_fwf("data/6242910_Q_Day.Cmd.txt",  -->
-<!-- #                 skip = 36,  -->
-<!-- #                 col_positions = fwf_widths(widths = c(8, 4, 4, 8, 2)), col_types = "cccdc") -->
-<!-- ddd <- read_csv2("data/6242910_Q_Day.Cmd.txt",  -->
-<!--                 skip = 36,  -->
-<!--                 col_types = "ccc") -->
-<!-- ddd |>  -->
-<!--   set_names(c("Date", "D", "Discharge")) |>  -->
-<!--   mutate(Date = as.Date(Date, format = "%Y-%m-%d"),  -->
-<!--          Discharge = as.numeric(Discharge)) |>  -->
-<!--   select(Date, Discharge) -> ddd -->
-<!-- ddd |>  -->
-<!--   mutate(ri = rank(Discharge),  -->
-<!--          s = sd(Discharge),  -->
-<!--          q = pweibull(Discharge, shape = 2, scale = 1)) -->
-<!-- pdfunc <- function(x, b = 0.44) { -->
-<!--   n <- length(x) -->
-<!--   m <- rank(x) -->
-<!--   (m - b)/(n + 1 - 2*b) -->
-<!-- } -->
-<!-- plot(pdfunc(x <- ddd$Discharge), type = "l") -->
-<!-- ddd |>  -->
-<!--   ggplot(aes(Date, Discharge)) + -->
-<!--   geom_line() -->
-<!-- ddd |>  -->
-<!--   ggplot(aes(Discharge, ri = rank(Discharge / length(Discharge)))) + -->
-<!--   geom_line() -->
-<!-- ddd |>  -->
-<!--   mutate(pi = rank(Discharge - 0.5)/length(Discharge)) -->
-<!-- x <- c(1, 6 ,6, 1, 2, 0) -->
-<!-- rank(x) -->
-<!-- ``` -->
-</section>
-<section id="exceedance-curve" class="level3" data-number="3.3.4">
-<h3 data-number="3.3.4" class="anchored" data-anchor-id="exceedance-curve"><span class="header-section-number">3.3.4</span> Exceedance curve</h3>
-<p>Provides an information on how many times or for how long a streamflow value was reached or exceeded within a certain period.</p>
-<div class="cell" data-layout-align="center">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>r_sorted <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(<span class="fu">sort</span>(mpx_01138000<span class="sc">$</span>r, <span class="at">decreasing =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Empirical</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(r_sorted)</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>exceedance_prob <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span>n <span class="sc">/</span> n</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>rank <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span><span class="sc">:</span>n)</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>return_period <span class="ot">&lt;-</span> (n <span class="sc">+</span> <span class="dv">1</span>) <span class="sc">/</span> rank</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>exceedance_prob <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> return_period</span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> exceedance_prob, </span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">y =</span> r_sorted, </span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"l"</span>, </span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Exceedance Probability"</span>, </span>
-<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Runoff Value"</span>, </span>
-<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Empirical Exceedance Curve"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="02_statistics_files/figure-html/unnamed-chunk-15-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-</div>
-</div>
-<!-- ### Return period -->
-<!-- We calculate the return period as inverse to the exceedance probability -->
-<!-- ```{r, fig.align='center'} -->
-<!-- # return_period <- 1/exceedance_prob  -->
-<!-- plot(x = return_period,  -->
-<!--      y = r_sorted,  -->
-<!--      type = "l",  -->
-<!--      xlab = "Return Period",  -->
-<!--      ylab = "Runoff Value",  -->
-<!--      main = "Empirical Return Period") -->
-<!-- ``` -->
-<!-- ### Frequency distribution curve -->
-<!-- ## Correlation and autocorrelation -->
-<!-- $$ -->
-<!-- \rho_{X, Y} = \dfrac{\mathrm{cov}(X,Y)}{\sigma_X\sigma_Y} -->
-<!-- $$ $$ -->
-<!-- \rho_{X,X} -->
-<!-- $$ -->
-</section>
-</section>
-<section id="hydroclimatic-indices" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="hydroclimatic-indices"><span class="header-section-number">3.4</span> Hydroclimatic indices</h2>
-<p>Originated from the combination of aggregation and summation methods and the measures of location and dispersion.</p>
-<section id="runoff-coefficient" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="runoff-coefficient"><span class="header-section-number">3.4.1</span> Runoff coefficient</h3>
-<p>The concept of runoff coefficient comes from the presumption, that over long-time period</p>
-<p><span class="math display">\[
-\varphi [-] = \dfrac{R}{P}
-\]</span> where <span class="math inline">\(R\)</span> represents runoff and <span class="math inline">\(P\)</span> precipitation in long term, typically 30 year so called <strong>Climatic period</strong>, which is a decadal 30 year reference moving window; the latest being 1991–2020.</p>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>R <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">aggregate</span>(r <span class="sc">~</span> year, <span class="at">FUN =</span> mean, <span class="at">data =</span> mpx_01138000)[, <span class="st">"r"</span>])</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>P <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">aggregate</span>(prec <span class="sc">~</span> year, <span class="at">FUN =</span> mean, <span class="at">data =</span> mpx_01138000)[, <span class="st">"prec"</span>])</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>R<span class="sc">/</span>P</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>annual_summary <span class="ot">&lt;-</span> <span class="cf">function</span>(data, <span class="at">hydrological =</span> <span class="cn">FALSE</span>) {</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  groups <span class="ot">&lt;-</span> <span class="cf">if</span> (hydrological) data<span class="sc">$</span>hyear <span class="cf">else</span> data<span class="sc">$</span>year</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  summaries <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">split</span>(data, groups), <span class="cf">function</span>(d) {</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>    year_label <span class="ot">&lt;-</span> <span class="cf">if</span> (hydrological) <span class="fu">unique</span>(d<span class="sc">$</span>hyear) <span class="cf">else</span> <span class="fu">unique</span>(d<span class="sc">$</span>year)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>    start_year <span class="ot">&lt;-</span> <span class="cf">if</span> (hydrological) year_label <span class="sc">-</span> <span class="dv">1</span>L <span class="cf">else</span> year_label</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>    start_month <span class="ot">&lt;-</span> <span class="cf">if</span> (hydrological) <span class="dv">11</span>L <span class="cf">else</span> <span class="dv">1</span>L</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>    start_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">sprintf</span>(<span class="st">"%d-%02d-01"</span>, start_year, start_month))</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>    end_date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="fu">sprintf</span>(<span class="st">"%d-%02d-01"</span>, start_year <span class="sc">+</span> <span class="dv">1</span>L, start_month))</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>    expected_days <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(end_date <span class="sc">-</span> start_date)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>    n_prec <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(d<span class="sc">$</span>prec))</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>    n_runoff <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(d<span class="sc">$</span>r))</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    n_temp <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(d<span class="sc">$</span>tmean))</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">data.frame</span>(</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">year =</span> year_label, <span class="at">expected_days =</span> expected_days, <span class="at">n_days =</span> <span class="fu">nrow</span>(d),</span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">n_prec =</span> n_prec, <span class="at">n_runoff =</span> n_runoff, <span class="at">n_temp =</span> n_temp,</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">prec_mm =</span> <span class="cf">if</span> (n_prec <span class="sc">==</span> expected_days) <span class="fu">sum</span>(d<span class="sc">$</span>prec) <span class="cf">else</span> <span class="cn">NA_real_</span>,</span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">runoff_mm =</span> <span class="cf">if</span> (n_runoff <span class="sc">==</span> expected_days) <span class="fu">sum</span>(d<span class="sc">$</span>r) <span class="cf">else</span> <span class="cn">NA_real_</span>,</span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">tmean_C =</span> <span class="cf">if</span> (n_temp <span class="sc">==</span> expected_days) <span class="fu">mean</span>(d<span class="sc">$</span>tmean) <span class="cf">else</span> <span class="cn">NA_real_</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb28-21"><a href="#cb28-21" aria-hidden="true" tabindex="-1"></a>  result <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, summaries)</span>
+<span id="cb28-22"><a href="#cb28-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames</span>(result) <span class="ot">&lt;-</span> <span class="cn">NULL</span></span>
+<span id="cb28-23"><a href="#cb28-23" aria-hidden="true" tabindex="-1"></a>  result</span>
+<span id="cb28-24"><a href="#cb28-24" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb28-25"><a href="#cb28-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-26"><a href="#cb28-26" aria-hidden="true" tabindex="-1"></a>annual <span class="ot">&lt;-</span> <span class="fu">annual_summary</span>(mpx_01138000)</span>
+<span id="cb28-27"><a href="#cb28-27" aria-hidden="true" tabindex="-1"></a>annual_hydro <span class="ot">&lt;-</span> <span class="fu">annual_summary</span>(mpx_01138000, <span class="at">hydrological =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb28-28"><a href="#cb28-28" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(annual)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.493947</code></pre>
+<pre><code>  year expected_days n_days n_prec n_runoff n_temp prec_mm runoff_mm  tmean_C
+1 1948           366    366    364      366    366      NA  454.4441 6.160593
+2 1949           365    365    365      365    365  958.55  444.3353 6.768547
+3 1950           365    365    365      365    365 1044.19  547.0026 5.637900
+4 1951           365    365    365      365    365 1126.27  629.3941 5.885456
+5 1952           366    366    366      366    366 1061.77  592.2780 5.982210
+6 1953           365    365    365      365    365 1037.12  619.2143 6.914498</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>annual[annual<span class="sc">$</span>year <span class="sc">%in%</span> <span class="dv">1979</span><span class="sc">:</span><span class="dv">1981</span>, ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>   year expected_days n_days n_prec n_runoff n_temp prec_mm runoff_mm  tmean_C
+32 1979           365    365    365      365    365 1068.44  494.4419 6.389231
+33 1980           366    366    366      274    366  985.05        NA 5.063001
+34 1981           365    365    365        0    365 1406.74        NA 6.051674</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(annual_hydro)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  year expected_days n_days n_prec n_runoff n_temp prec_mm runoff_mm  tmean_C
+1 1948           366    305    303      305    305      NA        NA       NA
+2 1949           365    365    365      365    365 1072.19  450.6707 7.166096
+3 1950           365    365    365      365    365  941.44  480.2787 5.333113
+4 1951           365    365    365      365    365 1175.88  660.1339 6.281173
+5 1952           366    366    366      366    366 1052.72  640.6039 5.751055
+6 1953           365    365    365      365    365 1083.56  615.7418 6.540646</code></pre>
 </div>
 </div>
+<p>The calendar year 1948 has incomplete precipitation measurements. Runoff is incomplete in calendar year 1980 and entirely missing in later years. <code>sum(z, na.rm = TRUE)</code> alone would hide this distinction: it even returns zero when every observation is missing. The count columns make the reason for each missing annual statistic visible.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -904,35 +871,268 @@ P = \dfrac{m - 0.3}{n + 0.4}
 </div>
 <div class="callout-body-container callout-body">
 <ol type="1">
-<li>Calculate the runoff coefficient <span class="math inline">\(\varphi\)</span> for the two latest decades separately.</li>
+<li>Compare the calendar-year and hydrological-year summaries. Why is the first hydrological year incomplete even when daily temperature measurements are available for every date in the file?</li>
+<li>Find the years with both complete precipitation and complete runoff. Why must this selection precede a comparison of annual water-balance quantities?</li>
 </ol>
 </div>
 </div>
 </section>
-<section id="flow-duration-curve" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="flow-duration-curve"><span class="header-section-number">3.4.2</span> Flow duration curve</h3>
-<p>This is an essential curve in energy as well as river ecology sector.</p>
+</section>
+<section id="visualizing-distributions" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="visualizing-distributions"><span class="header-section-number">3.4</span> Visualizing distributions</h2>
+<section id="boxplot" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="boxplot"><span class="header-section-number">3.4.1</span> Boxplot</h3>
+<p>A boxplot summarizes the median, lower and upper hinges (approximately the quartiles), whiskers and individual values beyond the whiskers. With R’s default settings, whiskers reach the most extreme observations within 1.5 IQR of the hinges. They do <strong>not</strong> generally represent the 10th and 90th percentiles. Values beyond the whiskers deserve investigation but are not automatically errors.</p>
+<p>We now use the GRDC station file. Its metadata identify daily mean discharge in <span class="math inline">\(\mathrm{m^3\,s^{-1}}\)</span> and a missing-value code of <code>-999.000</code>. The first 36 lines precede the table header.</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">60</span>, <span class="dv">90</span>, <span class="dv">120</span>, <span class="dv">150</span>, <span class="dv">180</span>, <span class="dv">210</span>, <span class="dv">240</span>, <span class="dv">270</span>, <span class="dv">300</span>, <span class="dv">330</span>, <span class="dv">355</span>, <span class="dv">364</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>m_day <span class="ot">&lt;-</span> <span class="cf">function</span>(streamflow) {</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(<span class="fu">na.omit</span>(streamflow), <span class="dv">1</span> <span class="sc">-</span> M<span class="sc">/</span><span class="fl">365.25</span>)</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(M, <span class="fu">m_day</span>(mpx_01138000<span class="sc">$</span>r), </span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"b"</span>, </span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">21</span>,</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">bg =</span> <span class="st">"darkgray"</span>,</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">""</span>, </span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Discharge"</span>, </span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"M-day discharge"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>station <span class="ot">&lt;-</span> <span class="fu">read.delim</span>(<span class="at">file =</span> <span class="st">"data/6242910_Q_Day.Cmd.txt"</span>,</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">skip =</span> <span class="dv">36</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">";"</span>, <span class="at">strip.white =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">"date"</span>, <span class="st">"time"</span>, <span class="st">"value"</span>),</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">na.strings =</span> <span class="st">"-999.000"</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>station<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(station<span class="sc">$</span>date, <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>station<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">as.integer</span>(<span class="fu">format</span>(station<span class="sc">$</span>date, <span class="st">"%m"</span>)),</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>                        <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">labels =</span> month.abb)</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(value <span class="sc">~</span> month, <span class="at">data =</span> station,</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Monthly distribution of daily discharge"</span>,</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Month"</span>, <span class="at">ylab =</span> <span class="fu">expression</span>(Discharge<span class="sc">~</span>(m<span class="sc">^</span><span class="dv">3</span><span class="sc">/</span>s)),</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"lightgray"</span>, <span class="at">frame =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="02_statistics_files/figure-html/unnamed-chunk-17-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<div id="fig-monthly-discharge" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-monthly-discharge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02_statistics_files/figure-html/fig-monthly-discharge-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-monthly-discharge-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.2: Monthly distributions of daily mean discharge at Nickelsdorf. All daily observations are supplied to boxplot(); values beyond the whiskers are shown.
+</figcaption>
 </figure>
 </div>
+</div>
+</div>
+<p>The plot uses the original daily measurements, without first reducing them to a few quantiles. The full vertical range preserves high-flow observations. Compare seasonal medians, spreads and upper tails; these describe variability among days, not uncertainty in a monthly mean. See the <a href="https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/boxplot.html">R boxplot documentation</a> for the whisker definition.</p>
+</section>
+<section id="q-q-plot" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="q-q-plot"><span class="header-section-number">3.4.2</span> Q-Q plot</h3>
+<p>A <strong>quantile-quantile plot</strong> compares quantiles of two distributions. <code>qqnorm()</code> compares sample quantiles with theoretical normal quantiles. A roughly straight pattern is consistent with an approximately normal distribution; systematic curvature indicates differences in shape or tails. By default, <code>qqline()</code> draws a reference line through the first and third quartiles, rather than fitting a least-squares regression line.</p>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(mpx_01138000<span class="sc">$</span>tmax,</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">bg =</span> <span class="st">"lightgray"</span>, <span class="at">cex =</span> <span class="fl">0.5</span>,</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">"Daily maximum temperature: normal Q-Q plot"</span>,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">ylab =</span> <span class="st">"Sample temperature quantiles (°C)"</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(mpx_01138000<span class="sc">$</span>tmax, <span class="at">col =</span> <span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-temperature-qq" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-temperature-qq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02_statistics_files/figure-html/fig-temperature-qq-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-temperature-qq-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.3: Normal Q-Q plot of daily maximum temperature pooled across all seasons.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Pooling winter and summer temperatures combines different seasonal conditions. This graph alone therefore cannot establish whether temperature within a season follows a normal distribution. A Q-Q plot also does not assess temporal independence. See the <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/qqnorm.html">R Q-Q plot documentation</a>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Describe the deviations from the reference line. Repeat the plot for January only and compare the shapes. Why might the pooled distribution differ from a monthly distribution?</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="empirical-cumulative-distribution-function" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="empirical-cumulative-distribution-function"><span class="header-section-number">3.4.3</span> Empirical cumulative distribution function</h3>
+<p>The <strong>empirical cumulative distribution function</strong> (ECDF) is the fraction of valid observations less than or equal to a threshold <span class="math inline">\(q\)</span>:</p>
+<p><span class="math display">\[F_n(q) = \frac{\#\{x_i \leq q\}}{n}.\]</span></p>
+<p>This is an exact description of the finite sample. It can be used to estimate a population probability, but a longer record does not automatically remove bias, dependence or changes over time.</p>
+<p>Distinguish <strong>non-exceedance</strong>, <span class="math inline">\(X \leq q\)</span>, <strong>strict exceedance</strong>, <span class="math inline">\(X &gt; q\)</span>, and <strong>reaching or exceeding</strong>, <span class="math inline">\(X \geq q\)</span>. The latter two differ when observations equal the threshold. In particular, <span class="math inline">\(1-F_n(q)\)</span> describes strict exceedance.</p>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>runoff <span class="ot">&lt;-</span> mpx_01138000<span class="sc">$</span>r[<span class="sc">!</span><span class="fu">is.na</span>(mpx_01138000<span class="sc">$</span>r)]</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>ecdf_data <span class="ot">&lt;-</span> <span class="fu">ecdf</span>(runoff)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>threshold <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="co"># mm/day</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">at_or_below =</span> <span class="fu">ecdf_data</span>(threshold),</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">above =</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">ecdf_data</span>(threshold),</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">at_or_above =</span> <span class="fu">mean</span>(runoff <span class="sc">&gt;=</span> threshold))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>at_or_below       above at_or_above 
+ 0.94474168  0.05525832  0.05525832 </code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="dv">100</span> <span class="sc">*</span> <span class="fu">ecdf_data</span>(threshold) <span class="co"># Percentage at or below the threshold.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 94.47417</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(ecdf_data, <span class="at">verticals =</span> <span class="cn">TRUE</span>, <span class="at">do.points =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Runoff depth (mm/day)"</span>, <span class="at">ylab =</span> <span class="st">"Fraction at or below threshold"</span>,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Empirical cumulative distribution of runoff"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-runoff-ecdf" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-runoff-ecdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02_statistics_files/figure-html/fig-runoff-ecdf-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-runoff-ecdf-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.4: ECDF of valid daily runoff depths. The vertical axis gives a fraction of observations, not a percentage.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><code>ecdf()</code> returns a function that can be evaluated at any threshold. Its output is a fraction between 0 and 1; multiply by 100 for a percentage. See the <a href="https://stat.ethz.ch/R-manual/R-devel/library/stats/html/ecdf.html">R ECDF documentation</a>.</p>
+</section>
+<section id="exceedance-curve" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="exceedance-curve"><span class="header-section-number">3.4.4</span> Exceedance curve</h3>
+<p>An exceedance curve shows the fraction of observations reaching or exceeding a value. For regularly spaced daily observations, this also describes the fraction of observed days. It contains the same distributional information as the ECDF, with the probability direction reversed, and discards the chronological order of events.</p>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>r_sorted <span class="ot">&lt;-</span> <span class="fu">sort</span>(runoff, <span class="at">decreasing =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>n_runoff <span class="ot">&lt;-</span> <span class="fu">length</span>(r_sorted)</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the last rank of each tied group to count all values &gt;= that value.</span></span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>exceedance_prob <span class="ot">&lt;-</span> <span class="fu">rank</span>(<span class="sc">-</span>r_sorted, <span class="at">ties.method =</span> <span class="st">"max"</span>) <span class="sc">/</span> n_runoff</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(exceedance_prob, r_sorted, <span class="at">type =</span> <span class="st">"s"</span>,</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Fraction of observed days reaching or exceeding runoff"</span>,</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Runoff depth (mm/day)"</span>,</span>
+<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Empirical exceedance curve"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-runoff-exceedance" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-runoff-exceedance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02_statistics_files/figure-html/fig-runoff-exceedance-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-runoff-exceedance-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.5: Empirical runoff exceedance curve. Equal runoff values share the same probability of being reached or exceeded.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>For distinct observations sorted in decreasing order, this empirical fraction is <span class="math inline">\(m/n\)</span>, where <span class="math inline">\(m\)</span> is the rank. An alternative is to assign <strong>plotting positions</strong>, for example Weibull’s <span class="math inline">\(m/(n+1)\)</span> or Čegodajev’s <span class="math inline">\((m-0.3)/(n+0.4)\)</span>. These are conventions for estimating probability positions, not the exact observed fractions used above. State the convention whenever comparing curves.</p>
+<p>The inverse of a probability from daily data is not automatically a return period in years. Flood return periods require an appropriate event series and frequency model, for example annual maxima, together with their assumptions. Consecutive daily high flows may belong to the same event.</p>
+</section>
+</section>
+<section id="hydroclimatic-indices" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="hydroclimatic-indices"><span class="header-section-number">3.5</span> Hydroclimatic indices</h2>
+<section id="runoff-coefficient" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="runoff-coefficient"><span class="header-section-number">3.5.1</span> Runoff coefficient</h3>
+<p>The <strong>runoff coefficient</strong> is the ratio of runoff depth <span class="math inline">\(R\)</span> to precipitation depth <span class="math inline">\(P\)</span> over the <strong>same catchment and period</strong>:</p>
+<p><span class="math display">\[\varphi = \frac{R}{P}.\]</span></p>
+<p>Both quantities must have compatible depth units, so the ratio is dimensionless. Over a long period it describes the fraction of precipitation represented by runoff; evaporation, changes in storage and other water transfers must be considered when interpreting it. Short-period ratios can be strongly affected by storage changes.</p>
+<p>Climate summaries often use 30-year periods. <a href="https://wmo.int/wmo-climatological-normals">WMO climatological standard normals</a> use 30-year periods updated every decade, such as 1991–2020. This does not make that period a requirement for every runoff coefficient. The supplied runoff record cannot support a calculation for 1991–2020.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select the same complete calendar years for both quantities.</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>paired_annual <span class="ot">&lt;-</span> annual[<span class="fu">complete.cases</span>(annual[<span class="fu">c</span>(<span class="st">"prec_mm"</span>, <span class="st">"runoff_mm"</span>)]), ]</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(paired_annual<span class="sc">$</span>year)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1949 1979</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(paired_annual)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 31</code></pre>
+</div>
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>runoff_coefficient <span class="ot">&lt;-</span> <span class="fu">sum</span>(paired_annual<span class="sc">$</span>runoff_mm) <span class="sc">/</span> <span class="fu">sum</span>(paired_annual<span class="sc">$</span>prec_mm)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>runoff_coefficient</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5175224</code></pre>
+</div>
+</div>
+<p>With the strict completeness rule, the common period is <strong>1949–1979</strong>. The calculation uses the ratio of total depths over that period. Averaging individual annual ratios would give a different statistic, because each year would receive equal weight regardless of its precipitation.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Calculate the runoff coefficient separately for <strong>1960–1969</strong> and <strong>1970–1979</strong>, using complete calendar years. Compare the values and explain why the observation period must always accompany the coefficient.</li>
+<li>Repeat the common-period calculation using <code>annual_hydro</code>. Compare the included dates as well as the coefficients: the same year labels do not imply the same calendar interval.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="flow-duration-curve-and-m-day-values" class="level3" data-number="3.5.2">
+<h3 data-number="3.5.2" class="anchored" data-anchor-id="flow-duration-curve-and-m-day-values"><span class="header-section-number">3.5.2</span> Flow duration curve and M-day values</h3>
+<p>A <strong>flow duration curve</strong> expresses how often a flow is reached or exceeded. It is used in hydropower and river ecology. The exceedance curve above is its runoff-depth equivalent. Multiplying the exceedance fraction by the mean number of days per year gives a duration in days per year.</p>
+<p>An <strong>M-day value</strong> is reached or exceeded for approximately <span class="math inline">\(M\)</span> days in an average year. It is not a run of <span class="math inline">\(M\)</span> consecutive days. Here, we estimate selected values using sample quantiles at probabilities <span class="math inline">\(1-M/365.25\)</span>. The use of 365.25 days is an approximation, and interpolated sample quantiles may not reproduce exact empirical exceedance counts.</p>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>M <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">60</span>, <span class="dv">90</span>, <span class="dv">120</span>, <span class="dv">150</span>, <span class="dv">180</span>, <span class="dv">210</span>, <span class="dv">240</span>, <span class="dv">270</span>, <span class="dv">300</span>, <span class="dv">330</span>, <span class="dv">355</span>, <span class="dv">364</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>m_day <span class="ot">&lt;-</span> <span class="cf">function</span>(values, days, <span class="at">days_per_year =</span> <span class="fl">365.25</span>) {</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">quantile</span>(values, <span class="at">probs =</span> <span class="dv">1</span> <span class="sc">-</span> days <span class="sc">/</span> days_per_year,</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">na.rm =</span> <span class="cn">TRUE</span>, <span class="at">names =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(M, <span class="fu">m_day</span>(mpx_01138000<span class="sc">$</span>r, M), <span class="at">type =</span> <span class="st">"b"</span>,</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">21</span>, <span class="at">bg =</span> <span class="st">"darkgray"</span>,</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Duration M (days per year)"</span>, <span class="at">ylab =</span> <span class="st">"Runoff depth (mm/day)"</span>,</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"M-day runoff depth"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-m-day-runoff" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-m-day-runoff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02_statistics_files/figure-html/fig-m-day-runoff-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-m-day-runoff-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3.6: Selected M-day runoff depths from the valid daily MOPEX record, ending on 30 September 1980.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Small <span class="math inline">\(M\)</span> values describe relatively high flows; large <span class="math inline">\(M\)</span> values describe low flows. The curve characterizes the available observation period and does not preserve event timing. Comparisons between catchments or periods require compatible units, coverage and estimation methods.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Estimate the 30-day and 355-day runoff depths. Which one describes low-flow conditions?</li>
+<li>Compare the hydrograph with the duration curve. Which graph can show when a drought occurred, and which can show the fraction of observed days below a threshold?</li>
+</ol>
 </div>
 </div>
 
@@ -943,210 +1143,416 @@ P = \dfrac{m - 0.3}{n + 0.4}
 </main> <!-- /main -->
 <script>
 
+
+
 /* update total correct if #webex-total_correct exists */
+
 update_total_correct = function() {
+
   console.log("webex: update total_correct");
 
+
+
   var t = document.getElementsByClassName("webex-total_correct");
+
   for (var i = 0; i < t.length; i++) {
+
     p = t[i].parentElement;
+
     var correct = p.getElementsByClassName("webex-correct").length;
+
     var solvemes = p.getElementsByClassName("webex-solveme").length;
+
     var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+
     var selects = p.getElementsByClassName("webex-select").length;
 
+
+
     t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+
   }
+
 }
+
+
 
 /* webex-solution button toggling function */
+
 b_func = function() {
+
   console.log("webex: toggle hide");
 
+
+
   var cl = this.parentElement.classList;
+
   if (cl.contains('open')) {
+
     cl.remove("open");
+
   } else {
+
     cl.add("open");
+
   }
+
 }
+
+
 
 /* check answers */
+
 check_func = function() {
+
   console.log("webex: check answers");
 
+
+
   var cl = this.parentElement.classList;
+
   if (cl.contains('unchecked')) {
+
     cl.remove("unchecked");
+
     this.innerHTML = "Hide Answers";
+
   } else {
+
     cl.add("unchecked");
+
     this.innerHTML = "Show Answers";
+
   }
+
 }
+
+
 
 /* function for checking solveme answers */
+
 solveme_func = function(e) {
+
   console.log("webex: check solveme");
 
+
+
   var real_answers = JSON.parse(this.dataset.answer);
+
   var my_answer = this.value;
+
   var cl = this.classList;
+
   if (cl.contains("ignorecase")) {
+
     my_answer = my_answer.toLowerCase();
+
   }
+
   if (cl.contains("nospaces")) {
+
     my_answer = my_answer.replace(/ /g, "")
+
   }
+
+
 
   if (my_answer == "") {
+
     cl.remove("webex-correct");
+
     cl.remove("webex-incorrect");
+
   } else if (real_answers.includes(my_answer)) {
+
     cl.add("webex-correct");
+
     cl.remove("webex-incorrect");
+
   } else {
+
     cl.add("webex-incorrect");
+
     cl.remove("webex-correct");
+
   }
+
+
 
   // match numeric answers within a specified tolerance
+
   if(this.dataset.tol > 0){
+
     var tol = JSON.parse(this.dataset.tol);
+
     var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+
     if (matches.reduce((a, b) => a + b, 0) > 0) {
+
       cl.add("webex-correct");
+
     } else {
+
       cl.remove("webex-correct");
+
     }
+
   }
+
+
 
   // added regex bit
+
   if (cl.contains("regex")){
+
     answer_regex = RegExp(real_answers.join("|"))
+
     if (answer_regex.test(my_answer)) {
+
       cl.add("webex-correct");
+
     }
+
   }
 
+
+
   update_total_correct();
+
 }
 
+
+
 /* function for checking select answers */
+
 select_func = function(e) {
+
   console.log("webex: check select");
+
+
 
   var cl = this.classList
 
+
+
   /* add style */
+
   cl.remove("webex-incorrect");
+
   cl.remove("webex-correct");
+
   if (this.value == "answer") {
+
     cl.add("webex-correct");
+
   } else if (this.value != "blank") {
+
     cl.add("webex-incorrect");
+
   }
 
+
+
   update_total_correct();
+
 }
+
+
 
 /* function for checking radiogroups answers */
+
 radiogroups_func = function(e) {
+
   console.log("webex: check radiogroups");
 
+
+
   var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+
   var cl = checked_button.parentElement.classList;
+
   var labels = checked_button.parentElement.parentElement.children;
 
+
+
   /* get rid of styles */
+
   for (i = 0; i < labels.length; i++) {
+
     labels[i].classList.remove("webex-incorrect");
+
     labels[i].classList.remove("webex-correct");
+
   }
+
+
 
   /* add style */
+
   if (checked_button.value == "answer") {
+
     cl.add("webex-correct");
+
   } else {
+
     cl.add("webex-incorrect");
+
   }
 
+
+
   update_total_correct();
+
 }
+
+
 
 window.onload = function() {
+
   console.log("webex onload");
+
   /* set up solution buttons */
+
   var buttons = document.getElementsByTagName("button");
 
+
+
   for (var i = 0; i < buttons.length; i++) {
+
     if (buttons[i].parentElement.classList.contains('webex-solution')) {
+
       buttons[i].onclick = b_func;
+
     }
+
   }
+
+
 
   var check_sections = document.getElementsByClassName("webex-check");
+
   console.log("check:", check_sections.length);
+
   for (var i = 0; i < check_sections.length; i++) {
+
     check_sections[i].classList.add("unchecked");
 
+
+
     let btn = document.createElement("button");
+
     btn.innerHTML = "Show Answers";
+
     btn.classList.add("webex-check-button");
+
     btn.onclick = check_func;
+
     check_sections[i].appendChild(btn);
 
+
+
     let spn = document.createElement("span");
+
     spn.classList.add("webex-total_correct");
+
     check_sections[i].appendChild(spn);
+
   }
+
+
 
   /* set up webex-solveme inputs */
+
   var solveme = document.getElementsByClassName("webex-solveme");
 
+
+
   for (var i = 0; i < solveme.length; i++) {
+
     /* make sure input boxes don't auto-anything */
+
     solveme[i].setAttribute("autocomplete","off");
+
     solveme[i].setAttribute("autocorrect", "off");
+
     solveme[i].setAttribute("autocapitalize", "off");
+
     solveme[i].setAttribute("spellcheck", "false");
+
     solveme[i].value = "";
 
+
+
     /* adjust answer for ignorecase or nospaces */
+
     var cl = solveme[i].classList;
+
     var real_answer = solveme[i].dataset.answer;
+
     if (cl.contains("ignorecase")) {
+
       real_answer = real_answer.toLowerCase();
+
     }
+
     if (cl.contains("nospaces")) {
+
       real_answer = real_answer.replace(/ /g, "");
+
     }
+
     solveme[i].dataset.answer = real_answer;
 
+
+
     /* attach checking function */
+
     solveme[i].onkeyup = solveme_func;
+
     solveme[i].onchange = solveme_func;
 
+
+
     solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
   }
+
+
 
   /* set up radiogroups */
+
   var radiogroups = document.getElementsByClassName("webex-radiogroup");
+
   for (var i = 0; i < radiogroups.length; i++) {
+
     radiogroups[i].onchange = radiogroups_func;
+
   }
+
+
 
   /* set up selects */
+
   var selects = document.getElementsByClassName("webex-select");
+
   for (var i = 0; i < selects.length; i++) {
+
     selects[i].onchange = select_func;
+
     selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
   }
 
+
+
   update_total_correct();
+
 }
 
+
+
 </script>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

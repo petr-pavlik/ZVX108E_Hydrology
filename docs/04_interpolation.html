@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-EN" xml:lang="en-EN"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>5&nbsp; Data interpolation – ZVX108E Hydrology</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,15 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-19724cff3ffd65c8d5774837ab6a4dbd.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-1bdb090332f57d0ae3bda32c3b3ef872.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1da0855bab4d02df59e90987ce711be7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e1fbe40cf926446f81e59dd74e2645b5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -106,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -160,9 +162,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Hydrology ZVX108E</a> 
         <div class="sidebar-tools-main">
@@ -215,7 +215,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing of hydrological dataset</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing of a hydrological dataset</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -233,7 +233,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_CN.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SCS Curve number method</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SCS Curve Number method</span></span></a>
   </div>
 </li>
     </ul>
@@ -248,10 +248,18 @@ window.Quarto = {
   <ul>
   <li><a href="#inverse-distance-weighting-idw" id="toc-inverse-distance-weighting-idw" class="nav-link active" data-scroll-target="#inverse-distance-weighting-idw"><span class="header-section-number">5.1</span> Inverse distance weighting (IDW)</a>
   <ul class="collapse">
-  <li><a href="#generation-of-random-measurements-network" id="toc-generation-of-random-measurements-network" class="nav-link" data-scroll-target="#generation-of-random-measurements-network"><span class="header-section-number">5.1.1</span> Generation of random measurements network</a></li>
+  <li><a href="#a-worked-example" id="toc-a-worked-example" class="nav-link" data-scroll-target="#a-worked-example"><span class="header-section-number">5.1.1</span> A worked example</a></li>
+  <li><a href="#generation-of-a-measurement-network" id="toc-generation-of-a-measurement-network" class="nav-link" data-scroll-target="#generation-of-a-measurement-network"><span class="header-section-number">5.1.2</span> Generation of a measurement network</a></li>
+  <li><a href="#a-grid-of-prediction-locations" id="toc-a-grid-of-prediction-locations" class="nav-link" data-scroll-target="#a-grid-of-prediction-locations"><span class="header-section-number">5.1.3</span> A grid of prediction locations</a></li>
+  <li><a href="#calculating-idw" id="toc-calculating-idw" class="nav-link" data-scroll-target="#calculating-idw"><span class="header-section-number">5.1.4</span> Calculating IDW</a></li>
+  <li><a href="#idw-with-gstat" id="toc-idw-with-gstat" class="nav-link" data-scroll-target="#idw-with-gstat"><span class="header-section-number">5.1.5</span> IDW with <code>gstat</code></a></li>
   </ul></li>
-  <li><a href="#gstat" id="toc-gstat" class="nav-link" data-scroll-target="#gstat"><span class="header-section-number">5.2</span> <code>gstat</code></a></li>
-  <li><a href="#kriging" id="toc-kriging" class="nav-link" data-scroll-target="#kriging"><span class="header-section-number">5.3</span> Kriging</a></li>
+  <li><a href="#kriging" id="toc-kriging" class="nav-link" data-scroll-target="#kriging"><span class="header-section-number">5.2</span> Kriging</a>
+  <ul class="collapse">
+  <li><a href="#the-semivariogram" id="toc-the-semivariogram" class="nav-link" data-scroll-target="#the-semivariogram"><span class="header-section-number">5.2.1</span> The semivariogram</a></li>
+  <li><a href="#elements-of-a-variogram-model" id="toc-elements-of-a-variogram-model" class="nav-link" data-scroll-target="#elements-of-a-variogram-model"><span class="header-section-number">5.2.2</span> Elements of a variogram model</a></li>
+  <li><a href="#ordinary-kriging-with-gstat" id="toc-ordinary-kriging-with-gstat" class="nav-link" data-scroll-target="#ordinary-kriging-with-gstat"><span class="header-section-number">5.2.3</span> Ordinary kriging with <code>gstat</code></a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/petr-pavlik/Hydrology_ZVX108E/edit/main/04_interpolation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/petr-pavlik/Hydrology_ZVX108E/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -277,573 +285,903 @@ window.Quarto = {
 </header>
 
 
-<p>Variables which enter hydrological analysis like <em>temperature</em> or <em>precipitation</em> are measured <strong>locally at point locations</strong>. Many of these qualities are then recalculated on different domains using <strong>interpolation</strong> or <strong>extrapolation</strong> algorithms. We interpolate within the boundary given by the values which are known to us and extrapolate outside this boundary. Here the two common methods for interpolation are demonstrated.</p>
+<p>Hydrological variables such as <em>temperature</em> and <em>precipitation</em> are often measured at individual stations. Spatial interpolation estimates their values at locations between these stations. Predictions outside the area covered by the observations are spatial extrapolations and usually require greater caution. This chapter demonstrates inverse distance weighting (IDW) and ordinary kriging.</p>
 <section id="inverse-distance-weighting-idw" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="inverse-distance-weighting-idw"><span class="header-section-number">5.1</span> Inverse distance weighting (IDW)</h2>
-<p>IDW is a simple <strong>deterministic</strong> interpolation method, which is also non-parametric. The interpolated points are calculated with a weighted average of the values which are at disposal. The space is a weighted average of the distribution of points and the weight assigned to each point decrease with increasing distance from the interpolated point.</p>
-<p>The point value <span class="math inline">\(Z_p\)</span> is calculated with the knowledge of <span class="math inline">\(z_i\)</span> and distance <span class="math inline">\(d_i\)</span> to the power of <span class="math inline">\(P\)</span>.</p>
+<p>IDW is a <strong>deterministic</strong> interpolation method: an estimate is a weighted average of the observed values, and nearby observations receive more weight than distant ones. For an unsampled location <span class="math inline">\(L\)</span>,</p>
 <p><span class="math display">\[
-Z_L = \dfrac{\sum\limits_{i=1}^{n}\dfrac{z_i}{d_i^p}}{\sum\limits_{i=1}^{n}\dfrac{1}{d_i^p}}
-\]</span> Let’s imagine we have three values <span class="math inline">\(z_1 = 10\)</span>, <span class="math inline">\(z_2 = 15\)</span>, <span class="math inline">\(z_3 = 20\)</span> and we need to estimate a value in a location <span class="math inline">\(L\)</span>. The distances to the location from these points are: <span class="math inline">\(d_1 = 3.0\)</span>, <span class="math inline">\(d_2 = 2.0\)</span>, <span class="math inline">\(d_3 = 1.5\)</span>. The commonly used power <span class="math inline">\(p\)</span> is <span class="math inline">\(2\)</span>.<br>
-So the respective values of weights for these are:</p>
-<p><span class="math display">\[
-\begin{array}{c}
-w_1 = \dfrac{10}{3.0^2}\\
-w_2 = \dfrac{15}{2.0^2}\\
-w_3 = \dfrac{20}{1.5^2}
-\end{array}
+\widehat{Z}(L) = \frac{\sum_{i=1}^{n} w_i z_i}{\sum_{i=1}^{n} w_i},
+\qquad w_i = \frac{1}{d_i^p},
 \]</span></p>
-<p>Hence the numerator and denominator look as follows:</p>
+<p>where <span class="math inline">\(z_i\)</span> is the value at station <span class="math inline">\(i\)</span>, <span class="math inline">\(d_i\)</span> is its distance from <span class="math inline">\(L\)</span>, and <span class="math inline">\(p\)</span> controls how quickly its influence decreases with distance. A common choice is <span class="math inline">\(p=2\)</span>. Larger values of <span class="math inline">\(p\)</span> give greater relative influence to the nearest stations. With <span class="math inline">\(p=0\)</span>, all stations have equal weight and the estimate is their arithmetic mean. If <span class="math inline">\(L\)</span> coincides with a station, we return its observed value directly to avoid division by zero. We assume that station locations are unique.</p>
+<section id="a-worked-example" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="a-worked-example"><span class="header-section-number">5.1.1</span> A worked example</h3>
+<p>Suppose that <span class="math inline">\(z_1=10\)</span>, <span class="math inline">\(z_2=15\)</span> and <span class="math inline">\(z_3=20\)</span> mm, and their distances from <span class="math inline">\(L\)</span> are <span class="math inline">\(d_1=3.0\)</span>, <span class="math inline">\(d_2=2.0\)</span> and <span class="math inline">\(d_3=1.5\)</span> km. For <span class="math inline">\(p=2\)</span>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Station</th>
+<th style="text-align: right;">Value <span class="math inline">\(z_i\)</span> [mm]</th>
+<th style="text-align: right;">Distance <span class="math inline">\(d_i\)</span> [km]</th>
+<th style="text-align: right;">Weight <span class="math inline">\(w_i=1/d_i^2\)</span> [km<span class="math inline">\(^{-2}\)</span>]</th>
+<th style="text-align: right;">Contribution <span class="math inline">\(w_i z_i\)</span> [mm km<span class="math inline">\(^{-2}\)</span>]</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">0.111111</td>
+<td style="text-align: right;">1.111111</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">0.250000</td>
+<td style="text-align: right;">3.750000</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">1.5</td>
+<td style="text-align: right;">0.444444</td>
+<td style="text-align: right;">8.888889</td>
+</tr>
+</tbody>
+</table>
+<p>Thus,</p>
 <p><span class="math display">\[
-\begin{array}{l}
-N = \dfrac{10}{2.0^2} + \dfrac{15}{2.0^2} + \dfrac{20}{1.5^2}\approx 2.5 + 2.2222 + 6.6666 = 11.3888\\
-D = 0.25 + 0.1111 + 0.4444 = 0.8055\\
-\end{array}
+\widehat{Z}(L)
+=\frac{10/3.0^2+15/2.0^2+20/1.5^2}{1/3.0^2+1/2.0^2+1/1.5^2}
+=\frac{13.75}{29/36}
+\approx 17.069\ \mathrm{mm}.
 \]</span></p>
-<p>Since this method is very simple, let’s calculate it on our own, in a step-by-step manner.</p>
+<p>The <em>normalised</em> weights are <span class="math inline">\(w_i/\sum_j w_j\)</span>: approximately <span class="math inline">\(0.138\)</span>, <span class="math inline">\(0.310\)</span> and <span class="math inline">\(0.552\)</span>. They sum to one, so the estimate must lie between the smallest and largest input values. The nearest station has the greatest influence here.</p>
+<div class="webex-box callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise: IDW weights
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Use the three stations from the example above.</p>
 <ol type="1">
-<li>First we generate some point in the spatial domain, which will represent our measurements.</li>
-<li>Next we create a new domain, spatially regular to which we will interpolate.</li>
-<li>Finally we will perform the calculations and visualize the results.</li>
+<li>Calculate the estimate for <span class="math inline">\(p=2\)</span>, rounded to two decimal places: <input class="webex-solveme nospaces" size="5" data-answer="[&quot;17.07&quot;,&quot;17,07&quot;]"> mm.</li>
+<li>Calculate the estimate for <span class="math inline">\(p=0\)</span>: <input class="webex-solveme nospaces" size="2" data-answer="[&quot;15&quot;]"> mm.</li>
+<li>For positive weights, IDW can predict a value above the largest observation: <select class="webex-select"><option value="blank"></option><option value="NA">TRUE</option><option value="answer">FALSE</option></select>.</li>
 </ol>
-<section id="generation-of-random-measurements-network" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="generation-of-random-measurements-network"><span class="header-section-number">5.1.1</span> Generation of random measurements network</h3>
-<p>We will create 25 points in the space and also assign some coordinate reference system. These points will be used for both of the methods.</p>
+</div>
+</div>
+</section>
+<section id="generation-of-a-measurement-network" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="generation-of-a-measurement-network"><span class="header-section-number">5.1.2</span> Generation of a measurement network</h3>
+<p>We will use the same 30 synthetic stations for both methods. Their locations are random, but precipitation follows a smooth spatial pattern with a small random disturbance. Generating independent random values alone would not create spatial dependence.</p>
+<p>The example covers a small area in <strong>WGS 84 / UTM zone 33N (EPSG:32633)</strong>. Coordinates, distances and cell sizes are in <strong>metres</strong>. Using a suitable projected CRS lets us use the same Euclidean distances in our calculation and in <code>gstat</code>.</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)          <span class="co"># Spatial Feature library for spatial data</span></span>
-<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scico)       <span class="co"># Scientific palette collection called "scico"</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(scico)</span>
 <span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a>dom <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">runif</span>(n, <span class="dv">0</span>, <span class="dv">50</span>),</span>
-<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">y =</span> <span class="fu">runif</span>(n, <span class="dv">0</span>, <span class="dv">50</span>),</span>
-<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a>                  <span class="at">value =</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">5</span>)) <span class="sc">|&gt;</span></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-8" class="code-annotation-target"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a>  sf<span class="sc">::</span><span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>),</span>
-<span id="annotated-cell-1-9"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a>               <span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-10" class="code-annotation-target"><a href="#annotated-cell-1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dom,</span>
-<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">nbreaks =</span> n <span class="sc">+</span> <span class="dv">1</span>,</span>
-<span id="annotated-cell-1-12"><a href="#annotated-cell-1-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">pal =</span> <span class="fu">scico</span>(<span class="at">n =</span> n,</span>
-<span id="annotated-cell-1-13"><a href="#annotated-cell-1-13" aria-hidden="true" tabindex="-1"></a>                 <span class="at">palette =</span> <span class="st">"davos"</span>,</span>
-<span id="annotated-cell-1-14"><a href="#annotated-cell-1-14" aria-hidden="true" tabindex="-1"></a>                 <span class="at">end =</span> <span class="fl">0.9</span>,</span>
-<span id="annotated-cell-1-15"><a href="#annotated-cell-1-15" aria-hidden="true" tabindex="-1"></a>                 <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>),</span>
-<span id="annotated-cell-1-16"><a href="#annotated-cell-1-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Precipitation [mm]"</span>,</span>
-<span id="annotated-cell-1-17"><a href="#annotated-cell-1-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch  =</span> <span class="dv">20</span>,          <span class="co"># Point character selection</span></span>
-<span id="annotated-cell-1-18"><a href="#annotated-cell-1-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">graticule =</span> <span class="cn">TRUE</span>,   <span class="co"># Display graticules</span></span>
-<span id="annotated-cell-1-19"><a href="#annotated-cell-1-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> <span class="cn">TRUE</span>,        <span class="co"># Display plot axes</span></span>
-<span id="annotated-cell-1-20"><a href="#annotated-cell-1-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">bgc =</span> <span class="st">"#f0f0f033"</span>,  <span class="co"># Background color</span></span>
-<span id="annotated-cell-1-21"><a href="#annotated-cell-1-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">key.pos =</span> <span class="dv">1</span>)        <span class="co"># Legend position</span></span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-4" class="code-annotation-target"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="dv">430000</span>, <span class="dv">480000</span>)</span>
+<span id="annotated-cell-1-7"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">runif</span>(n, <span class="dv">5520000</span>, <span class="dv">5570000</span>)</span>
+<span id="annotated-cell-1-8"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-9"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># A smooth precipitation pattern with small random disturbances</span></span>
+<span id="annotated-cell-1-10"><a href="#annotated-cell-1-10" aria-hidden="true" tabindex="-1"></a>value <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">5</span> <span class="sc">*</span> <span class="fu">exp</span>(<span class="sc">-</span>((x <span class="sc">-</span> <span class="dv">455000</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (y <span class="sc">-</span> <span class="dv">5545000</span>)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span></span>
+<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11" aria-hidden="true" tabindex="-1"></a>                       (<span class="dv">2</span> <span class="sc">*</span> <span class="dv">12000</span><span class="sc">^</span><span class="dv">2</span>)) <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">sd =</span> <span class="fu">sqrt</span>(<span class="fl">0.15</span>))</span>
+<span id="annotated-cell-1-12"><a href="#annotated-cell-1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-13"><a href="#annotated-cell-1-13" aria-hidden="true" tabindex="-1"></a>dom <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, y, value) <span class="sc">|&gt;</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-14" class="code-annotation-target"><a href="#annotated-cell-1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>), <span class="at">crs =</span> <span class="dv">32633</span>)</span>
+<span id="annotated-cell-1-15"><a href="#annotated-cell-1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-16"><a href="#annotated-cell-1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the same precipitation scale in all maps of this example.</span></span>
+<span id="annotated-cell-1-17"><a href="#annotated-cell-1-17" aria-hidden="true" tabindex="-1"></a>precip_breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">12</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="annotated-cell-1-18"><a href="#annotated-cell-1-18" aria-hidden="true" tabindex="-1"></a>precip_colors <span class="ot">&lt;-</span> <span class="fu">scico</span>(<span class="fu">length</span>(precip_breaks) <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="annotated-cell-1-19"><a href="#annotated-cell-1-19" aria-hidden="true" tabindex="-1"></a>                       <span class="at">palette =</span> <span class="st">"davos"</span>, <span class="at">end =</span> <span class="fl">0.9</span>, <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
+<span id="annotated-cell-1-20"><a href="#annotated-cell-1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="annotated-cell-1-21"><a href="#annotated-cell-1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dom[<span class="st">"value"</span>], <span class="at">breaks =</span> precip_breaks, <span class="at">pal =</span> precip_colors,</span>
+<span id="annotated-cell-1-22"><a href="#annotated-cell-1-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Precipitation [mm]"</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
+<span id="annotated-cell-1-23"><a href="#annotated-cell-1-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> <span class="cn">TRUE</span>, <span class="at">graticule =</span> <span class="cn">FALSE</span>, <span class="at">key.pos =</span> <span class="dv">1</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
 <dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="4,5,6,7" data-code-annotation="1">Create <span class="math inline">\(25\)</span> points with random values, which will serve as the computation origin,</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="4" data-code-annotation="1">Set the seed <strong>before</strong> generating random locations and values so that the example is reproducible.</span>
 </dd>
 <dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="8,9" data-code-annotation="2">store them as <strong>SimpleFeatures</strong> object with coordinate reference system via EPSG, search in <a href="https://epsg.io" class="uri">https://epsg.io</a></span>
-</dd>
-<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
-<dd>
-<span data-code-cell="annotated-cell-1" data-code-lines="10,11,12,13,14,15,16,17,18,19,20,21" data-code-annotation="3">Specify <code>sf:::plot.sf()</code> function and use scientific colormaps from <code>scico</code> package.</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="14" data-code-annotation="2">Store the stations as an <code>sf</code> object. These coordinates were generated in UTM zone 33N, so we assign that CRS when creating the object. Assigning a CRS describes existing coordinates; transforming a CRS recalculates them.</span>
 </dd>
 </dl>
 </div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="04_interpolation_files/figure-html/unnamed-chunk-1-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
+<div id="fig-interpolation-stations" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-interpolation-stations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04_interpolation_files/figure-html/fig-interpolation-stations-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
 </div>
-</div>
-</div>
-<p>We do have the original points, which are scarcely distributed across the domain. Now we need a grid of new points, which will represent the centroids of a raster, on which we want to recalculate.</p>
-<div class="cell" data-layout-align="center">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-2"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="1">1</button><span id="annotated-cell-2-1" class="code-annotation-target"><a href="#annotated-cell-2-1" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">st_make_grid</span>(<span class="at">x =</span> dom,</span>
-<span id="annotated-cell-2-2"><a href="#annotated-cell-2-2" aria-hidden="true" tabindex="-1"></a>                     <span class="at">cellsize =</span> <span class="dv">2</span>,</span>
-<span id="annotated-cell-2-3"><a href="#annotated-cell-2-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">crs =</span> <span class="dv">4326</span>) <span class="sc">|&gt;</span></span>
-<span id="annotated-cell-2-4"><a href="#annotated-cell-2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_sf</span>()</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-2" data-target-annotation="2">2</button><span id="annotated-cell-2-5" class="code-annotation-target"><a href="#annotated-cell-2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> dom,</span>
-<span id="annotated-cell-2-6"><a href="#annotated-cell-2-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">min</span>(dom<span class="sc">$</span>value), <span class="fu">max</span>(dom<span class="sc">$</span>value), <span class="at">length.out =</span> n),</span>
-<span id="annotated-cell-2-7"><a href="#annotated-cell-2-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pal =</span> <span class="fu">scico</span>(<span class="at">n =</span> n <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="annotated-cell-2-8"><a href="#annotated-cell-2-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">palette   =</span> <span class="st">"davos"</span>,</span>
-<span id="annotated-cell-2-9"><a href="#annotated-cell-2-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">end       =</span> <span class="fl">0.9</span>,</span>
-<span id="annotated-cell-2-10"><a href="#annotated-cell-2-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>),</span>
-<span id="annotated-cell-2-11"><a href="#annotated-cell-2-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main      =</span> <span class="st">"Precipitation [mm]"</span>,</span>
-<span id="annotated-cell-2-12"><a href="#annotated-cell-2-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch       =</span> <span class="dv">20</span>,          <span class="co"># Point character selection</span></span>
-<span id="annotated-cell-2-13"><a href="#annotated-cell-2-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">graticule =</span> <span class="cn">TRUE</span>,        <span class="co"># Display graticules</span></span>
-<span id="annotated-cell-2-14"><a href="#annotated-cell-2-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes      =</span> <span class="cn">TRUE</span>,        <span class="co"># Display plot axes</span></span>
-<span id="annotated-cell-2-15"><a href="#annotated-cell-2-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">bgc       =</span> <span class="st">"#f0f0f033"</span>, <span class="co"># Background color</span></span>
-<span id="annotated-cell-2-16"><a href="#annotated-cell-2-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">key.pos   =</span> <span class="dv">1</span>, <span class="at">reset =</span> <span class="cn">FALSE</span>)           <span class="co"># Legend position</span></span>
-<span id="annotated-cell-2-17"><a href="#annotated-cell-2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> <span class="fu">st_geometry</span>(grid), <span class="at">lwd =</span> <span class="fl">0.1</span>, <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">reset =</span> <span class="cn">TRUE</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-2" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="1,2,3" data-code-annotation="1">Construct a regular grid using extreme points as boundary limits.</span>
-</dd>
-<dt data-target-cell="annotated-cell-2" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-2" data-code-lines="5,6,7,8,9,10,11,12,13,14,15,16,17" data-code-annotation="2">Plot with the points.</span>
-</dd>
-</dl>
-</div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="04_interpolation_files/figure-html/unnamed-chunk-2-1.svg" class="img-fluid figure-img"></p>
-<figcaption>Point location of Precipitation measuring stations</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>Now we compute the distances between the points using the <code>outer()</code> function</p>
-<div class="cell" data-layout-align="center">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>distances <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(<span class="fu">st_coordinates</span>(grid)), <span class="cf">function</span>(i) {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>((<span class="fu">st_coordinates</span>(grid)[i, <span class="st">"X"</span>] <span class="sc">-</span> <span class="fu">st_coordinates</span>(dom)[, <span class="st">"X"</span>])<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>       (<span class="fu">st_coordinates</span>(grid)[i, <span class="st">"Y"</span>] <span class="sc">-</span> <span class="fu">st_coordinates</span>(dom)[, <span class="st">"Y"</span>])<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<p>and use these distances for missing values computation</p>
-<div class="cell" data-layout-align="center">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="1">1</button><span id="annotated-cell-4-1" class="code-annotation-target"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a>epsilon <span class="ot">&lt;-</span> <span class="fl">1e-6</span></span>
-<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a>distances <span class="ot">&lt;-</span> distances <span class="sc">+</span> epsilon</span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="2">2</button><span id="annotated-cell-4-3" class="code-annotation-target"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="dv">2</span></span>
-<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute weighted sums for all grid points</span></span>
-<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5" aria-hidden="true" tabindex="-1"></a>weighted_sum <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(distances), <span class="cf">function</span>(i) {</span>
-<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(dom<span class="sc">$</span>value <span class="sc">/</span> (distances[, i]<span class="sc">^</span>power))</span>
-<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute weights sum for all grid points</span></span>
-<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10" aria-hidden="true" tabindex="-1"></a>weights_sum <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">ncol</span>(distances), <span class="cf">function</span>(i) { </span>
-<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(<span class="dv">1</span> <span class="sc">/</span> (distances[, i]<span class="sc">^</span>power))</span>
-<span id="annotated-cell-4-12"><a href="#annotated-cell-4-12" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-14"><a href="#annotated-cell-4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate interpolated values for all grid points</span></span>
-<span id="annotated-cell-4-15"><a href="#annotated-cell-4-15" aria-hidden="true" tabindex="-1"></a>interpolated_values <span class="ot">&lt;-</span> weighted_sum <span class="sc">/</span> weights_sum</span>
-<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-17"><a href="#annotated-cell-4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a spatial data frame for results</span></span>
-<span id="annotated-cell-4-18"><a href="#annotated-cell-4-18" aria-hidden="true" tabindex="-1"></a>results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="annotated-cell-4-19"><a href="#annotated-cell-4-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> <span class="fu">st_coordinates</span>(grid)[, <span class="st">"X"</span>],</span>
-<span id="annotated-cell-4-20"><a href="#annotated-cell-4-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> <span class="fu">st_coordinates</span>(grid)[, <span class="st">"Y"</span>],</span>
-<span id="annotated-cell-4-21"><a href="#annotated-cell-4-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">value =</span> interpolated_values</span>
-<span id="annotated-cell-4-22"><a href="#annotated-cell-4-22" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span> </span>
-<span id="annotated-cell-4-23"><a href="#annotated-cell-4-23" aria-hidden="true" tabindex="-1"></a>  sf<span class="sc">::</span><span class="fu">st_as_sf</span>(<span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"x"</span>, <span class="st">"y"</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<span id="annotated-cell-4-24"><a href="#annotated-cell-4-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-25"><a href="#annotated-cell-4-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace NaN values with NA for plotting</span></span>
-<span id="annotated-cell-4-26"><a href="#annotated-cell-4-26" aria-hidden="true" tabindex="-1"></a>results<span class="sc">$</span>value[<span class="fu">is.nan</span>(results<span class="sc">$</span>value)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="annotated-cell-4-27"><a href="#annotated-cell-4-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-28"><a href="#annotated-cell-4-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Join results with the grid for visualization</span></span>
-<span id="annotated-cell-4-29"><a href="#annotated-cell-4-29" aria-hidden="true" tabindex="-1"></a>join <span class="ot">&lt;-</span> <span class="fu">st_join</span>(grid, results)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-4" data-target-annotation="1">1</dt>
-<dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="1,2" data-code-annotation="1">Set a tolerance for when the distance is equal to 0.</span>
-</dd>
-<dt data-target-cell="annotated-cell-4" data-target-annotation="2">2</dt>
-<dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="3" data-code-annotation="2">A power for the distance.</span>
-</dd>
-</dl>
-</div>
-</div>
-<p>At last we visualize the results.</p>
-<div class="cell" data-layout-align="center">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="at">x =</span> join, </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">min</span>(results<span class="sc">$</span>value), <span class="fu">max</span>(results<span class="sc">$</span>value), <span class="at">length.out =</span> n),</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">lwd =</span> <span class="fl">0.001</span>,</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">pal =</span> <span class="fu">scico</span>(n <span class="sc">-</span> <span class="dv">1</span>, </span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">palette =</span> <span class="st">"davos"</span>,</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">end       =</span> <span class="fl">0.9</span>, </span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>),</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main      =</span> <span class="st">"Precipitation [mm]"</span>, </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>     <span class="co">#pch       = 20,          # Point character selection</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">graticule =</span> <span class="cn">TRUE</span>,        <span class="co"># Display graticules</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes      =</span> <span class="cn">TRUE</span>,        <span class="co"># Display plot axes</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">bgc       =</span> <span class="st">"#f0f0f033"</span>, <span class="co"># Background color</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">key.pos   =</span> <span class="dv">1</span>, </span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">reset =</span> <span class="cn">FALSE</span>)           <span class="co"># Legend position</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="04_interpolation_files/figure-html/unnamed-chunk-5-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interpolation-stations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.1: The 30 synthetic precipitation stations. Coordinates are in metres.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-</section>
-<section id="gstat" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="gstat"><span class="header-section-number">5.2</span> <code>gstat</code></h2>
-<p>There are many libraries listed in CRAN <strong>geostatistics</strong> task view. One of these is called gstat, it was developed and is maintained by Edzer Pebesma, who is also behind the <code>raster</code> and <code>terra</code> packages. The gstat package contains functions no olny for interpolations.</p>
+<section id="a-grid-of-prediction-locations" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="a-grid-of-prediction-locations"><span class="header-section-number">5.1.3</span> A grid of prediction locations</h3>
+<p>We need to distinguish <strong>grid cells</strong>, which are polygons used to display the map, from their <strong>centre points</strong>, where we calculate predictions. A value predicted at a cell centre is not an average over the whole cell.</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gstat)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>idw_res <span class="ot">&lt;-</span> gstat<span class="sc">::</span><span class="fu">idw</span>(<span class="at">formula =</span> value <span class="sc">~</span> <span class="dv">1</span>, </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">locations =</span> dom, </span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">newdata =</span> grid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>grid <span class="ot">&lt;-</span> <span class="fu">st_make_grid</span>(dom, <span class="at">cellsize =</span> <span class="dv">2000</span>, <span class="at">what =</span> <span class="st">"polygons"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_sf</span>()</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>grid<span class="sc">$</span>cell_id <span class="ot">&lt;-</span> <span class="fu">seq_len</span>(<span class="fu">nrow</span>(grid))</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>grid_points <span class="ot">&lt;-</span> <span class="fu">st_sf</span>(<span class="at">cell_id =</span> grid<span class="sc">$</span>cell_id,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">geometry =</span> <span class="fu">st_centroid</span>(<span class="fu">st_geometry</span>(grid)))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(dom[<span class="st">"value"</span>], <span class="at">breaks =</span> precip_breaks, <span class="at">pal =</span> precip_colors,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Precipitation [mm]"</span>, <span class="at">pch =</span> <span class="dv">20</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> <span class="cn">TRUE</span>, <span class="at">graticule =</span> <span class="cn">FALSE</span>, <span class="at">key.pos =</span> <span class="dv">1</span>, <span class="at">reset =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(grid), <span class="at">border =</span> <span class="st">"grey60"</span>, <span class="at">lwd =</span> <span class="fl">0.3</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(grid_points), <span class="at">pch =</span> <span class="dv">3</span>, <span class="at">cex =</span> <span class="fl">0.2</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"grey60"</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-interpolation-grid" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-interpolation-grid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04_interpolation_files/figure-html/fig-interpolation-grid-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interpolation-grid-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.2: Stations and a grid with 2 km cells. Crosses mark the prediction locations at cell centres.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The grid covers the bounding box of the stations, rounded outwards to whole cells. Some cell centres are outside the area enclosed by the stations; predictions there are extrapolations. The rows of <code>grid_points</code> have the same cell identifiers and order as the rows of <code>grid</code>.</p>
+</section>
+<section id="calculating-idw" class="level3" data-number="5.1.4">
+<h3 data-number="5.1.4" class="anchored" data-anchor-id="calculating-idw"><span class="header-section-number">5.1.4</span> Calculating IDW</h3>
+<p>First, calculate distances from each station to each cell centre. In the resulting matrix, <strong>rows represent stations and columns represent prediction locations</strong>. Extract coordinates from <code>grid_points</code>; <code>st_coordinates(grid)</code> would return polygon vertices instead.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>station_xy <span class="ot">&lt;-</span> <span class="fu">st_coordinates</span>(dom)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>grid_xy <span class="ot">&lt;-</span> <span class="fu">st_coordinates</span>(grid_points)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>distances <span class="ot">&lt;-</span> <span class="fu">sapply</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(grid_xy)), <span class="cf">function</span>(i) {</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>((grid_xy[i, <span class="st">"X"</span>] <span class="sc">-</span> station_xy[, <span class="st">"X"</span>])<span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>       (grid_xy[i, <span class="st">"Y"</span>] <span class="sc">-</span> station_xy[, <span class="st">"Y"</span>])<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>Apply the weighted average to each <strong>column</strong>. If a prediction location coincides with a station, return the observed value before calculating inverse distances.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>interpolated_values <span class="ot">&lt;-</span> <span class="fu">apply</span>(distances, <span class="dv">2</span>, <span class="cf">function</span>(d) {</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="fu">any</span>(d <span class="sc">==</span> <span class="dv">0</span>)) {</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(dom<span class="sc">$</span>value[<span class="fu">which.min</span>(d)])</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  weights <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> d<span class="sc">^</span>power</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(weights <span class="sc">*</span> dom<span class="sc">$</span>value) <span class="sc">/</span> <span class="fu">sum</span>(weights)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># One prediction per cell, in the order of grid_points</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>manual_grid <span class="ot">&lt;-</span> grid</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>manual_grid<span class="sc">$</span>value <span class="ot">&lt;-</span> interpolated_values</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>No spatial join is needed: the prediction locations were created directly from the cells and their order has been preserved.</p>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(manual_grid[<span class="st">"value"</span>], <span class="at">breaks =</span> precip_breaks, <span class="at">pal =</span> precip_colors,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Manual IDW: precipitation [mm]"</span>, <span class="at">border =</span> <span class="cn">NA</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> <span class="cn">TRUE</span>, <span class="at">graticule =</span> <span class="cn">FALSE</span>, <span class="at">key.pos =</span> <span class="dv">1</span>, <span class="at">reset =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(dom), <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-interpolation-manual-idw" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-interpolation-manual-idw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04_interpolation_files/figure-html/fig-interpolation-manual-idw-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interpolation-manual-idw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.3: IDW predictions at cell centres, calculated with p = 2. Station locations are shown as dots.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="idw-with-gstat" class="level3" data-number="5.1.5">
+<h3 data-number="5.1.5" class="anchored" data-anchor-id="idw-with-gstat"><span class="header-section-number">5.1.5</span> IDW with <code>gstat</code></h3>
+<p>The <code>gstat</code> package provides IDW, kriging and variogram tools. Its <code>idw()</code> function performs the same weighted average. We pass the original stations, the <strong>same centre points</strong> and the <strong>same power</strong> as in the manual calculation. The formula <code>value ~ 1</code> identifies the variable to interpolate without adding explanatory variables.</p>
+<div class="cell" data-layout-align="center">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gstat)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>idw_res <span class="ot">&lt;-</span> gstat<span class="sc">::</span><span class="fu">idw</span>(value <span class="sc">~</span> <span class="dv">1</span>, <span class="at">locations =</span> dom,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                      <span class="at">newdata =</span> grid_points, <span class="at">idp =</span> power)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[inverse distance weighted interpolation]</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>idw_res <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(idw_res)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(idw_res <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>       dplyr<span class="sc">::</span><span class="fu">select</span>(var1.pred), </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="fu">min</span>(idw_res<span class="sc">$</span>var1.pred), </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                  <span class="fu">max</span>(idw_res<span class="sc">$</span>var1.pred), </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">length.out =</span> n),</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">lwd =</span> <span class="fl">0.001</span>,</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">pal =</span> <span class="fu">scico</span>(n <span class="sc">-</span> <span class="dv">1</span>, </span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">palette =</span> <span class="st">"davos"</span>,</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">end       =</span> <span class="fl">0.9</span>, </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>),</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">main      =</span> <span class="st">"Precipitation [mm]"</span>, </span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>     <span class="co">#pch       = 20,          # Point character selection</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">graticule =</span> <span class="cn">TRUE</span>,        <span class="co"># Display graticules</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes      =</span> <span class="cn">TRUE</span>,        <span class="co"># Display plot axes</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">bgc       =</span> <span class="st">"#f0f0f033"</span>, <span class="co"># Background color</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">key.pos   =</span> <span class="dv">1</span>, </span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">reset =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>idw_grid <span class="ot">&lt;-</span> grid</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>idw_grid<span class="sc">$</span>value <span class="ot">&lt;-</span> idw_res<span class="sc">$</span>var1.pred</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(idw_grid[<span class="st">"value"</span>], <span class="at">breaks =</span> precip_breaks, <span class="at">pal =</span> precip_colors,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"gstat IDW: precipitation [mm]"</span>, <span class="at">border =</span> <span class="cn">NA</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> <span class="cn">TRUE</span>, <span class="at">graticule =</span> <span class="cn">FALSE</span>, <span class="at">key.pos =</span> <span class="dv">1</span>, <span class="at">reset =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(dom), <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="04_interpolation_files/figure-html/unnamed-chunk-6-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<div id="fig-interpolation-gstat-idw" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-interpolation-gstat-idw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04_interpolation_files/figure-html/fig-interpolation-gstat-idw-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interpolation-gstat-idw-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.4: IDW calculated with gstat using the same stations, centre points and power.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>The two calculations should agree apart from floating-point rounding:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>power <span class="ot">&lt;-</span> <span class="dv">2</span>  <span class="co"># You can adjust the power parameter</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>weighted_sum <span class="ot">&lt;-</span> <span class="fu">apply</span>(distances, <span class="dv">1</span>, <span class="cf">function</span>(d) <span class="fu">sum</span>(dom<span class="sc">$</span>value <span class="sc">/</span> (d<span class="sc">^</span>power)))</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>weighted_sum</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span>(<span class="fu">abs</span>(manual_grid<span class="sc">$</span>value <span class="sc">-</span> idw_res<span class="sc">$</span>var1.pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7.105427e-15</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise: the power parameter
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Change <code>power</code> to 1 and then to 8. Rerun the manual calculation and <code>gstat::idw()</code> with the same power. Describe how the influence of nearby stations changes. Keep the same colour scale when comparing the maps.</p>
+</div>
 </div>
 </section>
-<section id="kriging" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="kriging"><span class="header-section-number">5.3</span> Kriging</h2>
-<p>Another interpolation technique is called Kriging. In contrast to the Inverse Distance Weighted (IDW) method, kriging is not a purely deterministic procedure. Instead, it assumes an underlying stochastic (statistical) model for the spatial process.<br>
-The key idea is that observations that are closer together in space tend to be more similar, and this spatial autocorrelation can be explicitly quantified and used to produce statistically optimal predictions at unsampled locations.<br>
-Before applying kriging, we need to prepare our data in a suitable coordinate reference system and define the set of points that will serve as input to the interpolation.</p>
+</section>
+<section id="kriging" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="kriging"><span class="header-section-number">5.2</span> Kriging</h2>
+<p>Kriging uses a <strong>statistical model of spatial dependence</strong> to calculate interpolation weights. Given the same observations and model, its predictions are reproducible. Ordinary kriging assumes an unknown constant mean and chooses weights that minimise the prediction error variance among linear unbiased predictors under the specified model. The weights sum to one, but some can be negative, so predictions can fall outside the range of the observations.</p>
+<p>We will use the original <code>dom</code> stations and the same <code>grid_points</code> as for IDW. Predictions from IDW are not additional measurements and must not be added to the observations used for kriging.</p>
+<section id="the-semivariogram" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="the-semivariogram"><span class="header-section-number">5.2.1</span> The semivariogram</h3>
+<p>A semivariogram describes how dissimilar values become as the distance between locations increases. In this introduction, we assume a constant mean and spatial dependence that depends only on separation distance <span class="math inline">\(h\)</span>, rather than direction. The theoretical semivariogram is</p>
+<p><span class="math display">\[
+\gamma(h)=\frac{1}{2}\operatorname{Var}
+\left[Z(\mathbf{s}+\mathbf{h})-Z(\mathbf{s})\right],
+\qquad h=\lVert\mathbf{h}\rVert.
+\]</span></p>
+<p>Here <span class="math inline">\(\mathbf{s}\)</span> is a location and <span class="math inline">\(\mathbf{h}\)</span> is the separation vector. To estimate semivariance from observations, group pairs of stations into distance intervals, or <strong>lag bins</strong>:</p>
+<p><span class="math display">\[
+\widehat{\gamma}(h)=\frac{1}{2|N(h)|}
+\sum_{(i,j)\in N(h)}
+\left[z(\mathbf{s}_i)-z(\mathbf{s}_j)\right]^2.
+\]</span></p>
+<p>The set <span class="math inline">\(N(h)\)</span> contains the station pairs in the distance interval around <span class="math inline">\(h\)</span>, and <span class="math inline">\(|N(h)|\)</span> is the number of those pairs. For example, observations of 10 and 14 mm contribute <span class="math inline">\((10-14)^2/2=8\)</span> mm<span class="math inline">\(^2\)</span> to the average for their lag bin. Similar nearby values produce small semivariances; larger differences produce larger semivariances.</p>
+<p>An <strong>empirical semivariogram</strong> consists of estimates for these lag bins. A <strong>variogram model</strong> is a continuous function used in the kriging equations. Here, as in <code>gstat</code>, we use the word <em>variogram</em> for the semivariogram <span class="math inline">\(\gamma(h)\)</span>; some texts reserve <em>variogram</em> for <span class="math inline">\(2\gamma(h)\)</span>.</p>
+</section>
+<section id="elements-of-a-variogram-model" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="elements-of-a-variogram-model"><span class="header-section-number">5.2.2</span> Elements of a variogram model</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Element</th>
+<th style="text-align: left;">Meaning</th>
+<th style="text-align: left;">Units in this example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Lag</strong> <span class="math inline">\(h\)</span></td>
+<td style="text-align: left;">Separation distance between two locations; the horizontal axis.</td>
+<td style="text-align: left;">m</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Nugget</strong> <span class="math inline">\(C_0\)</span></td>
+<td style="text-align: left;">The semivariance approached as the separation tends to zero from above. A positive nugget represents measurement error and/or variation at scales smaller than the sampling distances.</td>
+<td style="text-align: left;">mm<span class="math inline">\(^2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Partial sill</strong> <span class="math inline">\(C_1\)</span></td>
+<td style="text-align: left;">The part of the long-distance semivariance associated with the spatially correlated component. This is <code>psill</code> in <code>gstat::vgm()</code>.</td>
+<td style="text-align: left;">mm<span class="math inline">\(^2\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Total sill</strong> <span class="math inline">\(C_0+C_1\)</span></td>
+<td style="text-align: left;">The plateau approached at large distances for a bounded model. For a stationary process whose covariance tends to zero, it equals the process variance.</td>
+<td style="text-align: left;">mm<span class="math inline">\(^2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Range</strong></td>
+<td style="text-align: left;">A distance controlling how far spatial dependence extends. Its interpretation depends on the model family.</td>
+<td style="text-align: left;">m</td>
+</tr>
+</tbody>
+</table>
+<p>At exactly <span class="math inline">\(h=0\)</span>, a value is compared with itself, so <span class="math inline">\(\gamma(0)=0\)</span>. A positive nugget therefore appears as a <strong>jump immediately to the right of the origin</strong>.</p>
+<p>For the <strong>exponential model</strong> used below,</p>
+<p><span class="math display">\[
+\gamma(h)=C_0+C_1\left(1-\exp(-h/a)\right),\qquad h&gt;0.
+\]</span></p>
+<p>In <code>gstat</code>, <code>range</code> is the parameter <span class="math inline">\(a\)</span>, not a distance at which spatial dependence abruptly ends. At <span class="math inline">\(h=a\)</span>, the curve has reached about 63% of the rise from the nugget to the total sill. At about <span class="math inline">\(h=3a\)</span>, it has reached 95%; this is commonly called the <strong>practical range</strong>. The exponential curve approaches the sill gradually. In contrast, a spherical model reaches its sill at a finite range.</p>
+<p>The following parameters are <strong>chosen for demonstration</strong>, not fitted to the synthetic observations. They give a nugget of 0.15 mm<span class="math inline">\(^2\)</span>, a partial sill of 2 mm<span class="math inline">\(^2\)</span>, a total sill of 2.15 mm<span class="math inline">\(^2\)</span>, and a practical range of about 30 km. In an application, the model and its parameters should be checked against an empirical semivariogram of the observations.</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>variogram_model <span class="ot">&lt;-</span> gstat<span class="sc">::</span><span class="fu">vgm</span>(<span class="at">psill =</span> <span class="dv">2</span>, <span class="at">model =</span> <span class="st">"Exp"</span>,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                              <span class="at">range =</span> <span class="dv">10000</span>, <span class="at">nugget =</span> <span class="fl">0.15</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>variogram_model</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  model psill range
+1   Nug  0.15     0
+2   Exp  2.00 10000</code></pre>
+</div>
+</div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>projected_crs <span class="ot">&lt;-</span> <span class="dv">32633</span>  <span class="co"># Replace with the appropriate UTM zone for your data</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>dom_projected <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(dom, <span class="at">crs =</span> projected_crs)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>grid_projected <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(grid, <span class="at">crs =</span> projected_crs)</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)  <span class="co"># For reproducibility</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>idw_points <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(idw_res)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nugget <span class="ot">&lt;-</span> variogram_model<span class="sc">$</span>psill[variogram_model<span class="sc">$</span>model <span class="sc">==</span> <span class="st">"Nug"</span>]</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>partial_sill <span class="ot">&lt;-</span> variogram_model<span class="sc">$</span>psill[variogram_model<span class="sc">$</span>model <span class="sc">==</span> <span class="st">"Exp"</span>]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>total_sill <span class="ot">&lt;-</span> nugget <span class="sc">+</span> partial_sill</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>range_parameter <span class="ot">&lt;-</span> variogram_model<span class="sc">$</span>range[variogram_model<span class="sc">$</span>model <span class="sc">==</span> <span class="st">"Exp"</span>]</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>practical_range <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">log</span>(<span class="fl">0.05</span>) <span class="sc">*</span> range_parameter</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Start just above zero to show the nugget discontinuity separately.</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>model_curve <span class="ot">&lt;-</span> gstat<span class="sc">::</span><span class="fu">variogramLine</span>(</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  variogram_model, <span class="at">dist_vector =</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">50000</span>, <span class="at">length.out =</span> <span class="dv">300</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>old_par <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">1</span>) <span class="sc">+</span> <span class="fl">0.1</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(model_curve<span class="sc">$</span>dist <span class="sc">/</span> <span class="dv">1000</span>, model_curve<span class="sc">$</span>gamma, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">50</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, total_sill <span class="sc">*</span> <span class="fl">1.2</span>),</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Separation distance h [km]"</span>,</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="fu">expression</span>(<span class="fu">paste</span>(<span class="st">"Semivariance "</span>, <span class="fu">gamma</span>(h), <span class="st">" [mm"</span><span class="sc">^</span><span class="dv">2</span>, <span class="st">"]"</span>)))</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">c</span>(nugget, total_sill), <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">2</span>), <span class="at">col =</span> <span class="st">"grey50"</span>)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="at">pch =</span> <span class="dv">16</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="dv">0</span>, nugget, <span class="at">pch =</span> <span class="dv">1</span>)</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">7</span>, nugget, <span class="st">"Nugget C0"</span>, <span class="at">pos =</span> <span class="dv">3</span>, <span class="at">cex =</span> <span class="fl">0.85</span>)</span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">36</span>, total_sill, <span class="st">"Total sill C0 + C1"</span>, <span class="at">pos =</span> <span class="dv">3</span>, <span class="at">cex =</span> <span class="fl">0.85</span>)</span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="fu">arrows</span>(<span class="dv">46</span>, nugget, <span class="dv">46</span>, total_sill, <span class="at">code =</span> <span class="dv">3</span>, <span class="at">angle =</span> <span class="dv">90</span>, <span class="at">length =</span> <span class="fl">0.08</span>)</span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(<span class="dv">44</span>, (nugget <span class="sc">+</span> total_sill) <span class="sc">/</span> <span class="dv">2</span>, <span class="st">"Partial sill C1"</span>, <span class="at">srt =</span> <span class="dv">90</span>, <span class="at">cex =</span> <span class="fl">0.85</span>)</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="fu">segments</span>(range_parameter <span class="sc">/</span> <span class="dv">1000</span>, <span class="dv">0</span>, range_parameter <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>         nugget <span class="sc">+</span> partial_sill <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span><span class="dv">1</span>)), <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">"#2368A2"</span>)</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(range_parameter <span class="sc">/</span> <span class="dv">1000</span> <span class="sc">+</span> <span class="dv">1</span>, total_sill <span class="sc">/</span> <span class="dv">3</span>,</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Range parameter a"</span>, <span class="at">srt =</span> <span class="dv">90</span>, <span class="at">cex =</span> <span class="fl">0.85</span>, <span class="at">col =</span> <span class="st">"#2368A2"</span>)</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> practical_range <span class="sc">/</span> <span class="dv">1000</span>, <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">"#A54B00"</span>)</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(practical_range <span class="sc">/</span> <span class="dv">1000</span> <span class="sc">-</span> <span class="dv">1</span>, total_sill <span class="sc">/</span> <span class="dv">2</span>,</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>     <span class="st">"Practical range: about 3a"</span>, <span class="at">srt =</span> <span class="dv">90</span>, <span class="at">cex =</span> <span class="fl">0.85</span>, <span class="at">col =</span> <span class="st">"#A54B00"</span>)</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(old_par)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: st_centroid assumes attributes are constant over geometries</code></pre>
+<div class="cell-output-display">
+<div id="fig-interpolation-variogram" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-interpolation-variogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04_interpolation_files/figure-html/fig-interpolation-variogram-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
 </div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sampled_points <span class="ot">&lt;-</span> idw_points[<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="fu">nrow</span>(idw_points), <span class="dv">50</span>), ]</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>combined_points <span class="ot">&lt;-</span> <span class="fu">rbind</span>(</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  dom,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  sampled_points <span class="sc">|&gt;</span> </span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="at">value =</span> var1.pred, geometry)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>combined_points <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(combined_points, <span class="at">crs =</span> projected_crs)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interpolation-variogram-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.5: Elements of the exponential variogram model. The blue line marks the range parameter a; the orange line marks the practical range. The horizontal axis is displayed in kilometres; model parameters use metres. The open circle marks the nugget limit just above zero distance.
+</figcaption>
+</figure>
 </div>
-<p>An essential part of kriging is the definition (and estimation) of a variogram (or semivariogram). The variogram is a function that describes the degree of spatial dependence of the variable as a function of distance. Intuitively, it answers: <em>“How quickly do values become dissimilar as we move farther apart in space?”</em> Due to the <code>range</code> parameter, the spatial data needs to be projected. The distance (in meters, because of the projection) at which spatial correlation effectively becomes negligible. Beyond this range, points are considered essentially uncorrelated.</p>
+</div>
+</div>
+<div class="webex-box callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Exercise: reading a variogram
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Two observations of 10 and 14 mm contribute how much to semivariance? <input class="webex-solveme nospaces" size="1" data-answer="[&quot;8&quot;]"> mm<span class="math inline">\(^2\)</span>.</li>
+<li>For the model above, calculate the <strong>total sill</strong>: <input class="webex-solveme nospaces" size="4" data-answer="[&quot;2.15&quot;,&quot;2,15&quot;]"> mm<span class="math inline">\(^2\)</span>.</li>
+<li>Using the approximation <span class="math inline">\(3a\)</span>, calculate the <strong>practical range</strong>: <input class="webex-solveme nospaces" size="2" data-answer="[&quot;30&quot;]"> km.</li>
+<li>Increasing the nugget while keeping the partial sill fixed increases the total sill: <select class="webex-select"><option value="blank"></option><option value="answer">TRUE</option><option value="NA">FALSE</option></select>.</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="ordinary-kriging-with-gstat" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="ordinary-kriging-with-gstat"><span class="header-section-number">5.2.3</span> Ordinary kriging with <code>gstat</code></h3>
+<p>The formula <code>value ~ 1</code>, together with a variogram model and no supplied mean, requests ordinary kriging. All observations and prediction locations already use the same metric CRS.</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>variogram <span class="ot">&lt;-</span> <span class="fu">vgm</span>(<span class="at">psill =</span> <span class="fl">5.05</span>, <span class="at">model =</span> <span class="st">"Exp"</span>, <span class="at">range =</span> <span class="dv">300000</span>, <span class="at">nugget =</span> <span class="fl">0.15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-</div>
-<div class="cell" data-layout-align="center">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>krig_res <span class="ot">&lt;-</span> gstat<span class="sc">::</span><span class="fu">krige</span>(</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">formula =</span> value <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">locations =</span> combined_points,</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">newdata =</span> grid_projected,</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> variogram  <span class="co"># Use the appropriate fitted variogram model</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>krig_res <span class="ot">&lt;-</span> gstat<span class="sc">::</span><span class="fu">krige</span>(value <span class="sc">~</span> <span class="dv">1</span>, <span class="at">locations =</span> dom,</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                         <span class="at">newdata =</span> grid_points, <span class="at">model =</span> variogram_model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[using ordinary kriging]</code></pre>
 </div>
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3: Reproject the kriged result back to the original CRS (WGS84)</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>krig_res <span class="ot">&lt;-</span> <span class="fu">st_transform</span>(<span class="fu">st_as_sf</span>(krig_res), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate unique breaks</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>min_val <span class="ot">&lt;-</span> <span class="fu">min</span>(krig_res<span class="sc">$</span>var1.pred, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>max_val <span class="ot">&lt;-</span> <span class="fu">max</span>(krig_res<span class="sc">$</span>var1.pred, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure that min and max are sufficiently different to create unique breaks</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (max_val <span class="sc">-</span> min_val <span class="sc">&gt;</span> <span class="dv">0</span>) {</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  breaks <span class="ot">&lt;-</span> <span class="fu">seq</span>(min_val, max_val, <span class="at">length.out =</span> <span class="dv">25</span>)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  breaks <span class="ot">&lt;-</span> <span class="fu">unique</span>(<span class="fu">c</span>(min_val, max_val))  <span class="co"># Fallback for nearly constant data</span></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the scico color palette with the correct number of colors</span></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>colors <span class="ot">&lt;-</span> <span class="fu">scico</span>(<span class="fu">length</span>(breaks) <span class="sc">-</span> <span class="dv">1</span>, </span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>                <span class="at">palette =</span> <span class="st">"davos"</span>, </span>
-<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>                <span class="at">end =</span> <span class="fl">0.9</span>, </span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>                <span class="at">direction =</span> <span class="sc">-</span><span class="dv">1</span>)</span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Plotting using the 'pal' argument for sf objects</span></span>
-<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(</span>
-<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  krig_res <span class="sc">|&gt;</span> dplyr<span class="sc">::</span><span class="fu">select</span>(var1.pred), </span>
-<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">breaks =</span> breaks,</span>
-<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">pal =</span> colors,        <span class="co"># Use 'pal' to specify the color palette</span></span>
-<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">lwd =</span> <span class="fl">0.001</span>,</span>
-<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">main =</span> <span class="st">"Precipitation [mm]"</span>, </span>
-<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>  <span class="at">graticule =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>  <span class="at">axes =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  <span class="at">bgc =</span> <span class="st">"#f0f0f033"</span>, </span>
-<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>  <span class="at">key.pos =</span> <span class="dv">1</span>, </span>
-<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a>  <span class="at">reset =</span> <span class="cn">FALSE</span></span>
-<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>krig_grid <span class="ot">&lt;-</span> grid</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>krig_grid<span class="sc">$</span>value <span class="ot">&lt;-</span> krig_res<span class="sc">$</span>var1.pred</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(krig_grid[<span class="st">"value"</span>], <span class="at">breaks =</span> precip_breaks, <span class="at">pal =</span> precip_colors,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Ordinary kriging: precipitation [mm]"</span>, <span class="at">border =</span> <span class="cn">NA</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">axes =</span> <span class="cn">TRUE</span>, <span class="at">graticule =</span> <span class="cn">FALSE</span>, <span class="at">key.pos =</span> <span class="dv">1</span>, <span class="at">reset =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">st_geometry</span>(dom), <span class="at">pch =</span> <span class="dv">20</span>, <span class="at">cex =</span> <span class="fl">0.5</span>, <span class="at">add =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="04_interpolation_files/figure-html/unnamed-chunk-10-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<div id="fig-interpolation-kriging" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-interpolation-kriging-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04_interpolation_files/figure-html/fig-interpolation-kriging-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-interpolation-kriging-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5.6: Ordinary kriging predictions at the same cell centres as IDW, using only the original stations and the illustrative variogram model.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
+<p>The output column <code>var1.pred</code> contains predictions and <code>var1.var</code> contains kriging prediction variances in mm<span class="math inline">\(^2\)</span>. These variances depend on the station locations and the specified variogram model; they are not the observed prediction errors. Our variogram is illustrative, so the resulting predictions and variances demonstrate the calculation rather than a validated precipitation model.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
 <script>
 
+
+
 /* update total correct if #webex-total_correct exists */
+
 update_total_correct = function() {
+
   console.log("webex: update total_correct");
 
+
+
   var t = document.getElementsByClassName("webex-total_correct");
+
   for (var i = 0; i < t.length; i++) {
+
     p = t[i].parentElement;
+
     var correct = p.getElementsByClassName("webex-correct").length;
+
     var solvemes = p.getElementsByClassName("webex-solveme").length;
+
     var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+
     var selects = p.getElementsByClassName("webex-select").length;
 
+
+
     t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+
   }
+
 }
+
+
 
 /* webex-solution button toggling function */
+
 b_func = function() {
+
   console.log("webex: toggle hide");
 
+
+
   var cl = this.parentElement.classList;
+
   if (cl.contains('open')) {
+
     cl.remove("open");
+
   } else {
+
     cl.add("open");
+
   }
+
 }
+
+
 
 /* check answers */
+
 check_func = function() {
+
   console.log("webex: check answers");
 
+
+
   var cl = this.parentElement.classList;
+
   if (cl.contains('unchecked')) {
+
     cl.remove("unchecked");
+
     this.innerHTML = "Hide Answers";
+
   } else {
+
     cl.add("unchecked");
+
     this.innerHTML = "Show Answers";
+
   }
+
 }
+
+
 
 /* function for checking solveme answers */
+
 solveme_func = function(e) {
+
   console.log("webex: check solveme");
 
+
+
   var real_answers = JSON.parse(this.dataset.answer);
+
   var my_answer = this.value;
+
   var cl = this.classList;
+
   if (cl.contains("ignorecase")) {
+
     my_answer = my_answer.toLowerCase();
+
   }
+
   if (cl.contains("nospaces")) {
+
     my_answer = my_answer.replace(/ /g, "")
+
   }
+
+
 
   if (my_answer == "") {
+
     cl.remove("webex-correct");
+
     cl.remove("webex-incorrect");
+
   } else if (real_answers.includes(my_answer)) {
+
     cl.add("webex-correct");
+
     cl.remove("webex-incorrect");
+
   } else {
+
     cl.add("webex-incorrect");
+
     cl.remove("webex-correct");
+
   }
+
+
 
   // match numeric answers within a specified tolerance
+
   if(this.dataset.tol > 0){
+
     var tol = JSON.parse(this.dataset.tol);
+
     var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+
     if (matches.reduce((a, b) => a + b, 0) > 0) {
+
       cl.add("webex-correct");
+
     } else {
+
       cl.remove("webex-correct");
+
     }
+
   }
+
+
 
   // added regex bit
+
   if (cl.contains("regex")){
+
     answer_regex = RegExp(real_answers.join("|"))
+
     if (answer_regex.test(my_answer)) {
+
       cl.add("webex-correct");
+
     }
+
   }
 
+
+
   update_total_correct();
+
 }
 
+
+
 /* function for checking select answers */
+
 select_func = function(e) {
+
   console.log("webex: check select");
+
+
 
   var cl = this.classList
 
+
+
   /* add style */
+
   cl.remove("webex-incorrect");
+
   cl.remove("webex-correct");
+
   if (this.value == "answer") {
+
     cl.add("webex-correct");
+
   } else if (this.value != "blank") {
+
     cl.add("webex-incorrect");
+
   }
 
+
+
   update_total_correct();
+
 }
+
+
 
 /* function for checking radiogroups answers */
+
 radiogroups_func = function(e) {
+
   console.log("webex: check radiogroups");
 
+
+
   var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+
   var cl = checked_button.parentElement.classList;
+
   var labels = checked_button.parentElement.parentElement.children;
 
+
+
   /* get rid of styles */
+
   for (i = 0; i < labels.length; i++) {
+
     labels[i].classList.remove("webex-incorrect");
+
     labels[i].classList.remove("webex-correct");
+
   }
+
+
 
   /* add style */
+
   if (checked_button.value == "answer") {
+
     cl.add("webex-correct");
+
   } else {
+
     cl.add("webex-incorrect");
+
   }
 
+
+
   update_total_correct();
+
 }
+
+
 
 window.onload = function() {
+
   console.log("webex onload");
+
   /* set up solution buttons */
+
   var buttons = document.getElementsByTagName("button");
 
+
+
   for (var i = 0; i < buttons.length; i++) {
+
     if (buttons[i].parentElement.classList.contains('webex-solution')) {
+
       buttons[i].onclick = b_func;
+
     }
+
   }
+
+
 
   var check_sections = document.getElementsByClassName("webex-check");
+
   console.log("check:", check_sections.length);
+
   for (var i = 0; i < check_sections.length; i++) {
+
     check_sections[i].classList.add("unchecked");
 
+
+
     let btn = document.createElement("button");
+
     btn.innerHTML = "Show Answers";
+
     btn.classList.add("webex-check-button");
+
     btn.onclick = check_func;
+
     check_sections[i].appendChild(btn);
 
+
+
     let spn = document.createElement("span");
+
     spn.classList.add("webex-total_correct");
+
     check_sections[i].appendChild(spn);
+
   }
+
+
 
   /* set up webex-solveme inputs */
+
   var solveme = document.getElementsByClassName("webex-solveme");
 
+
+
   for (var i = 0; i < solveme.length; i++) {
+
     /* make sure input boxes don't auto-anything */
+
     solveme[i].setAttribute("autocomplete","off");
+
     solveme[i].setAttribute("autocorrect", "off");
+
     solveme[i].setAttribute("autocapitalize", "off");
+
     solveme[i].setAttribute("spellcheck", "false");
+
     solveme[i].value = "";
 
+
+
     /* adjust answer for ignorecase or nospaces */
+
     var cl = solveme[i].classList;
+
     var real_answer = solveme[i].dataset.answer;
+
     if (cl.contains("ignorecase")) {
+
       real_answer = real_answer.toLowerCase();
+
     }
+
     if (cl.contains("nospaces")) {
+
       real_answer = real_answer.replace(/ /g, "");
+
     }
+
     solveme[i].dataset.answer = real_answer;
 
+
+
     /* attach checking function */
+
     solveme[i].onkeyup = solveme_func;
+
     solveme[i].onchange = solveme_func;
 
+
+
     solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
   }
+
+
 
   /* set up radiogroups */
+
   var radiogroups = document.getElementsByClassName("webex-radiogroup");
+
   for (var i = 0; i < radiogroups.length; i++) {
+
     radiogroups[i].onchange = radiogroups_func;
+
   }
+
+
 
   /* set up selects */
+
   var selects = document.getElementsByClassName("webex-select");
+
   for (var i = 0; i < selects.length; i++) {
+
     selects[i].onchange = select_func;
+
     selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
   }
 
+
+
   update_total_correct();
+
 }
 
+
+
 </script>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1290,8 +1628,8 @@ window.onload = function() {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./05_CN.html" class="pagination-link" aria-label="SCS Curve number method">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SCS Curve number method</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./05_CN.html" class="pagination-link" aria-label="SCS Curve Number method">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SCS Curve Number method</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

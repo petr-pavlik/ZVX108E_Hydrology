@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-EN" xml:lang="en-EN"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>6&nbsp; SCS Curve number method – ZVX108E Hydrology</title>
+<title>6&nbsp; SCS Curve Number method – ZVX108E Hydrology</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -68,15 +71,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-19724cff3ffd65c8d5774837ab6a4dbd.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-1bdb090332f57d0ae3bda32c3b3ef872.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1da0855bab4d02df59e90987ce711be7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e1fbe40cf926446f81e59dd74e2645b5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -105,7 +107,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -146,7 +148,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_CN.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SCS Curve number method</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_CN.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SCS Curve Number method</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -159,9 +161,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Hydrology ZVX108E</a> 
         <div class="sidebar-tools-main">
@@ -214,7 +214,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing of hydrological dataset</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing of a hydrological dataset</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -232,7 +232,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_CN.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SCS Curve number method</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SCS Curve Number method</span></span></a>
   </div>
 </li>
     </ul>
@@ -240,15 +240,27 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#retention-initial-abstraction-and-runoff" id="toc-retention-initial-abstraction-and-runoff" class="nav-link active" data-scroll-target="#retention-initial-abstraction-and-runoff"><span class="header-section-number">6.1</span> Retention, initial abstraction and runoff</a>
+  <ul class="collapse">
+  <li><a href="#calculation-in-r" id="toc-calculation-in-r" class="nav-link" data-scroll-target="#calculation-in-r"><span class="header-section-number">6.1.1</span> Calculation in R</a></li>
+  </ul></li>
+  <li><a href="#effect-of-the-curve-number" id="toc-effect-of-the-curve-number" class="nav-link" data-scroll-target="#effect-of-the-curve-number"><span class="header-section-number">6.2</span> Effect of the curve number</a></li>
+  <li><a href="#a-rainfall-event-spanning-several-days" id="toc-a-rainfall-event-spanning-several-days" class="nav-link" data-scroll-target="#a-rainfall-event-spanning-several-days"><span class="header-section-number">6.3</span> A rainfall event spanning several days</a></li>
+  <li><a href="#a-catchment-with-several-cn-values" id="toc-a-catchment-with-several-cn-values" class="nav-link" data-scroll-target="#a-catchment-with-several-cn-values"><span class="header-section-number">6.4</span> A catchment with several CN values</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/petr-pavlik/Hydrology_ZVX108E/edit/main/05_CN.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/petr-pavlik/Hydrology_ZVX108E/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SCS Curve number method</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SCS Curve Number method</span></h1>
 </div>
 
 
@@ -265,473 +277,692 @@ window.Quarto = {
 </header>
 
 
-<p>The SCS curve number (CN) is a method developed by the USDA in 1995, when is was formerly named Soil Conservation Service, hence the SCS in the name. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> CN helps with the estimation of runoff at basins where no runoff has been measured. The CN (curve number) ranges from 0 to 100 and is a dimensionless index representing the combined effect of LU/LC, Soil type and hydrological conditions. CN is used to calculate the potential maximum retention capacity <span class="math inline">\(S\)</span></p>
+<p>The <strong>SCS Curve Number (CN) method</strong> estimates the depth of direct runoff from a rainfall event. It was developed by the Soil Conservation Service, an agency within the United States Department of Agriculture (USDA). SCS was renamed the Natural Resources Conservation Service (NRCS) in <a href="https://www.nrcs.usda.gov/about/history/brief-history-nrcs">1994</a>.</p>
+<p>CN is a dimensionless index combining land cover and land use, hydrologic soil group, and antecedent wetness. A larger CN produces more direct runoff for the same rainfall depth. Initial estimates can be obtained from the <a href="https://www.hec.usace.army.mil/confluence/hmsdocs/hmstrm/cn-tables">SCS/TR-55 curve number tables</a>. The tabulated values refer to specified cover and soil conditions and an average antecedent runoff condition; an application should check whether those conditions represent the catchment and event.</p>
+<section id="retention-initial-abstraction-and-runoff" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="retention-initial-abstraction-and-runoff"><span class="header-section-number">6.1</span> Retention, initial abstraction and runoff</h2>
+<p>The potential maximum retention <span class="math inline">\(S\)</span> is calculated from CN as</p>
 <p><span class="math display">\[
-S = \dfrac{25400}{CN}-254
-\]</span> where the CN = 0 means complete infiltration, CN = 100 no infiltration at all.</p>
-<p>The method estimates the precipitation excess <span class="math inline">\(P_e\)</span> as a function of the cumulative precipitation depth, soil cover, land use, and antecedent soil moisture as</p>
-<p><span class="math display">\[
-P_e = \begin{cases}
-          0, \text{ for }\qquad P &lt; I_a\\
-          \dfrac{(P-I_a)^2}{P - I_a + S}\qquad  \text{otherwise }        
-      \end{cases}
+S=\frac{25400}{\mathrm{CN}}-254,
+\qquad 0&lt;\mathrm{CN}\leq100,
 \]</span></p>
-<p>where <span class="math inline">\(P_e\)</span> is accumulated precipitation excess. <span class="math inline">\(P\)</span> is the accumulated precipitation depth, <span class="math inline">\(I_a\)</span> is the initial abstraction (loss) and <span class="math inline">\(S\)</span> is the potential maximum retention</p>
-<!-- $$ -->
-<!-- \dfrac{F}{S} = \dfrac{Q}{P-I_a} -->
-<!-- $$ -->
+<p>where <span class="math inline">\(S\)</span> is in <strong>millimetres</strong>. The alternative expression <span class="math inline">\(1000/\mathrm{CN}-10\)</span> gives <span class="math inline">\(S\)</span> in <strong>inches</strong>. Do not combine that expression with precipitation in millimetres.</p>
+<p>For <span class="math inline">\(\mathrm{CN}=100\)</span>, <span class="math inline">\(S=0\)</span> and all rainfall becomes direct runoff in this model. At <span class="math inline">\(\mathrm{CN}=0\)</span>, the expression for <span class="math inline">\(S\)</span> is undefined; zero is excluded from the calculation. As CN approaches zero from above, retention increases and the predicted runoff from a fixed rainfall depth tends to zero.</p>
+<p>The <strong>initial abstraction</strong> <span class="math inline">\(I_a\)</span> represents losses before direct runoff begins, including interception, depression storage and infiltration. This chapter uses the conventional assumption associated with the TR-55 tables:</p>
 <p><span class="math display">\[
-I_a = rS\approx0.2\cdot S
+I_a=0.2S.
 \]</span></p>
+<p>The <strong>cumulative direct runoff depth</strong> <span class="math inline">\(Q\)</span>, also called precipitation excess <span class="math inline">\(P_e\)</span>, is then</p>
 <p><span class="math display">\[
-S = \dfrac{1000}{\mathrm{CN}}-10\:\mathrm{[mm]}
-\]</span> where <span class="math inline">\(S\)</span> is a potential maximum retention after the initial runoff.</p>
-<p><span class="math display">\[
-Q = \dfrac{(P-I_a)^2}{(P-I_a)+S}
+Q(P)=
+\begin{cases}
+0, &amp; P\leq I_a,\\[4pt]
+\dfrac{(P-I_a)^2}{P-I_a+S}, &amp; P&gt;I_a.
+\end{cases}
 \]</span></p>
+<p>Here <span class="math inline">\(P\)</span> is the <strong>cumulative rainfall depth since the start of the event</strong>. The quantities <span class="math inline">\(P\)</span>, <span class="math inline">\(I_a\)</span>, <span class="math inline">\(S\)</span> and <span class="math inline">\(Q\)</span> are all expressed in mm. The parameter <span class="math inline">\(S\)</span> describes potential retention after runoff begins, rather than an additional fixed loss to subtract from every rainfall observation. These equations follow the <a href="https://www.hec.usace.army.mil/confluence/hmsdocs/hmstrm/canopy-surface-infiltration-and-runoff-volume/infiltration/scs-curve-number-loss-model">HEC-HMS description of the SCS CN loss model</a>.</p>
+<p>In this chapter, <span class="math inline">\(Q\)</span> denotes a depth over the catchment area. It is not a volumetric discharge in <span class="math inline">\(\mathrm{m^3\,s^{-1}}\)</span>. For an area <span class="math inline">\(A\)</span> in m<span class="math inline">\(^2\)</span>, the corresponding runoff volume is <span class="math inline">\(V=(Q/1000)A\)</span> in m<span class="math inline">\(^3\)</span>; the CN equations alone do not describe the timing of discharge at the catchment outlet.</p>
+<section id="calculation-in-r" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="calculation-in-r"><span class="header-section-number">6.1.1</span> Calculation in R</h3>
+<p>The function below accepts one CN and a vector of rainfall depths. Missing rainfall values remain <code>NA</code>. CN must be a finite number in the interval <span class="math inline">\((0,100]\)</span>, and non-missing rainfall values must be finite and non-negative.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>LCLU_tbl <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">LCLU =</span> <span class="fu">c</span>(<span class="st">"Pasture"</span>, <span class="st">"Road"</span>, <span class="st">"Legumes"</span>), </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">AreaFrac =</span> <span class="fu">c</span>(<span class="dv">54</span>, <span class="dv">20</span>, <span class="dv">26</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>LCLU_tbl</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>     LCLU AreaFrac
-1 Pasture       54
-2    Road       20
-3 Legumes       26</code></pre>
-</div>
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>weather_db <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">dtm =</span> <span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">"2024-01-01"</span>), <span class="fu">as.Date</span>(<span class="st">"2024-11-30"</span>), <span class="st">"1 day"</span>), </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">P =</span> <span class="fu">sample</span>(<span class="at">size =</span> <span class="dv">335</span>, <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">replace =</span> <span class="cn">TRUE</span>)<span class="sc">*</span><span class="fu">rweibull</span>(<span class="dv">335</span>, <span class="at">shape =</span> <span class="dv">1</span>))</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(weather_db)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
-<div class="cell-output cell-output-stdout">
-<pre><code>         dtm          P
-1 2024-01-01 0.00000000
-2 2024-01-02 0.09893087
-3 2024-01-03 0.11643034
-4 2024-01-04 3.31738511
-5 2024-01-05 0.00000000
-6 2024-01-06 0.36434714</code></pre>
-</div>
-</div>
-<div class="cell">
-<details open="" class="code-fold">
-<summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-3"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-3-1"><a href="#annotated-cell-3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Function to calculate direct runoff using SCS CN method</span></span>
-<span id="annotated-cell-3-2"><a href="#annotated-cell-3-2" aria-hidden="true" tabindex="-1"></a>scs_cn_method <span class="ot">&lt;-</span> <span class="cf">function</span>(P, CN) {</span>
-<span id="annotated-cell-3-3"><a href="#annotated-cell-3-3" aria-hidden="true" tabindex="-1"></a>  </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="1">1</button><span id="annotated-cell-3-4" class="code-annotation-target"><a href="#annotated-cell-3-4" aria-hidden="true" tabindex="-1"></a>  S <span class="ot">&lt;-</span> (<span class="dv">25400</span> <span class="sc">/</span> CN) <span class="sc">-</span> <span class="dv">254</span></span>
-<span id="annotated-cell-3-5"><a href="#annotated-cell-3-5" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="annotated-cell-3-6"><a href="#annotated-cell-3-6" aria-hidden="true" tabindex="-1"></a>  Ia <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="sc">*</span> S</span>
-<span id="annotated-cell-3-7"><a href="#annotated-cell-3-7" aria-hidden="true" tabindex="-1"></a>  </span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-3" data-target-annotation="3">3</button><span id="annotated-cell-3-8" class="code-annotation-target"><a href="#annotated-cell-3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(P <span class="sc">&lt;=</span> Ia, <span class="dv">0</span>, ((P <span class="sc">-</span> Ia)<span class="sc">^</span><span class="dv">2</span>) <span class="sc">/</span> (P <span class="sc">-</span> Ia <span class="sc">+</span> S))</span>
-<span id="annotated-cell-3-9"><a href="#annotated-cell-3-9" aria-hidden="true" tabindex="-1"></a>}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-1"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-1-1"><a href="#annotated-cell-1-1" aria-hidden="true" tabindex="-1"></a>scs_cn_method <span class="ot">&lt;-</span> <span class="cf">function</span>(P, CN) {</span>
+<span id="annotated-cell-1-2"><a href="#annotated-cell-1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stopifnot</span>(<span class="fu">is.numeric</span>(CN), <span class="fu">length</span>(CN) <span class="sc">==</span> <span class="dv">1</span>L,</span>
+<span id="annotated-cell-1-3"><a href="#annotated-cell-1-3" aria-hidden="true" tabindex="-1"></a>            <span class="fu">is.finite</span>(CN), CN <span class="sc">&gt;</span> <span class="dv">0</span>, CN <span class="sc">&lt;=</span> <span class="dv">100</span>,</span>
+<span id="annotated-cell-1-4"><a href="#annotated-cell-1-4" aria-hidden="true" tabindex="-1"></a>            <span class="fu">is.numeric</span>(P),</span>
+<span id="annotated-cell-1-5"><a href="#annotated-cell-1-5" aria-hidden="true" tabindex="-1"></a>            <span class="fu">all</span>(<span class="fu">is.na</span>(P) <span class="sc">|</span> (<span class="fu">is.finite</span>(P) <span class="sc">&amp;</span> P <span class="sc">&gt;=</span> <span class="dv">0</span>)))</span>
+<span id="annotated-cell-1-6"><a href="#annotated-cell-1-6" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="1">1</button><span id="annotated-cell-1-7" class="code-annotation-target"><a href="#annotated-cell-1-7" aria-hidden="true" tabindex="-1"></a>  S <span class="ot">&lt;-</span> <span class="dv">25400</span> <span class="sc">/</span> CN <span class="sc">-</span> <span class="dv">254</span></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="2">2</button><span id="annotated-cell-1-8" class="code-annotation-target"><a href="#annotated-cell-1-8" aria-hidden="true" tabindex="-1"></a>  Ia <span class="ot">&lt;-</span> <span class="fl">0.2</span> <span class="sc">*</span> S</span>
+<span id="annotated-cell-1-9"><a href="#annotated-cell-1-9" aria-hidden="true" tabindex="-1"></a></span>
+<button class="code-annotation-anchor" data-target-cell="annotated-cell-1" data-target-annotation="3">3</button><span id="annotated-cell-1-10" class="code-annotation-target"><a href="#annotated-cell-1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(P <span class="sc">&lt;=</span> Ia, <span class="dv">0</span>, (P <span class="sc">-</span> Ia)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (P <span class="sc">-</span> Ia <span class="sc">+</span> S))</span>
+<span id="annotated-cell-1-11"><a href="#annotated-cell-1-11" aria-hidden="true" tabindex="-1"></a>}</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-annotation">
 <dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-3" data-target-annotation="1">1</dt>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="1">1</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="4,6" data-code-annotation="1">Maximum potential retention (mm)</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="7" data-code-annotation="1">Calculate potential maximum retention in mm.</span>
 </dd>
-<dt data-target-cell="annotated-cell-3" data-target-annotation="3">3</dt>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="2">2</dt>
 <dd>
-<span data-code-cell="annotated-cell-3" data-code-lines="8" data-code-annotation="3">Calculate runoff</span>
+<span data-code-cell="annotated-cell-1" data-code-lines="8" data-code-annotation="2">Calculate initial abstraction using the same coefficient as in the equations above.</span>
+</dd>
+<dt data-target-cell="annotated-cell-1" data-target-annotation="3">3</dt>
+<dd>
+<span data-code-cell="annotated-cell-1" data-code-lines="10" data-code-annotation="3">Return zero until rainfall exceeds initial abstraction. This condition also gives zero for <span class="math inline">\(P=0\)</span> and <span class="math inline">\(\mathrm{CN}=100\)</span>.</span>
 </dd>
 </dl>
 </div>
 </div>
+<p>For example, with <span class="math inline">\(P=50\)</span> mm and <span class="math inline">\(\mathrm{CN}=75\)</span>:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>CN <span class="ot">&lt;-</span> <span class="dv">75</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="dv">25400</span> <span class="sc">/</span> CN <span class="sc">-</span> <span class="dv">254</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Ia <span class="ot">&lt;-</span> <span class="fl">0.2</span> <span class="sc">*</span> S</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Q <span class="ot">&lt;-</span> <span class="fu">scs_cn_method</span>(<span class="at">P =</span> <span class="dv">50</span>, <span class="at">CN =</span> CN)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">c</span>(<span class="at">S_mm =</span> S, <span class="at">Ia_mm =</span> Ia, <span class="at">Q_mm =</span> Q), <span class="at">digits =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>  S_mm  Ia_mm   Q_mm 
+84.667 16.933  9.287 </code></pre>
+</div>
+</div>
+<p>The retention is approximately 84.667 mm, initial abstraction is 16.933 mm, and the direct runoff depth is <strong>9.287 mm</strong>.</p>
+</section>
+</section>
+<section id="effect-of-the-curve-number" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="effect-of-the-curve-number"><span class="header-section-number">6.2</span> Effect of the curve number</h2>
+<p>The following curves show the response to event rainfall totals from 0 to 200 mm. Every curve uses <span class="math inline">\(I_a=0.2S\)</span>. The colours and line types in the legend are the same as those used for the curves.</p>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="annotated-cell-4"><pre class="sourceCode r code-annotation-code code-with-copy code-annotated"><code class="sourceCode r"><span id="annotated-cell-4-1"><a href="#annotated-cell-4-1" aria-hidden="true" tabindex="-1"></a>precipitation <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">200</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
-<span id="annotated-cell-4-2"><a href="#annotated-cell-4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-3"><a href="#annotated-cell-4-3" aria-hidden="true" tabindex="-1"></a>curve_numbers <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from =</span> <span class="dv">40</span>, <span class="at">to =</span> <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">5</span>)</span>
-<span id="annotated-cell-4-4"><a href="#annotated-cell-4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-5"><a href="#annotated-cell-4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate runoff for each CN</span></span>
-<span id="annotated-cell-4-6"><a href="#annotated-cell-4-6" aria-hidden="true" tabindex="-1"></a>runoff_results <span class="ot">&lt;-</span> <span class="fu">sapply</span>(curve_numbers, <span class="cf">function</span>(CN) {</span>
-<span id="annotated-cell-4-7"><a href="#annotated-cell-4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(precipitation, scs_cn_method, <span class="at">CN =</span> CN)</span>
-<span id="annotated-cell-4-8"><a href="#annotated-cell-4-8" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="annotated-cell-4-9"><a href="#annotated-cell-4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-10"><a href="#annotated-cell-4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot results</span></span>
-<span id="annotated-cell-4-11"><a href="#annotated-cell-4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="cn">NULL</span>, </span>
-<span id="annotated-cell-4-12"><a href="#annotated-cell-4-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(precipitation)), </span>
-<span id="annotated-cell-4-13"><a href="#annotated-cell-4-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(runoff_results)),</span>
-<span id="annotated-cell-4-14"><a href="#annotated-cell-4-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Precipitation (mm)"</span>, </span>
-<span id="annotated-cell-4-15"><a href="#annotated-cell-4-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Runoff (mm)"</span>, </span>
-<span id="annotated-cell-4-16"><a href="#annotated-cell-4-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"SCS Curve Number Method: Runoff vs. Precipitation"</span>)</span>
-<span id="annotated-cell-4-17"><a href="#annotated-cell-4-17" aria-hidden="true" tabindex="-1"></a></span>
-<button class="code-annotation-anchor" data-target-cell="annotated-cell-4" data-target-annotation="5">5</button><span id="annotated-cell-4-18" class="code-annotation-target"><a href="#annotated-cell-4-18" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(curve_numbers)) {</span>
-<span id="annotated-cell-4-19"><a href="#annotated-cell-4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(precipitation, </span>
-<span id="annotated-cell-4-20"><a href="#annotated-cell-4-20" aria-hidden="true" tabindex="-1"></a>        runoff_results[, i], </span>
-<span id="annotated-cell-4-21"><a href="#annotated-cell-4-21" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"black"</span>, </span>
-<span id="annotated-cell-4-22"><a href="#annotated-cell-4-22" aria-hidden="true" tabindex="-1"></a>        <span class="at">lty =</span> i, </span>
-<span id="annotated-cell-4-23"><a href="#annotated-cell-4-23" aria-hidden="true" tabindex="-1"></a>        <span class="at">lwd =</span> <span class="dv">1</span>)</span>
-<span id="annotated-cell-4-24"><a href="#annotated-cell-4-24" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="annotated-cell-4-25"><a href="#annotated-cell-4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="annotated-cell-4-26"><a href="#annotated-cell-4-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Add legend</span></span>
-<span id="annotated-cell-4-27"><a href="#annotated-cell-4-27" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, </span>
-<span id="annotated-cell-4-28"><a href="#annotated-cell-4-28" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">paste</span>(<span class="st">"CN ="</span>, curve_numbers), </span>
-<span id="annotated-cell-4-29"><a href="#annotated-cell-4-29" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"black"</span>, </span>
-<span id="annotated-cell-4-30"><a href="#annotated-cell-4-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> i, </span>
-<span id="annotated-cell-4-31"><a href="#annotated-cell-4-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">1</span>)</span><div class="code-annotation-gutter-bg"></div><div class="code-annotation-gutter"></div></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>precipitation <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">200</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>curve_numbers <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">40</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>runoff_results <span class="ot">&lt;-</span> <span class="fu">sapply</span>(curve_numbers, <span class="cf">function</span>(CN) {</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scs_cn_method</span>(precipitation, <span class="at">CN =</span> CN)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>line_colors <span class="ot">&lt;-</span> <span class="fu">hcl.colors</span>(<span class="fu">length</span>(curve_numbers), <span class="at">palette =</span> <span class="st">"Dark 3"</span>)</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>line_types <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>, <span class="at">length.out =</span> <span class="fu">length</span>(curve_numbers))</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="cn">NULL</span>, <span class="at">xlim =</span> <span class="fu">range</span>(precipitation), <span class="at">ylim =</span> <span class="fu">range</span>(runoff_results),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Event precipitation [mm]"</span>, <span class="at">ylab =</span> <span class="st">"Direct runoff depth [mm]"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"SCS Curve Number method"</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(curve_numbers)) {</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(precipitation, runoff_results[, i],</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> line_colors[i], <span class="at">lty =</span> line_types[i], <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>, <span class="at">legend =</span> <span class="fu">paste</span>(<span class="st">"CN ="</span>, curve_numbers),</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> line_colors, <span class="at">lty =</span> line_types, <span class="at">lwd =</span> <span class="fl">1.5</span>,</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">ncol =</span> <span class="dv">2</span>, <span class="at">bty =</span> <span class="st">"n"</span>, <span class="at">cex =</span> <span class="fl">0.85</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
-<div class="cell-annotation">
-<dl class="code-annotation-container-hidden code-annotation-container-grid">
-<dt data-target-cell="annotated-cell-4" data-target-annotation="5">5</dt>
-<dd>
-<span data-code-cell="annotated-cell-4" data-code-lines="18" data-code-annotation="5">Add lines for each CN</span>
-</dd>
-</dl>
-</div>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="05_CN_files/figure-html/unnamed-chunk-5-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<div id="fig-cn-response" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cn-response-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05_CN_files/figure-html/fig-cn-response-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cn-response-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.1: Event runoff depth for different curve numbers, assuming initial abstraction of 0.2S. Higher CN values produce more runoff for the same rainfall depth.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
+</section>
+<section id="a-rainfall-event-spanning-several-days" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="a-rainfall-event-spanning-several-days"><span class="header-section-number">6.3</span> A rainfall event spanning several days</h2>
+<p>The basic CN method is an <strong>event model</strong>. Initial abstraction is applied from the start of the event, and the equations do not restore retention between events or track soil drying. Applying the function separately to every day would implicitly treat each day as a new event, even when rainfall continues across midnight.</p>
+<p>We will use the local MOPEX file introduced in the statistics chapter. Its measurement columns are precipitation, potential evaporation, runoff, maximum temperature and minimum temperature, in that order. Read the missing-value codes as <code>NA</code> before calculating cumulative quantities.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dat01138000 <span class="ot">&lt;-</span> <span class="fu">read.fwf</span>(<span class="st">"data/01138000.dly"</span>, </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="fu">rep</span>(<span class="dv">10</span>, <span class="dv">5</span>))) <span class="sc">|&gt;</span> </span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">V1 =</span> <span class="fu">as.Date</span>(<span class="fu">gsub</span>(V1, </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                           <span class="at">pattern =</span> <span class="st">" "</span>, </span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">replacement =</span> <span class="st">"0"</span>), </span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">format =</span> <span class="st">"%Y%m%d"</span>)) </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dat01138000) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"dtm"</span>, <span class="st">"prec"</span>, <span class="st">"r"</span>, <span class="st">"pet"</span>, <span class="st">"tmax"</span>, <span class="st">"tmin"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>dat01138000 <span class="ot">&lt;-</span> <span class="fu">read.fwf</span>(<span class="st">"data/01138000.dly"</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">widths =</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="fu">rep</span>(<span class="dv">10</span>, <span class="dv">5</span>)),</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                        <span class="at">header =</span> <span class="cn">FALSE</span>, <span class="at">strip.white =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                        <span class="at">na.strings =</span> <span class="fu">c</span>(<span class="st">"-99"</span>, <span class="st">"-99.0000"</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(dat01138000) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"date"</span>, <span class="st">"prec"</span>, <span class="st">"pet"</span>, <span class="st">"r"</span>, <span class="st">"tmax"</span>, <span class="st">"tmin"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>dat01138000<span class="sc">$</span>date <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gsub</span>(<span class="st">" "</span>, <span class="st">"0"</span>, dat01138000<span class="sc">$</span>date), <span class="at">format =</span> <span class="st">"%Y%m%d"</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+</div>
+<p>For this demonstration, treat the wet spell from <strong>3 to 6 August 1953</strong> as one rainfall event. Its total precipitation is 58.52 mm, and the immediately preceding and following days have zero precipitation. These daily observations illustrate the calculation; deciding where independent events begin and end requires attention to the data and the catchment. We use a fixed, illustrative <span class="math inline">\(\mathrm{CN}=75\)</span> rather than a calibrated value for this catchment.</p>
+<p>At each time step, calculate runoff from the <strong>cumulative rainfall</strong>. Then obtain the runoff excess for an individual day by taking the difference between successive cumulative runoff depths:</p>
+<p><span class="math display">\[
+\Delta Q_t=Q(P_{\mathrm{cum},t})-Q(P_{\mathrm{cum},t-1}),
+\qquad Q(P_{\mathrm{cum},0})=0.
+\]</span></p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>event <span class="ot">&lt;-</span> <span class="fu">subset</span>(dat01138000,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                date <span class="sc">&gt;=</span> <span class="fu">as.Date</span>(<span class="st">"1953-08-03"</span>) <span class="sc">&amp;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                date <span class="sc">&lt;=</span> <span class="fu">as.Date</span>(<span class="st">"1953-08-06"</span>),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">select =</span> <span class="fu">c</span>(date, prec))</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Check that the selected event is complete before accumulating rainfall.</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">stopifnot</span>(<span class="fu">nrow</span>(event) <span class="sc">==</span> <span class="dv">4</span>L, <span class="sc">!</span><span class="fu">anyNA</span>(event<span class="sc">$</span>prec),</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>          <span class="fu">all</span>(event<span class="sc">$</span>prec <span class="sc">&gt;=</span> <span class="dv">0</span>), <span class="fu">all</span>(<span class="fu">diff</span>(event<span class="sc">$</span>date) <span class="sc">==</span> <span class="dv">1</span>))</span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>dat01138000[<span class="fu">which</span>(dat01138000<span class="sc">$</span>prec <span class="sc">==</span> <span class="sc">-</span><span class="dv">99</span>), <span class="st">"prec"</span>] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat01138000) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>CN <span class="ot">&lt;-</span> <span class="dv">75</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>event<span class="sc">$</span>cumulative_prec <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(event<span class="sc">$</span>prec)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>event<span class="sc">$</span>cumulative_runoff <span class="ot">&lt;-</span> <span class="fu">scs_cn_method</span>(event<span class="sc">$</span>cumulative_prec, <span class="at">CN =</span> CN)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>event<span class="sc">$</span>runoff <span class="ot">&lt;-</span> <span class="fu">diff</span>(<span class="fu">c</span>(<span class="dv">0</span>, event<span class="sc">$</span>cumulative_runoff))</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>event</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>         dtm prec     r    pet    tmax     tmin
-1 1948-01-01 0.00 0.080 0.2620 -2.9167 -11.2556
-2 1948-01-02 4.44 0.081 0.2501 -2.9556 -11.8500
-3 1948-01-03 4.74 0.081 0.2501 -0.1778  -5.6444
-4 1948-01-04 0.00 0.081 0.2620 -1.8778  -4.2222
-5 1948-01-05 0.00 0.083 0.2501  0.8778  -4.3389
-6 1948-01-06 1.78 0.084 0.2620 -0.2889  -5.4833</code></pre>
+<pre><code>           date  prec cumulative_prec cumulative_runoff      runoff
+2042 1953-08-03  0.04            0.04         0.0000000  0.00000000
+2043 1953-08-04 20.41           20.45         0.1402413  0.14024129
+2044 1953-08-05 37.98           58.43        13.6487623 13.50852098
+2045 1953-08-06  0.09           58.52        13.6982589  0.04949661</code></pre>
+</div>
+</div>
+<p>The sum of the daily runoff increments must equal the runoff calculated from the total event rainfall:</p>
+<div class="cell">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">daily_increments_mm =</span> <span class="fu">sum</span>(event<span class="sc">$</span>runoff),</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">event_total_mm =</span> <span class="fu">scs_cn_method</span>(<span class="fu">sum</span>(event<span class="sc">$</span>prec), <span class="at">CN =</span> CN))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>daily_increments_mm      event_total_mm 
+           13.69826            13.69826 </code></pre>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <details open="" class="code-fold">
 <summary>Code</summary>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example measured precipitation time series (daily data in mm)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>precipitation <span class="ot">&lt;-</span> dat01138000<span class="sc">$</span>prec[<span class="dv">100</span><span class="sc">:</span><span class="dv">1000</span>]</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Curve Number</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>CN <span class="ot">&lt;-</span> <span class="dv">75</span>  <span class="co"># Example value for a watershed</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate runoff for each day</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>runoff <span class="ot">&lt;-</span> <span class="fu">sapply</span>(precipitation, scs_cn_method, <span class="at">CN =</span> CN)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a time vector for plotting</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>days <span class="ot">&lt;-</span> <span class="fu">seq_along</span>(precipitation)</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot precipitation and runoff</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(days, </span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>     precipitation, </span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"h"</span>, </span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"black"</span>, </span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>     <span class="at">lwd =</span> <span class="fl">0.5</span>, </span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fu">max</span>(<span class="fu">c</span>(precipitation, runoff), <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Day"</span>, </span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Value (mm)"</span>, </span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"CN based Precipitation and Runoff"</span>, </span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>     <span class="at">lty =</span> <span class="dv">3</span>)</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="fu">lines</span>(<span class="at">x =</span> days, </span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> runoff, </span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">type =</span> <span class="st">"h"</span>, </span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"#0088BB"</span>, </span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">lty =</span> <span class="dv">1</span>, </span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, </span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Precipitation"</span>, <span class="st">"Runoff"</span>), </span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"black"</span>, <span class="st">"#0088BB"</span>), </span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">1</span>), </span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">1.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">t</span>(<span class="fu">as.matrix</span>(event[<span class="fu">c</span>(<span class="st">"prec"</span>, <span class="st">"runoff"</span>)])), <span class="at">beside =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">names.arg =</span> <span class="fu">format</span>(event<span class="sc">$</span>date, <span class="st">"%d %b"</span>),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"grey65"</span>, <span class="st">"#0088BB"</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">1.2</span> <span class="sc">*</span> <span class="fu">max</span>(event<span class="sc">$</span>prec, event<span class="sc">$</span>runoff)),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Date in 1953"</span>, <span class="at">ylab =</span> <span class="st">"Daily depth [mm]"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"One rainfall event, CN = 75"</span>,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text =</span> <span class="fu">c</span>(<span class="st">"Precipitation"</span>, <span class="st">"Direct runoff excess"</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">args.legend =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="st">"topleft"</span>, <span class="at">bty =</span> <span class="st">"n"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 <div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="05_CN_files/figure-html/unnamed-chunk-7-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<div id="fig-cn-event" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-cn-event-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="05_CN_files/figure-html/fig-cn-event-1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cn-event-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6.2: Daily rainfall and calculated runoff excess within one event. Initial abstraction is applied once, from the start of the event. The runoff bars show precipitation excess, not a streamflow hydrograph.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<!-- Now we have domain, created from using a convex hull of sampled points.  -->
-<div class="callout callout-style-default callout-tip callout-titled">
+</section>
+<section id="a-catchment-with-several-cn-values" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="a-catchment-with-several-cn-values"><span class="header-section-number">6.4</span> A catchment with several CN values</h2>
+<p>A catchment can contain several hydrological response units (HRUs), each with its own CN. Let <span class="math inline">\(A_i\)</span> be the area of HRU <span class="math inline">\(i\)</span> and <span class="math inline">\(f_i=A_i/\sum_j A_j\)</span> its area fraction. Two approaches can be compared for <strong>uniform event rainfall</strong>:</p>
+<ol type="1">
+<li><p>Calculate an area-weighted composite CN, then calculate runoff once:</p>
+<p><span class="math display">\[
+\mathrm{CN}_{\mathrm{composite}}=\sum_i f_i\mathrm{CN}_i,
+\qquad Q_A=Q(P,\mathrm{CN}_{\mathrm{composite}}).
+\]</span></p></li>
+<li><p>Calculate runoff for each HRU, then average the runoff depths using area fractions:</p>
+<p><span class="math display">\[
+Q_B=\sum_i f_i Q(P,\mathrm{CN}_i).
+\]</span></p></li>
+</ol>
+<p>Both <span class="math inline">\(Q_A\)</span> and <span class="math inline">\(Q_B\)</span> are catchment-average runoff <strong>depths in mm</strong>. They generally differ because runoff depends nonlinearly on CN. Area weights must sum to one; percentages must be divided by 100 before using them as fractions.</p>
+<div class="webex-box callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Exercise
+<span class="screen-reader-only">Tip</span>Exercise: composite CN and weighted runoff
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In practice we would have more than one CN type in the watershed. Estimate the runoff from the watershed using the SCS CN method. Using the following data.</p>
+<p>Assume a <strong>single event of 50 mm</strong>, uniform rainfall across all HRUs, and <span class="math inline">\(I_a=0.2S\)</span>. Treat the listed CN values as given and ignore transfers of runoff between HRUs.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th>HRU</th>
-<th>Area</th>
-<th>CN<span class="math inline">\(_i\)</span></th>
+<th style="text-align: left;">HRU</th>
+<th style="text-align: right;">Fraction of catchment area [%]</th>
+<th style="text-align: right;">CN<span class="math inline">\(_i\)</span></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>1</td>
-<td>20</td>
-<td>70</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">70</td>
 </tr>
 <tr class="even">
-<td>2</td>
-<td>16</td>
-<td>84</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">84</td>
 </tr>
 <tr class="odd">
-<td>3</td>
-<td>64</td>
-<td>74</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: right;">64</td>
+<td style="text-align: right;">74</td>
 </tr>
 </tbody>
 </table>
-<p>Compare two approaches to calculate runoff.<br>
-</p>
-<ol type="a">
-<li>Weighted average CN curve.<br>
-</li>
-<li>Weighted contribution to discharge (separate contribution, first compute runoff and weight apply weights by fraction of area).</li>
+<ol type="1">
+<li>Calculate the composite CN, rounded to one decimal place: <input class="webex-solveme nospaces" size="4" data-answer="[&quot;74.8&quot;,&quot;74,8&quot;]">.</li>
+<li>Use this composite CN to calculate <span class="math inline">\(Q_A\)</span>, rounded to two decimal places: <input class="webex-solveme nospaces" size="4" data-answer="[&quot;9.13&quot;,&quot;9,13&quot;]"> mm.</li>
+<li>Calculate each HRU’s runoff separately and take the area-weighted mean <span class="math inline">\(Q_B\)</span>, rounded to two decimal places: <input class="webex-solveme nospaces" size="4" data-answer="[&quot;9.55&quot;,&quot;9,55&quot;]"> mm.</li>
+<li>Explain why the two runoff estimates differ. Check the area fractions and use the same initial abstraction coefficient in both approaches.</li>
 </ol>
 </div>
 </div>
 
 
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>https://edepot.wur.nl/183157<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
 </section>
 
 </main> <!-- /main -->
 <script>
 
+
+
 /* update total correct if #webex-total_correct exists */
+
 update_total_correct = function() {
+
   console.log("webex: update total_correct");
 
+
+
   var t = document.getElementsByClassName("webex-total_correct");
+
   for (var i = 0; i < t.length; i++) {
+
     p = t[i].parentElement;
+
     var correct = p.getElementsByClassName("webex-correct").length;
+
     var solvemes = p.getElementsByClassName("webex-solveme").length;
+
     var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+
     var selects = p.getElementsByClassName("webex-select").length;
 
+
+
     t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+
   }
+
 }
+
+
 
 /* webex-solution button toggling function */
+
 b_func = function() {
+
   console.log("webex: toggle hide");
 
+
+
   var cl = this.parentElement.classList;
+
   if (cl.contains('open')) {
+
     cl.remove("open");
+
   } else {
+
     cl.add("open");
+
   }
+
 }
+
+
 
 /* check answers */
+
 check_func = function() {
+
   console.log("webex: check answers");
 
+
+
   var cl = this.parentElement.classList;
+
   if (cl.contains('unchecked')) {
+
     cl.remove("unchecked");
+
     this.innerHTML = "Hide Answers";
+
   } else {
+
     cl.add("unchecked");
+
     this.innerHTML = "Show Answers";
+
   }
+
 }
+
+
 
 /* function for checking solveme answers */
+
 solveme_func = function(e) {
+
   console.log("webex: check solveme");
 
+
+
   var real_answers = JSON.parse(this.dataset.answer);
+
   var my_answer = this.value;
+
   var cl = this.classList;
+
   if (cl.contains("ignorecase")) {
+
     my_answer = my_answer.toLowerCase();
+
   }
+
   if (cl.contains("nospaces")) {
+
     my_answer = my_answer.replace(/ /g, "")
+
   }
+
+
 
   if (my_answer == "") {
+
     cl.remove("webex-correct");
+
     cl.remove("webex-incorrect");
+
   } else if (real_answers.includes(my_answer)) {
+
     cl.add("webex-correct");
+
     cl.remove("webex-incorrect");
+
   } else {
+
     cl.add("webex-incorrect");
+
     cl.remove("webex-correct");
+
   }
+
+
 
   // match numeric answers within a specified tolerance
+
   if(this.dataset.tol > 0){
+
     var tol = JSON.parse(this.dataset.tol);
+
     var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+
     if (matches.reduce((a, b) => a + b, 0) > 0) {
+
       cl.add("webex-correct");
+
     } else {
+
       cl.remove("webex-correct");
+
     }
+
   }
+
+
 
   // added regex bit
+
   if (cl.contains("regex")){
+
     answer_regex = RegExp(real_answers.join("|"))
+
     if (answer_regex.test(my_answer)) {
+
       cl.add("webex-correct");
+
     }
+
   }
 
+
+
   update_total_correct();
+
 }
 
+
+
 /* function for checking select answers */
+
 select_func = function(e) {
+
   console.log("webex: check select");
+
+
 
   var cl = this.classList
 
+
+
   /* add style */
+
   cl.remove("webex-incorrect");
+
   cl.remove("webex-correct");
+
   if (this.value == "answer") {
+
     cl.add("webex-correct");
+
   } else if (this.value != "blank") {
+
     cl.add("webex-incorrect");
+
   }
 
+
+
   update_total_correct();
+
 }
+
+
 
 /* function for checking radiogroups answers */
+
 radiogroups_func = function(e) {
+
   console.log("webex: check radiogroups");
 
+
+
   var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+
   var cl = checked_button.parentElement.classList;
+
   var labels = checked_button.parentElement.parentElement.children;
 
+
+
   /* get rid of styles */
+
   for (i = 0; i < labels.length; i++) {
+
     labels[i].classList.remove("webex-incorrect");
+
     labels[i].classList.remove("webex-correct");
+
   }
+
+
 
   /* add style */
+
   if (checked_button.value == "answer") {
+
     cl.add("webex-correct");
+
   } else {
+
     cl.add("webex-incorrect");
+
   }
 
+
+
   update_total_correct();
+
 }
+
+
 
 window.onload = function() {
+
   console.log("webex onload");
+
   /* set up solution buttons */
+
   var buttons = document.getElementsByTagName("button");
 
+
+
   for (var i = 0; i < buttons.length; i++) {
+
     if (buttons[i].parentElement.classList.contains('webex-solution')) {
+
       buttons[i].onclick = b_func;
+
     }
+
   }
+
+
 
   var check_sections = document.getElementsByClassName("webex-check");
+
   console.log("check:", check_sections.length);
+
   for (var i = 0; i < check_sections.length; i++) {
+
     check_sections[i].classList.add("unchecked");
 
+
+
     let btn = document.createElement("button");
+
     btn.innerHTML = "Show Answers";
+
     btn.classList.add("webex-check-button");
+
     btn.onclick = check_func;
+
     check_sections[i].appendChild(btn);
 
+
+
     let spn = document.createElement("span");
+
     spn.classList.add("webex-total_correct");
+
     check_sections[i].appendChild(spn);
+
   }
+
+
 
   /* set up webex-solveme inputs */
+
   var solveme = document.getElementsByClassName("webex-solveme");
 
+
+
   for (var i = 0; i < solveme.length; i++) {
+
     /* make sure input boxes don't auto-anything */
+
     solveme[i].setAttribute("autocomplete","off");
+
     solveme[i].setAttribute("autocorrect", "off");
+
     solveme[i].setAttribute("autocapitalize", "off");
+
     solveme[i].setAttribute("spellcheck", "false");
+
     solveme[i].value = "";
 
+
+
     /* adjust answer for ignorecase or nospaces */
+
     var cl = solveme[i].classList;
+
     var real_answer = solveme[i].dataset.answer;
+
     if (cl.contains("ignorecase")) {
+
       real_answer = real_answer.toLowerCase();
+
     }
+
     if (cl.contains("nospaces")) {
+
       real_answer = real_answer.replace(/ /g, "");
+
     }
+
     solveme[i].dataset.answer = real_answer;
 
+
+
     /* attach checking function */
+
     solveme[i].onkeyup = solveme_func;
+
     solveme[i].onchange = solveme_func;
 
+
+
     solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
   }
+
+
 
   /* set up radiogroups */
+
   var radiogroups = document.getElementsByClassName("webex-radiogroup");
+
   for (var i = 0; i < radiogroups.length; i++) {
+
     radiogroups[i].onchange = radiogroups_func;
+
   }
+
+
 
   /* set up selects */
+
   var selects = document.getElementsByClassName("webex-select");
+
   for (var i = 0; i < selects.length; i++) {
+
     selects[i].onchange = select_func;
+
     selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
   }
 
+
+
   update_total_correct();
+
 }
 
+
+
 </script>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1185,4 +1416,4 @@ window.onload = function() {
 
 
 
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions"><ul><li><a href="https://github.com/petr-pavlik/Hydrology_ZVX108E/edit/main/05_CN.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/petr-pavlik/Hydrology_ZVX108E/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/petr-pavlik/Hydrology_ZVX108E/edit/main/05_CN.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/petr-pavlik/Hydrology_ZVX108E/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

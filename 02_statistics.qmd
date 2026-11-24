@@ -1,137 +1,167 @@
-# Processing of hydrological dataset {#sec-processing}
+# Processing of a hydrological dataset {#sec-processing}
 
 #### The following concepts will be discussed: {.unnumbered}
 
-::: callout-warning
-## Concepts
+::: callout-note
+## Learning objectives
 
--   A hydrological year,
--   data screening, cleaning and reframing,
--   summation and aggregation of data,
--   descriptive statistics,
--   vizualization of data.
+By the end of this session, you should be able to:
+
+- describe the location and dispersion of observations;
+- import daily hydrological data and identify missing measurements;
+- distinguish calendar years from hydrological years;
+- choose between sums and means and check the completeness of an aggregation;
+- interpret a hydrograph, boxplot, Q-Q plot and flow duration curve;
+- calculate a runoff coefficient for a common observation period.
 :::
 
-A dataset is a collection of measurements which is used to create or evaluate assumptions about a population. It may contain **univariate** or **multivariate** data.
-In R, the data is usually loaded into structure called `data.frame` (or using additional functionality, into other derived classes like `data.table` or `tibble`).
+A dataset is a collection of observations used to describe a population or investigate assumptions about it. It may contain **univariate** or **multivariate** data. In R, tabular data are commonly stored in a `data.frame` or a related class such as `data.table` or `tibble`.
+
+The examples use base R. The interactive answer fields use the `webexercises` package, which must be installed before rendering this chapter. Run the examples from the project directory so that the relative paths to `data/` work.
+
+```{r}
+#| label: setup-statistics
+#| include: false
+library(webexercises)
+```
 
 ## Exploratory Data Analysis (EDA)
 
-EDA is not a strictly formalized set of procedures, rather it is an general approach on how to study, describe, extract, evaluate and report about the data. Hence the workflow is specific to data in process.\
-When studying data, we will look at certain statistical features, which represent esteemed characteristics of the whole data set.
+EDA is an approach to inspecting, describing and visualizing data. The workflow depends on the question and the dataset. Before interpreting a statistic, check what was measured, its units, the observation period and the treatment of missing values.
+
+We begin with a reproducible sample from a normal distribution.
 
 ```{r, collapse=TRUE}
-set.seed(123) #<1> 
-x <- rnorm(n = 30, mean = 50, sd = 10) #<2> 
+set.seed(123) #<1>
+x <- rnorm(n = 30, mean = 50, sd = 10) #<2>
 x
 ```
-1.  Using the `set.seed()` will ensure that we will get the same generated numbers every time.
-2.  Some random-generated numbers from the Normal distribution.
+
+1. Setting the seed makes the subsequent random generation reproducible when the same code and random number generator settings are used.
+2. Generate 30 observations from a normal distribution with mean 50 and standard deviation 10. The sample mean and standard deviation will generally differ from these population parameters.
 
 ::: callout-tip
 ## Exercise
 
-1.  Try to play with the function `rnorm()` by changing the parameters. What is the purpose of `set.seed()` function and how is it used? Find in the related help page.
+1. Change the parameters of `rnorm()` and describe their effects. Use `?rnorm` and `?set.seed` for help.
+2. Run `rnorm()` twice, first without resetting the seed and then resetting it before each call. Explain the difference.
 :::
 
 ### Measures of location
 
-The farthest one can reduce data, while still retaining any information at all is by a single value. They describe a central tendency of the data.
+Measures of location summarize where observations lie. The mean, median and mode describe different aspects of a distribution and may differ substantially in skewed data.
 
 #### Mean
 
-The **arithmetic mean** (or average) is simply the sum of observations divided by number of observations.
+The **arithmetic mean** is the sum of the observations divided by their number:
 
-$$
-\bar{x} = \dfrac{1}{n}\sum\limits_{i=1}^{n} x_i
-$$
-
-#### Median
-
-The **median** is another central tendency based on *sorted* data set. It is the $50$th quantile in the data. A half of the values is smaller than median, and a half is larger.
+$$\bar{x} = \frac{1}{n}\sum_{i=1}^{n}x_i.$$
 
 ```{r, collapse=TRUE}
-median(x)
-(sort(x)[length(x)/2] + sort(x)[length(x)/2 + 1])/2
-```
-
-#### Mode
-
-For continuous variables in real numbers, computation of **mode** can be done either by cutting the values into meaningful bins or using the kernel density estimate.
-
-```{r}
-cut(x, breaks = 10)
-y <- cut(x, breaks = seq(from = -10, to = 100, by = 10))
-table(y)
-barplot(height = table(y))
+mean(x)
+sum(x) / length(x)
 ```
 
 ::: callout-tip
 ## Exercise
 
-1.  
-
-    a)  Change the `cut()` function up so that the vector $x$ is cut into 20 bins.
-    b)  Add a single number to vector x so that the sample mean rises to `r fitb(c("64.131", "64,131"))`
+1. Append a single number to the original, unchanged vector `x` so that the new sample mean is **64.131**. What number must you append? Round your answer to four decimal places: `r fitb(c("502.1921", "502,1921"))`.
+2. Derive the answer using the definition of the arithmetic mean. Does the required number resemble the other observations? What does this show about the sensitivity of the mean to extreme values?
 :::
 
-#### $n^{\mathrm{th}}$ quantile
+#### Median
+
+The **median** is the 50th percentile, or quantile of probability 0.5. At least half of the observations are less than or equal to it, and at least half are greater than or equal to it. For an odd sample size, it is the middle sorted observation; for an even sample size, R uses the mean of the two middle observations.
+
+```{r, collapse=TRUE}
+median(x)
+x_sorted <- sort(x)
+n_x <- length(x_sorted)
+if (n_x %% 2 == 0) {
+  median_manual <- mean(x_sorted[c(n_x / 2, n_x / 2 + 1)])
+} else {
+  median_manual <- x_sorted[(n_x + 1) / 2]
+}
+median_manual
+```
+
+#### Mode
+
+The **mode** is a value occurring with the highest frequency. For continuous data, exact repetitions may be rare, so we often identify a modal interval using bins or estimate a mode from a density curve. The result depends on the bin boundaries or smoothing settings. R's `mode()` function describes an object's storage mode; it does not calculate the statistical mode.
 
 ```{r}
-quantile(x, probs = c(0.1, 0.9))
+y <- cut(x, breaks = 10)
+table(y)
+names(which.max(table(y))) # The first most frequent interval, if there is a tie.
+hist(x, breaks = 10,
+     main = "Distribution of the simulated sample",
+     xlab = "Simulated value", ylab = "Frequency", col = "lightgray")
+```
+
+::: callout-tip
+## Exercise
+
+1. Use `cut(x, breaks = 20)` and compare the frequency table with the previous result. How sensitive is the modal interval to the number of bins?
+2. Compare the histogram with `plot(density(x))`. Note that `hist()` may choose convenient boundaries rather than exactly the requested number of bins.
+:::
+
+#### Quantiles
+
+A quantile of probability $p$ identifies a location in the ordered data. For example, the 0.1 and 0.9 quantiles describe the lower and upper parts of a distribution. Sample quantiles may involve interpolation; R's default is `type = 7`.
+
+```{r}
+quantile(x, probs = c(0.1, 0.5, 0.9))
 ```
 
 ### Measures of dispersion
 
-With **measures of dispersion** we describe the spread of the data around its central tendency. Some degree of variability is a natural occurring phenomenon.
+Measures of dispersion describe the spread of observations. Always interpret them together with the location, units and shape of the distribution.
 
-#### Variation range
+#### Range
 
-The simplest measure of spread is the **variation range**. It is computed as the difference of both end extremes of the data.
+The **range width** is the difference between the largest and smallest observation:
 
-$$
-R = \max{x} - \min{x}
-$$
+$$R_x = \max(x) - \min(x).$$
 
 ```{r}
-max(x) - min(x)
+range(x) # The two endpoints.
+diff(range(x)) # Their difference.
 ```
 
-#### Variance and sample variance
+#### Population variance and sample variance
 
-We calculate the **variance** as the average of the squares of the deviations of individual character values from their arithmetic mean $\bar{x}$.
+For a finite population of size $N$, with population mean $\mu$, the population variance is
 
-$$
-\begin{array}{rl}
-\sigma^2 =& \dfrac{1}{n}\sum\limits_{i=1}^{n}(x_i - \bar{x})^2\\
-s^2 =& \dfrac{1}{n-1}\sum\limits_{i=1}^{n}(x_i - \bar{x})^2
-\end{array}
-$$ Usually we do not have the ability to work with the whole population data. $s^2$, the **sample variance** formula needs to be used for and unbiased estimate.
+$$\sigma^2 = \frac{1}{N}\sum_{i=1}^{N}(x_i - \mu)^2.$$
+
+For a sample of size $n > 1$, the usual sample variance is
+
+$$s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2.$$
+
+Under independent sampling from the same population with finite variance, the $n-1$ denominator makes $s^2$ an unbiased estimator of the population variance. Daily hydrological observations often exhibit serial dependence, so this sampling assumption should not be taken for granted. R's `var()` calculates the sample variance with denominator $n-1$.
 
 #### Standard deviation
 
-The **standard deviation** is defined as square root of variance.
+The **standard deviation** is the square root of the variance and has the same units as the observations. Variance has squared units.
 
 ```{r, collapse=TRUE}
 sd(x)
-var(x)^0.5
+sqrt(var(x))
 ```
 
 #### Coefficient of variation
 
-The **coefficient of variation** is given by the ratio of the standard deviation and the arithmetic mean, and it follows from the definition of this ratio that it is a dimensionless indicator.
+The **coefficient of variation** relates the standard deviation to the mean:
 
-$$
-\nu = \frac{s}{\bar{x}}
-$$
+$$CV = \frac{s}{\bar{x}}.$$
+
+It is dimensionless and may be multiplied by 100 to express it as a percentage. It is useful for quantities with a meaningful zero and a positive mean, such as runoff. It is undefined when the mean is zero and unstable when the mean is close to zero. A conventional relative-variability interpretation is unsuitable for temperature in degrees Celsius, whose zero is arbitrary.
 
 #### Interquartile range
 
-The $\text{IQR}$ is the **upper quartile** ($75$th percentile) minus the **lower quartile** ($25$th percentile)
+The **interquartile range** is the difference between the upper and lower quartiles:
 
-$$
-\text{IQR} = Q_{\text{III}} - Q_{\text{I}}
-$$
+$$\mathrm{IQR} = Q_{0.75} - Q_{0.25}.$$
 
 ```{r}
 IQR(x)
@@ -140,362 +170,312 @@ IQR(x)
 ::: callout-tip
 ## Exercise
 
-1.  Using the knowledge from the @sec-introduction create own function to calculate the sample variance according the formula.
+1. Using the functions introduced in @sec-introduction, write a function that calculates sample variance from its formula. State how it handles missing values and samples with fewer than two valid observations. Compare its output with `var()`.
+2. Compare the mean, median, standard deviation and IQR before and after appending an extreme value to `x`. Keep the original `x` unchanged for later comparisons.
 :::
 
 ## Hydrological data
 
-Datasets containing hydrological data are quite commonly, although not exclusively, in tabular (rectangular) shape. Let's take a look at sample data from **MOPEX**. It is a fairly extensive curated dataset.
+We will use a local daily dataset for catchment **01138000** from **MOPEX**, a collection of hydrometeorological observations for US catchments. The file contains 20,454 daily records from 1 January 1948 to 31 December 2003. The presence of a date does not imply that every variable was measured on that date.
 
-This dataset covered some 438 catchments in daily step with measured discharge. The dataset used to be publicly available at https://hydrology.nws.noaa.gov/pub/gcip/mopex/US_Data/Us_438_Daily, the site is unavailable now. Several even more extensive datasets recently came out.
+The original collection was distributed through NOAA. Background is available in [The US MOPEX Data Set](https://iahs.info/uploads/dms/13600.04-9-28-SCHAAKE.pdf), and a [preserved description of the daily file format](https://hydroshare.cuahsi.org/resource/99d5c1a238134ea6b8b767a65f440cb7/) documents the variables. Use the copy supplied with these materials.
+
+| Variable | Meaning | Unit |
+|:--|:--|:--|
+| `date` | Observation date | day |
+| `prec` | Mean areal precipitation | mm per day |
+| `pet` | Climatological potential evaporation | mm per day |
+| `r` | Runoff expressed as a depth over the catchment | mm per day |
+| `tmax` | Daily maximum air temperature | °C |
+| `tmin` | Daily minimum air temperature | °C |
+
+Runoff depth and volumetric discharge are different quantities. Discharge in $\mathrm{m^3\,s^{-1}}$ must be converted using catchment area and the duration of the time step before it can be compared with precipitation depth.
+
+### Import and data screening
 
 ```{r, collapse=FALSE}
-url <- "data/01138000.dly" #<1>
-mpx_01138000 <- read.fwf(file = url, #<2>
-                widths = c(8, rep(10, times = 5)), #<2>
-                header = FALSE) #<2>
-names(mpx_01138000) <- c("date", "prec", "pet", "r", "tmax", "tmin") #<3>
-mpx_01138000$date <- gsub(x = mpx_01138000$date, #<4>
-                          pattern = " ", #<4>
-                          replacement = "0") #<4>
-mpx_01138000$date <- as.Date(x = mpx_01138000$date, #<4>
-                             format = "%Y%m%d") #<4>
-mpx_01138000[which(mpx_01138000$r < 0), "r"] <- NA  #<5>
-rbind(head(mpx_01138000, n = 5), #<6> 
-      tail(mpx_01138000, n = 5)) #<6>
+data_path <- "data/01138000.dly" #<1>
+mpx_01138000 <- read.fwf(file = data_path, #<2>
+                        widths = c(8, rep(10, times = 5)), #<2>
+                        header = FALSE, strip.white = TRUE, #<3>
+                        na.strings = c("-99", "-99.0000")) #<3>
+names(mpx_01138000) <- c("date", "prec", "pet", "r", "tmax", "tmin")
+mpx_01138000$date <- as.Date( #<4>
+  gsub(" ", "0", mpx_01138000$date), format = "%Y%m%d") #<4>
+rbind(head(mpx_01138000, n = 5), tail(mpx_01138000, n = 5))
 ```
 
-1.  This file is stored locally as part of this site. You have to change to your path.
-2.  Load the data in **fixed width format** using the `read.fwf()` function.
-3.  Provide variable names, since there aren't any.
-4.  Now there is a trouble with dates. If you evaluate sequentially, you could see that the date format expects **"YYYY-mm-dd"** format, we have to fill the blank spots with zeroes to comply.
-5.  After that, some variables contain non-physical values like `-9999`, these would make troubles in statistical processing, we have to replace them with `NA` (not assigned).
-6.  Let's display the 5 first and 5 last rows of the result.
+1. The path is relative to the project directory. Change it if your data are stored elsewhere.
+2. Read the fixed-width file: eight characters for the date and ten for each measurement.
+3. The missing-value code in this dataset is `-99`, written as `-99.0000` in the measurement fields. Use `strip.white = TRUE` to remove padding around fields and supply the text representations to `na.strings` to convert them to `NA` (*not available*) in all measurement columns, including precipitation. Negative temperatures are valid observations and must be retained.
+4. In the source, a single-digit month or day is padded with a space. Replace the spaces with zeroes and parse the result with the explicit input format `%Y%m%d` (YYYYMMDD). The printed `Date` values use YYYY-MM-DD.
+
+```{r}
+# Check dates before grouping or plotting.
+stopifnot(!anyNA(mpx_01138000$date),
+          !anyDuplicated(mpx_01138000$date),
+          all(diff(mpx_01138000$date) == 1))
+
+# Count missing values separately for each variable.
+colSums(is.na(mpx_01138000))
+range(mpx_01138000$date[!is.na(mpx_01138000$r)])
+
+# These quantities cannot be negative; temperatures can.
+nonnegative_vars <- c("prec", "pet", "r")
+sapply(mpx_01138000[nonnegative_vars], function(z) sum(z < 0, na.rm = TRUE))
+sum(mpx_01138000$tmin > mpx_01138000$tmax, na.rm = TRUE)
+```
+
+There are **2 missing precipitation values** and **8,492 missing runoff values**. Runoff observations end on **30 September 1980**, although the file continues to 2003. A missing measurement is not a zero. Investigate failed quality checks against the metadata rather than automatically deleting unusual observations.
+
+### Hydrograph
+
+```{r, fig.align='center'}
+#| label: fig-mopex-hydrograph
+#| fig-cap: "Daily runoff depth in the MOPEX file. The line ends when runoff observations cease; the date axis covers the entire file."
+plot(mpx_01138000$date, mpx_01138000$r, type = "l",
+     xlab = "Date", ylab = "Runoff depth (mm/day)",
+     main = "Daily runoff, catchment 01138000")
+```
+
+The time axis reveals coverage and temporal patterns that a single summary statistic cannot show. Here, the blank period after September 1980 represents missing observations. It does not represent a dry river.
 
 ::: callout-tip
 ## Exercise
 
-1.  Data coming from field measurements are usually accompanied with *metadata*. This could be information about when the data were collected, the site location, precision, missing values etc. Sometimes the metadata are in a header of the file. Download and process [this file](data/6242910_Q_Day.Cmd.txt) in a similar manner using help of this `read.txt()` function.
+1. Measurement files are often accompanied by **metadata** describing location, units, time coverage and missing-value codes. Inspect the header of [this GRDC file](data/6242910_Q_Day.Cmd.txt) and import it using `read.table()` or `read.delim()`. Determine the delimiter, number of header lines and missing-value code before importing it.
+2. Explain why replacing every negative number in a hydrometeorological dataset with `NA` would be incorrect.
 :::
 
 ## Aggregation and summation
 
-Let's add some features to the data. For the purpose of the analysis it would be beneficial to add `year`, `month`, `quarters`, `decade` and `hyear` as **hydrological year**.
+Choose the summary according to the quantity. Daily precipitation and runoff depths are **summed** to obtain annual depths in mm. Temperatures and volumetric discharge are commonly **averaged** over time; these means retain the original units. Missing observations must be counted before interpreting either result.
+
+### Calendar and hydrological groups
 
 ```{r}
-mpx_01138000$year <- as.integer(format(mpx_01138000$date, "%Y")) #<1>
-mpx_01138000$month <- as.integer(format(mpx_01138000$date, "%m")) #<1>
+mpx_01138000$year <- as.integer(format(mpx_01138000$date, "%Y"))
+mpx_01138000$month <- as.integer(format(mpx_01138000$date, "%m"))
+mpx_01138000$decade <- 10L * (mpx_01138000$year %/% 10L)
+mpx_01138000$hyear <- ifelse(mpx_01138000$month >= 11,
+                           mpx_01138000$year + 1L,
+                           mpx_01138000$year)
+mpx_01138000$tmean <- (mpx_01138000$tmax + mpx_01138000$tmin) / 2
 ```
 
-1.  With the help of special characters we are extracting the years and months consecutively.
+`format()` extracts calendar components. Here, `decade = 1960` denotes **1960–1969**. The derived `tmean` is an approximation to daily mean temperature using the two daily extremes; it is not an independently measured daily mean.
+
+The hydrological year in Czechia runs from **1 November to 31 October** and is labelled by its ending year. For example, hydrological year 1980 starts on 1 November 1979. We apply this convention to the US dataset as a teaching example; hydrological-year boundaries depend on the region and purpose of the analysis.
 
 ::: callout-tip
 ## Exercise
 
-1.  
-
-    a)  Add `quart` variable to `mpx_01138000` using `quarters()` function.
-    b)  Provide the fraction of days with no precipitation: `r fitb(c("0.221277", "0,221277", "4526/20454"))`
-    c)  How many freezing days (Tmin \< 0) occured? `r fitb(10244)`
-    d)  How many freezing days occured in late spring (May) and summer? `r fitb(308)`
-    e)  Find 3 highest `r fitb("34.3056, 33.6333, 33.4889")` and 3 lowest temperatures `r fitb("-17.0000, -16.4889, -16.4611")` (delimit by a comma).
+1. Add a `quart` column using `quarters()`.
+2. What fraction of days **with valid precipitation measurements** had no precipitation? Round to six decimal places: `r fitb(c("0.221299", "0,221299", "4526/20452"))`.
+3. How many days had `tmin < 0` °C? `r fitb(10244)`.
+4. How many days had `tmin < 0` °C during **May, June, July or August**? `r fitb(307)`.
+5. Find the three largest daily maximum temperatures (`tmax`), in descending order: `r fitb("34.3056, 33.6333, 33.4889")`. Find the three smallest daily minimum temperatures (`tmin`), in ascending order: `r fitb("-17.0000, -16.4889, -16.4611")`. Separate the values with commas.
 :::
 
+### Annual summaries and completeness
+
+For this exercise, an annual statistic is reported only if **every expected day has a valid measurement of that variable**. This deliberately strict rule prevents an incomplete year from appearing to have a small annual total. Other completeness rules are possible, but must be specified and justified.
+
+The function below uses `split()` to group daily records, `lapply()` to summarize each group and `do.call(rbind, ...)` to combine the results. The expected number of days is calculated from year boundaries, so leap years and partial first or last years are handled explicitly.
+
 ```{r}
-mpx_01138000$hyear <- ifelse(test = mpx_01138000$month > 10, #<1>
-                             yes = as.integer(mpx_01138000$year + 1), #<1>
-                             no = as.integer(mpx_01138000$year)) #<1>
+annual_summary <- function(data, hydrological = FALSE) {
+  groups <- if (hydrological) data$hyear else data$year
+  summaries <- lapply(split(data, groups), function(d) {
+    year_label <- if (hydrological) unique(d$hyear) else unique(d$year)
+    start_year <- if (hydrological) year_label - 1L else year_label
+    start_month <- if (hydrological) 11L else 1L
+    start_date <- as.Date(sprintf("%d-%02d-01", start_year, start_month))
+    end_date <- as.Date(sprintf("%d-%02d-01", start_year + 1L, start_month))
+    expected_days <- as.integer(end_date - start_date)
+    n_prec <- sum(!is.na(d$prec))
+    n_runoff <- sum(!is.na(d$r))
+    n_temp <- sum(!is.na(d$tmean))
+    data.frame(
+      year = year_label, expected_days = expected_days, n_days = nrow(d),
+      n_prec = n_prec, n_runoff = n_runoff, n_temp = n_temp,
+      prec_mm = if (n_prec == expected_days) sum(d$prec) else NA_real_,
+      runoff_mm = if (n_runoff == expected_days) sum(d$r) else NA_real_,
+      tmean_C = if (n_temp == expected_days) mean(d$tmean) else NA_real_
+    )
+  })
+  result <- do.call(rbind, summaries)
+  rownames(result) <- NULL
+  result
+}
+
+annual <- annual_summary(mpx_01138000)
+annual_hydro <- annual_summary(mpx_01138000, hydrological = TRUE)
+head(annual)
+annual[annual$year %in% 1979:1981, ]
+head(annual_hydro)
 ```
 
-1.  The hydrological year in Czechia is defined from $1^{\mathrm{st}}$ November to $31^{\mathrm{st}}$ October next year.
+The calendar year 1948 has incomplete precipitation measurements. Runoff is incomplete in calendar year 1980 and entirely missing in later years. `sum(z, na.rm = TRUE)` alone would hide this distinction: it even returns zero when every observation is missing. The count columns make the reason for each missing annual statistic visible.
 
-These functions are based on **grouping**. In hydrology, the natural groups involve - *stations/basins*, *decades/years/months*, *groundwater regions*, etc.
+::: callout-tip
+## Exercise
 
-### Box-plot
+1. Compare the calendar-year and hydrological-year summaries. Why is the first hydrological year incomplete even when daily temperature measurements are available for every date in the file?
+2. Find the years with both complete precipitation and complete runoff. Why must this selection precede a comparison of annual water-balance quantities?
+:::
 
-Come handy, when we want to visualize the important quantiles related to any categorical variable.
+## Visualizing distributions
+
+### Boxplot
+
+A boxplot summarizes the median, lower and upper hinges (approximately the quartiles), whiskers and individual values beyond the whiskers. With R's default settings, whiskers reach the most extreme observations within 1.5 IQR of the hinges. They do **not** generally represent the 10th and 90th percentiles. Values beyond the whiskers deserve investigation but are not automatically errors.
+
+We now use the GRDC station file. Its metadata identify daily mean discharge in $\mathrm{m^3\,s^{-1}}$ and a missing-value code of `-999.000`. The first 36 lines precede the table header.
 
 ```{r, fig.align='center'}
-station <- read.delim(file = "./data/6242910_Q_Day.Cmd.txt", 
-                      skip = 36, 
-                      header = TRUE, 
-                      sep = ";", 
-                      col.names = c("date", "time", "value"))
-station$date <- as.Date(station$date, 
-                        format = "%Y-%m-%d")
-
-station_agg <- aggregate(station$value ~ as.factor(data.table::month(station$date)), 
-                         FUN = "quantile", 
-                         probs = c(0.1, 0.25, 0.5, 0.75, 0.9))
-
-names(station_agg) <- c("Month", "Discharge")
-par(font.main = 1, 
-    adj = 0.1, 
-    xaxs = "i", 
-    yaxs = "i")
-boxplot(data = station_agg, 
-        Discharge ~ Month, 
-        main = "Distribution of discharge in months", 
-        frame = FALSE, 
-        ylim = c(0,20), 
-        xlab = "", 
-        ylab = bquote(Discharge), font.main = 1)
+#| label: fig-monthly-discharge
+#| fig-cap: "Monthly distributions of daily mean discharge at Nickelsdorf. All daily observations are supplied to boxplot(); values beyond the whiskers are shown."
+station <- read.delim(file = "data/6242910_Q_Day.Cmd.txt",
+                      skip = 36, header = TRUE, sep = ";", strip.white = TRUE,
+                      col.names = c("date", "time", "value"),
+                      na.strings = "-999.000")
+station$date <- as.Date(station$date, format = "%Y-%m-%d")
+station$month <- factor(as.integer(format(station$date, "%m")),
+                        levels = 1:12, labels = month.abb)
+boxplot(value ~ month, data = station,
+        main = "Monthly distribution of daily discharge",
+        xlab = "Month", ylab = expression(Discharge~(m^3/s)),
+        col = "lightgray", frame = FALSE)
 ```
+
+The plot uses the original daily measurements, without first reducing them to a few quantiles. The full vertical range preserves high-flow observations. Compare seasonal medians, spreads and upper tails; these describe variability among days, not uncertainty in a monthly mean. See the [R boxplot documentation](https://stat.ethz.ch/R-manual/R-devel/library/graphics/html/boxplot.html) for the whisker definition.
 
 ### Q-Q plot
 
-The so called **rankit graph** produces a quantile-quantile graph of the values from selected data. This one can compare if the distribution of the data fit with the assumed distribution, e.q. Normal. `qqline` then adds the theoretical line.
+A **quantile-quantile plot** compares quantiles of two distributions. `qqnorm()` compares sample quantiles with theoretical normal quantiles. A roughly straight pattern is consistent with an approximately normal distribution; systematic curvature indicates differences in shape or tails. By default, `qqline()` draws a reference line through the first and third quartiles, rather than fitting a least-squares regression line.
 
 ```{r, fig.align='center'}
-par(font.main = 1, 
-    adj = 0.1, 
-    xaxs = "i", 
-    yaxs = "i")
-qqnorm(mpx_01138000$tmax, 
-       pch = 21, 
-       col = "black", 
-       bg = "lightgray", cex = 0.5, 
-       main = "")
-qqline(mpx_01138000$tmax)
+#| label: fig-temperature-qq
+#| fig-cap: "Normal Q-Q plot of daily maximum temperature pooled across all seasons."
+qqnorm(mpx_01138000$tmax,
+       pch = 21, col = "black", bg = "lightgray", cex = 0.5,
+       main = "Daily maximum temperature: normal Q-Q plot",
+       ylab = "Sample temperature quantiles (°C)")
+qqline(mpx_01138000$tmax, col = "red")
 ```
 
-<!-- ```{r} -->
-
-<!-- plot(quantile(rnorm(1000), probs = 1:100/100), -->
-
-<!-- quantile(rnorm(1000), probs = 1:100/100), frame = FALSE, pch = 20) -->
-
-<!-- abline(0, 1, col = "red") -->
-
-<!-- ``` -->
-
-<!-- ### P-P plot -->
-
-<!-- ```{r} -->
-
-<!-- n <- 100 -->
-
-<!-- data <- rweibull(n, shape = 2, scale = 1) -->
-
-<!-- # Estimated parameters for Pareto -->
-
-<!-- shape_est <- 2 -->
-
-<!-- scale_est <- 1 -->
-
-<!-- # Calculate the theoretical quantiles for the Pareto distribution -->
-
-<!-- theoretical_quantiles <- qweibull(p = seq(0, 1, 0.01), shape = shape_est, scale = scale_est) -->
-
-<!-- # Create the Q-Q plot -->
-
-<!-- qqplot(theoretical_quantiles, data,  -->
-
-<!--        xlab = "Theoretical Quantiles",  -->
-
-<!--        ylab = "Sample Quantiles", ylim = c(0,2.5), xlim = c(0, 2.5)) -->
-
-<!-- abline(0, 1, col = "red")  # Add a 45-degree reference line -->
-
-<!-- ``` -->
-
-### Empirical distribution function
-
-Large portion of the data which is processed in Hydrology originates from time series of streamflow or runoff. This enables us to construct empirical probability of exceeding certain value in the data $P(X\geq x_k)$, simply using the well know definition
-
-$$
-P = \dfrac{m}{n}
-$$ where $m$ is the number of reaching or exceeding of value $x_k$ and $n$ is the length of the series. This equation is valid strictly for $n \rightarrow \infty$.\
-There are several empirical formulas in use to calculate the empirical exceedance probability like the one from Čegodajev
-
-$$
-P = \dfrac{m - 0.3}{n + 0.4}
-$$ In R we can utilize a highe order function called `ecdf()`
-
-```{r, include=FALSE}
-plot(cumsum(1/rank(mpx_01138000$r)/length(mpx_01138000$r)))
-```
-
-```{r}
-ecdf_data <- ecdf(na.omit(mpx_01138000$r))   # <1>
-ecdf_data(35) #<2>
-```
-
-1.  
-
-    # Create the empirical cumulative distribution function (ECDF) for the data.
-
-2.  
-
-    # Calculate percent of data lower than 35.
-
-<!-- ```{r, eval=FALSE} -->
-
-<!-- library(tidyverse) -->
-
-<!-- # ddd <- read_fwf("data/6242910_Q_Day.Cmd.txt",  -->
-
-<!-- #                 skip = 36,  -->
-
-<!-- #                 col_positions = fwf_widths(widths = c(8, 4, 4, 8, 2)), col_types = "cccdc") -->
-
-<!-- ddd <- read_csv2("data/6242910_Q_Day.Cmd.txt",  -->
-
-<!--                 skip = 36,  -->
-
-<!--                 col_types = "ccc") -->
-
-<!-- ddd |>  -->
-
-<!--   set_names(c("Date", "D", "Discharge")) |>  -->
-
-<!--   mutate(Date = as.Date(Date, format = "%Y-%m-%d"),  -->
-
-<!--          Discharge = as.numeric(Discharge)) |>  -->
-
-<!--   select(Date, Discharge) -> ddd -->
-
-<!-- ddd |>  -->
-
-<!--   mutate(ri = rank(Discharge),  -->
-
-<!--          s = sd(Discharge),  -->
-
-<!--          q = pweibull(Discharge, shape = 2, scale = 1)) -->
-
-<!-- pdfunc <- function(x, b = 0.44) { -->
-
-<!--   n <- length(x) -->
-
-<!--   m <- rank(x) -->
-
-<!--   (m - b)/(n + 1 - 2*b) -->
-
-<!-- } -->
-
-<!-- plot(pdfunc(x <- ddd$Discharge), type = "l") -->
-
-<!-- ddd |>  -->
-
-<!--   ggplot(aes(Date, Discharge)) + -->
-
-<!--   geom_line() -->
-
-<!-- ddd |>  -->
-
-<!--   ggplot(aes(Discharge, ri = rank(Discharge / length(Discharge)))) + -->
-
-<!--   geom_line() -->
-
-<!-- ddd |>  -->
-
-<!--   mutate(pi = rank(Discharge - 0.5)/length(Discharge)) -->
-
-<!-- x <- c(1, 6 ,6, 1, 2, 0) -->
-
-<!-- rank(x) -->
-
-<!-- ``` -->
-
-### Exceedance curve
-
-Provides an information on how many times or for how long a streamflow value was reached or exceeded within a certain period.
-
-```{r, fig.align='center'}
-r_sorted <- na.omit(sort(mpx_01138000$r, decreasing = TRUE))
-
-# Empirical
-n <- length(r_sorted)
-exceedance_prob <- 1:n / n
-
-rank <- seq(1:n)
-return_period <- (n + 1) / rank
-exceedance_prob <- 1 / return_period
-
-plot(x = exceedance_prob, 
-     y = r_sorted, 
-     type = "l", 
-     xlab = "Exceedance Probability", 
-     ylab = "Runoff Value", 
-     main = "Empirical Exceedance Curve")
-```
-
-<!-- ### Return period -->
-
-<!-- We calculate the return period as inverse to the exceedance probability -->
-
-<!-- ```{r, fig.align='center'} -->
-
-<!-- # return_period <- 1/exceedance_prob  -->
-
-<!-- plot(x = return_period,  -->
-
-<!--      y = r_sorted,  -->
-
-<!--      type = "l",  -->
-
-<!--      xlab = "Return Period",  -->
-
-<!--      ylab = "Runoff Value",  -->
-
-<!--      main = "Empirical Return Period") -->
-
-<!-- ``` -->
-
-<!-- ### Frequency distribution curve -->
-
-<!-- ## Correlation and autocorrelation -->
-
-<!-- $$ -->
-
-<!-- \rho_{X, Y} = \dfrac{\mathrm{cov}(X,Y)}{\sigma_X\sigma_Y} -->
-
-<!-- $$ $$ -->
-
-<!-- \rho_{X,X} -->
-
-<!-- $$ -->
-
-## Hydroclimatic indices
-
-Originated from the combination of aggregation and summation methods and the measures of location and dispersion.
-
-### Runoff coefficient
-
-The concept of runoff coefficient comes from the presumption, that over long-time period
-
-$$
-\varphi [-] = \dfrac{R}{P}
-$$ where $R$ represents runoff and $P$ precipitation in long term, typically 30 year so called **Climatic period**, which is a decadal 30 year reference moving window; the latest being 1991--2020.
-
-```{r}
-R <- mean(aggregate(r ~ year, FUN = mean, data = mpx_01138000)[, "r"])
-P <- mean(aggregate(prec ~ year, FUN = mean, data = mpx_01138000)[, "prec"])
-
-R/P
-```
+Pooling winter and summer temperatures combines different seasonal conditions. This graph alone therefore cannot establish whether temperature within a season follows a normal distribution. A Q-Q plot also does not assess temporal independence. See the [R Q-Q plot documentation](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/qqnorm.html).
 
 ::: callout-tip
 ## Exercise
 
-1.  Calculate the runoff coefficient $\varphi$ for the two latest decades separately.
+1. Describe the deviations from the reference line. Repeat the plot for January only and compare the shapes. Why might the pooled distribution differ from a monthly distribution?
 :::
 
-### Flow duration curve
+### Empirical cumulative distribution function
 
-This is an essential curve in energy as well as river ecology sector.
+The **empirical cumulative distribution function** (ECDF) is the fraction of valid observations less than or equal to a threshold $q$:
+
+$$F_n(q) = \frac{\#\{x_i \leq q\}}{n}.$$
+
+This is an exact description of the finite sample. It can be used to estimate a population probability, but a longer record does not automatically remove bias, dependence or changes over time.
+
+Distinguish **non-exceedance**, $X \leq q$, **strict exceedance**, $X > q$, and **reaching or exceeding**, $X \geq q$. The latter two differ when observations equal the threshold. In particular, $1-F_n(q)$ describes strict exceedance.
 
 ```{r, fig.align='center'}
-
-M <- c(30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 355, 364)
-m_day <- function(streamflow) {
-  quantile(na.omit(streamflow), 1 - M/365.25)
-}
-plot(M, m_day(mpx_01138000$r), 
-     type = "b", 
-     pch = 21,
-     bg = "darkgray",
-     xlab = "", 
-     ylab = "Discharge", 
-     main = "M-day discharge")
+#| label: fig-runoff-ecdf
+#| fig-cap: "ECDF of valid daily runoff depths. The vertical axis gives a fraction of observations, not a percentage."
+runoff <- mpx_01138000$r[!is.na(mpx_01138000$r)]
+ecdf_data <- ecdf(runoff)
+threshold <- 5 # mm/day
+c(at_or_below = ecdf_data(threshold),
+  above = 1 - ecdf_data(threshold),
+  at_or_above = mean(runoff >= threshold))
+100 * ecdf_data(threshold) # Percentage at or below the threshold.
+plot(ecdf_data, verticals = TRUE, do.points = FALSE,
+     xlab = "Runoff depth (mm/day)", ylab = "Fraction at or below threshold",
+     main = "Empirical cumulative distribution of runoff")
 ```
+
+`ecdf()` returns a function that can be evaluated at any threshold. Its output is a fraction between 0 and 1; multiply by 100 for a percentage. See the [R ECDF documentation](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/ecdf.html).
+
+### Exceedance curve
+
+An exceedance curve shows the fraction of observations reaching or exceeding a value. For regularly spaced daily observations, this also describes the fraction of observed days. It contains the same distributional information as the ECDF, with the probability direction reversed, and discards the chronological order of events.
+
+```{r, fig.align='center'}
+#| label: fig-runoff-exceedance
+#| fig-cap: "Empirical runoff exceedance curve. Equal runoff values share the same probability of being reached or exceeded."
+r_sorted <- sort(runoff, decreasing = TRUE)
+n_runoff <- length(r_sorted)
+# Use the last rank of each tied group to count all values >= that value.
+exceedance_prob <- rank(-r_sorted, ties.method = "max") / n_runoff
+plot(exceedance_prob, r_sorted, type = "s",
+     xlab = "Fraction of observed days reaching or exceeding runoff",
+     ylab = "Runoff depth (mm/day)",
+     main = "Empirical exceedance curve")
+```
+
+For distinct observations sorted in decreasing order, this empirical fraction is $m/n$, where $m$ is the rank. An alternative is to assign **plotting positions**, for example Weibull's $m/(n+1)$ or Čegodajev's $(m-0.3)/(n+0.4)$. These are conventions for estimating probability positions, not the exact observed fractions used above. State the convention whenever comparing curves.
+
+The inverse of a probability from daily data is not automatically a return period in years. Flood return periods require an appropriate event series and frequency model, for example annual maxima, together with their assumptions. Consecutive daily high flows may belong to the same event.
+
+## Hydroclimatic indices
+
+### Runoff coefficient
+
+The **runoff coefficient** is the ratio of runoff depth $R$ to precipitation depth $P$ over the **same catchment and period**:
+
+$$\varphi = \frac{R}{P}.$$
+
+Both quantities must have compatible depth units, so the ratio is dimensionless. Over a long period it describes the fraction of precipitation represented by runoff; evaporation, changes in storage and other water transfers must be considered when interpreting it. Short-period ratios can be strongly affected by storage changes.
+
+Climate summaries often use 30-year periods. [WMO climatological standard normals](https://wmo.int/wmo-climatological-normals) use 30-year periods updated every decade, such as 1991–2020. This does not make that period a requirement for every runoff coefficient. The supplied runoff record cannot support a calculation for 1991–2020.
+
+```{r}
+# Select the same complete calendar years for both quantities.
+paired_annual <- annual[complete.cases(annual[c("prec_mm", "runoff_mm")]), ]
+range(paired_annual$year)
+nrow(paired_annual)
+runoff_coefficient <- sum(paired_annual$runoff_mm) / sum(paired_annual$prec_mm)
+runoff_coefficient
+```
+
+With the strict completeness rule, the common period is **1949–1979**. The calculation uses the ratio of total depths over that period. Averaging individual annual ratios would give a different statistic, because each year would receive equal weight regardless of its precipitation.
+
+::: callout-tip
+## Exercise
+
+1. Calculate the runoff coefficient separately for **1960–1969** and **1970–1979**, using complete calendar years. Compare the values and explain why the observation period must always accompany the coefficient.
+2. Repeat the common-period calculation using `annual_hydro`. Compare the included dates as well as the coefficients: the same year labels do not imply the same calendar interval.
+:::
+
+### Flow duration curve and M-day values
+
+A **flow duration curve** expresses how often a flow is reached or exceeded. It is used in hydropower and river ecology. The exceedance curve above is its runoff-depth equivalent. Multiplying the exceedance fraction by the mean number of days per year gives a duration in days per year.
+
+An **M-day value** is reached or exceeded for approximately $M$ days in an average year. It is not a run of $M$ consecutive days. Here, we estimate selected values using sample quantiles at probabilities $1-M/365.25$. The use of 365.25 days is an approximation, and interpolated sample quantiles may not reproduce exact empirical exceedance counts.
+
+```{r, fig.align='center'}
+#| label: fig-m-day-runoff
+#| fig-cap: "Selected M-day runoff depths from the valid daily MOPEX record, ending on 30 September 1980."
+M <- c(30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 355, 364)
+m_day <- function(values, days, days_per_year = 365.25) {
+  quantile(values, probs = 1 - days / days_per_year,
+           na.rm = TRUE, names = FALSE)
+}
+plot(M, m_day(mpx_01138000$r, M), type = "b",
+     pch = 21, bg = "darkgray",
+     xlab = "Duration M (days per year)", ylab = "Runoff depth (mm/day)",
+     main = "M-day runoff depth")
+```
+
+Small $M$ values describe relatively high flows; large $M$ values describe low flows. The curve characterizes the available observation period and does not preserve event timing. Comparisons between catchments or periods require compatible units, coverage and estimation methods.
+
+::: callout-tip
+## Exercise
+
+1. Estimate the 30-day and 355-day runoff depths. Which one describes low-flow conditions?
+2. Compare the hydrograph with the duration curve. Which graph can show when a drought occurred, and which can show the fraction of observed days below a threshold?
+:::

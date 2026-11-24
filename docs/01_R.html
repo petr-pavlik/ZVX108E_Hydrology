@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-EN" xml:lang="en-EN"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>2&nbsp; Introduction to R language – ZVX108E Hydrology</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -69,15 +72,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./cover.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-19724cff3ffd65c8d5774837ab6a4dbd.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-1bdb090332f57d0ae3bda32c3b3ef872.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-1da0855bab4d02df59e90987ce711be7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e1fbe40cf926446f81e59dd74e2645b5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -106,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -160,9 +162,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header sidebar-header-stacked">
-      <a href="./index.html" class="sidebar-logo-link">
-      </a>
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Hydrology ZVX108E</a> 
         <div class="sidebar-tools-main">
@@ -215,7 +215,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing of hydrological dataset</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing of a hydrological dataset</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -233,7 +233,7 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_CN.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SCS Curve number method</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">SCS Curve Number method</span></span></a>
   </div>
 </li>
     </ul>
@@ -257,7 +257,7 @@ window.Quarto = {
   <li><a href="#r-as-programming-language" id="toc-r-as-programming-language" class="nav-link" data-scroll-target="#r-as-programming-language"><span class="header-section-number">2.3</span> R as programming language</a>
   <ul class="collapse">
   <li><a href="#variables-and-name-conventions" id="toc-variables-and-name-conventions" class="nav-link" data-scroll-target="#variables-and-name-conventions"><span class="header-section-number">2.3.1</span> Variables and name conventions</a></li>
-  <li><a href="#rules-of-quotation-marks-and-parenthesses" id="toc-rules-of-quotation-marks-and-parenthesses" class="nav-link" data-scroll-target="#rules-of-quotation-marks-and-parenthesses"><span class="header-section-number">2.3.2</span> Rules of quotation marks and parenthesses</a></li>
+  <li><a href="#rules-of-quotation-marks-and-parentheses" id="toc-rules-of-quotation-marks-and-parentheses" class="nav-link" data-scroll-target="#rules-of-quotation-marks-and-parentheses"><span class="header-section-number">2.3.2</span> Rules of quotation marks and parentheses</a></li>
   <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions"><span class="header-section-number">2.3.3</span> Functions</a></li>
   <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types"><span class="header-section-number">2.3.4</span> Data types</a></li>
   <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures"><span class="header-section-number">2.3.5</span> Data structures</a></li>
@@ -513,10 +513,10 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td><code>choose(n, x)</code></td>
-<td>binomial coefficients<br>
-<span class="math display">\[
-                                                                                                                                                                                                                                                                                                            \binom{n}{k} = \frac{n!}{k!(n-k)!}
-                                                                                                                                                                                                                                                                                                         \]</span></td>
+<td><p>binomial coefficients<br>
+</p>
+<p><span class="math display">\[                                                                                                                                                                                                                                                                                                            \binom{n}{k} = \frac{n!}{k!(n-k)!}
+                                                                                                                                                                                                                                                                                                         \]</span></p></td>
 </tr>
 <tr class="even">
 <td><code>ceiling(x)</code></td>
@@ -575,14 +575,12 @@ g) <span class="math inline">\(\int_{0}^{3\pi} \sin(x) dx\)</span></p>
 <section id="matrix-operations" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="matrix-operations">Matrix operations</h4>
 <p>Let’s say we have a set of linear equations</p>
-<p><span id="eq-sys-linear"><span class="math display">\[
-\begin{matrix}
+<p><span class="math display">\[\begin{matrix}
 2x&amp; - 3y&amp; &amp;= 3\\
 &amp; - 2y&amp; + 4z &amp;= 9\\
 2x&amp; + 13y&amp; + 9z&amp;= 10
-\end{matrix}\\
-\tag{2.1}\]</span></span></p>
-<p>Solving {<a href="#eq-sys-linear" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-sys-linear</span></a>} is a one-liner:</p>
+\end{matrix}\\\]</span> {#eq-sys-linear}</p>
+<p>Solving {<span class="quarto-unresolved-ref">?eq-sys-linear</span>} is a one-liner:</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -605,7 +603,7 @@ g) <span class="math inline">\(\int_{0}^{3\pi} \sin(x) dx\)</span></p>
 <section id="key-words" class="level5 unnumbered">
 <h5 class="unnumbered anchored" data-anchor-id="key-words">Key words</h5>
 <p><code>if</code>, <code>else</code>, <code>repeat</code>, <code>while</code>, <code>function</code>, <code>for</code>, <code>in</code>, <code>next</code>, <code>repeat</code>, <code>break</code>, <code>TRUE</code>, <code>FALSE</code>, <code>NULL</code>, <code>Inf</code>, <code>NaN</code>, <code>NA</code>, <code>NA_integer_</code>, <code>NA_real_</code>, <code>NA_complex_</code>, <code>NA_character_</code></p>
-<p>It is not recommended to inlude dot in the name, like <code>morava.prutoky</code>, and to match the names with commonly used functions. R is “case-sensitive” which means, that <code>X</code> does not equal <code>x</code>.</p>
+<p>It is not recommended to include dot in the name, like <code>morava.prutoky</code>, and to match the names with commonly used functions. R is “case-sensitive” which means, that <code>X</code> does not equal <code>x</code>.</p>
 </section>
 <section id="exercise-2" class="level5 unnumbered">
 <h5 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise</h5>
@@ -617,13 +615,13 @@ g) <span class="math inline">\(\int_{0}^{3\pi} \sin(x) dx\)</span></p>
 </p>
 </section>
 </section>
-<section id="rules-of-quotation-marks-and-parenthesses" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="rules-of-quotation-marks-and-parenthesses"><span class="header-section-number">2.3.2</span> Rules of quotation marks and parenthesses</h3>
-<p>Both represent the paired characters in R. Parenthesses are used in three versions: classical, square brackets and curly brackets (braces). All of them have specific non-overlaping usage.</p>
+<section id="rules-of-quotation-marks-and-parentheses" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="rules-of-quotation-marks-and-parentheses"><span class="header-section-number">2.3.2</span> Rules of quotation marks and parentheses</h3>
+<p>Both represent the paired characters in R. Parentheses are used in three versions: classical, square brackets and curly brackets (braces). All of them have specific non-overlapping usage.</p>
 <ul>
 <li><code>()</code> <strong>are always to be found right next to a function name</strong> they delineate the space where function arguments are to be specified.<br>
 </li>
-<li><code>[]</code> <strong>are always use with the name of the object</strong> (vector, array, list, …) and signalize subselecting from the object.<br>
+<li><code>[]</code> <strong>are always use with the name of the object</strong> (vector, array, list, …) and signalize sub-selecting from the object.<br>
 </li>
 <li><code>{}</code> <strong>mark a block of code</strong>, which should be executed at once.<br>
 </li>
@@ -632,7 +630,7 @@ g) <span class="math inline">\(\int_{0}^{3\pi} \sin(x) dx\)</span></p>
 </section>
 <section id="functions" class="level3" data-number="2.3.3">
 <h3 data-number="2.3.3" class="anchored" data-anchor-id="functions"><span class="header-section-number">2.3.3</span> Functions</h3>
-<p>You can define own functions using the <code>function()</code> construct. If you work in ****RStudio, just type <code>fun</code> and tabulate a snippet from the IDE help. The action produces {<span class="citation" data-cites="code-function-snippet">(<a href="#ref-code-function-snippet" role="doc-biblioref"><strong>code-function-snippet?</strong></a>)</span>}.</p>
+<p>You can define own functions using the <code>function()</code> construct. If you work in RStudio, just type <code>fun</code> and tabulate a snippet from the IDE help. The action produces {<span class="citation" data-cites="code-function-snippet">(<a href="#ref-code-function-snippet" role="doc-biblioref"><strong>code-function-snippet?</strong></a>)</span>}.</p>
 <div class="cell">
 <details open="" class="code-fold">
 <summary>Code</summary>
@@ -643,9 +641,7 @@ g) <span class="math inline">\(\int_{0}^{3\pi} \sin(x) dx\)</span></p>
 </div>
 <p><code>name</code> is the name of the function we would like to create and <code>variables</code> are the arguments of that function. Space between the <code>{</code>and <code>}</code> is called a body of a function and contains all the computation which is invoked when the function is called.</p>
 <p>Let’s put Here an example of creating own function to calculate <em>weighted mean</em></p>
-<p><span class="math display">\[
-\bar{x} = \dfrac{\sum\limits_{i=1}^{n} w_ix_i}{\sum\limits_{i=1}^{n}w_i},
-\]</span> where <span class="math inline">\(x_iw_i\)</span> are the individual weighted measurements.</p>
+<p><span class="math display">\[\bar{x} = \dfrac{\sum\limits_{i=1}^{n} w_ix_i}{\sum\limits_{i=1}^{n}w_i}, \]</span> where <span class="math inline">\(x_iw_i\)</span> are the individual weighted measurements.</p>
 <p>We define a simple function for that purpose and run an example.</p>
 <div class="cell">
 <details open="" class="code-fold">
@@ -679,7 +675,7 @@ g) <span class="math inline">\(\int_{0}^{3\pi} \sin(x) dx\)</span></p>
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>The nearest value to 0 from vector x is: -0.01015826</code></pre>
+<pre><code>The nearest value to 0 from vector x is: -0.002623849</code></pre>
 </div>
 </div>
 <p>We can test if we get the same result as the <em>primitive</em> function from R using <code>all.equal()</code> statement.</p>
@@ -821,8 +817,7 @@ g) <span class="math inline">\(\int_{0}^{3\pi} \sin(x) dx\)</span></p>
 <section id="vectors" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="vectors">Vectors</h4>
 <p>Atomic vectors are single-type linear structures. They can contain elements of any type, from <strong>logical</strong>, <strong>integer</strong>, <strong>numeric</strong>, <strong>complex</strong>, <strong>character</strong>. A vector is a basic building structure in the R language, there is nothing like a scalar quantity here. The concept of vector is understood here in the mathematical sense as a vector of values representing a point in <span class="math inline">\(n\)</span>-dimensional space.</p>
-<p><span class="math display">\[
-\mathbf{\mathrm{u}} =
+<p><span class="math display">\[\mathbf{\mathrm{u}} =
 \begin{pmatrix}
 1\\
 1.5\\
@@ -839,8 +834,7 @@ g) <span class="math inline">\(\int_{0}^{3\pi} \sin(x) dx\)</span></p>
 \mathbf{\mathrm{u^T}} =
 \begin{pmatrix}
 1 &amp; 1.5 &amp; -14 &amp; 7.233\\
-\end{pmatrix}
-\]</span></p>
+\end{pmatrix}\]</span></p>
 <p>Many functions lead to creation of a vector, among the most used are <code>vector(mode = "numeric", length = 10)</code>, function <code>c()</code>, or using subset operators <code>[</code> or <code>[[</code>.</p>
 <p>An important rule is tied to vectors - <strong>value recycling</strong>.</p>
 <div class="cell">
@@ -916,16 +910,14 @@ g) <span class="math inline">\(\int_{0}^{3\pi} \sin(x) dx\)</span></p>
 </dl>
 </div>
 <div class="cell-output cell-output-stdout">
-<pre><code>         [,1]     [,2]      [,3]     [,4]     [,5]     [,6]     [,7]     [,8]
-[1,] 1254.091 636.4169 0.2839719 8.168645 2149.589 802.3966 217.8779 9.281219
+<pre><code>         [,1]     [,2]    [,3]     [,4]     [,5]     [,6]     [,7]     [,8]
+[1,] 3242.023 1095.855 507.971 169.6634 1.344231 119.6802 5.471851 33.43952
          [,9]    [,10]
-[1,] 10.40084 1444.017
-         A          C          D          E          F          G          H 
-35.4131509  0.5328901  2.8580841 46.3636607 28.3266067 14.7606882  3.0465093 
-         I 
- 3.2250334 
-          A           B           C 
- 35.4131509 -25.2273052   0.5328901 </code></pre>
+[1,] 1.066635 356.0759
+       D        I 
+13.02549  1.03278 
+        A         B         C 
+-56.93877 -33.10370 -22.53821 </code></pre>
 </div>
 </div>
 <div class="cell">
@@ -1020,22 +1012,20 @@ g) <span class="math inline">\(\int_{0}^{3\pi} \sin(x) dx\)</span></p>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>M[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>), <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>] <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">2</span>)                <span class="co"># store random numbers to first two rows</span></span>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">colMeans</span>(M) </span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  0.6183671 -0.2816329</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1]  0.7521195 -0.1478805</span></span>
 <span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="fu">rowSums</span>(M)</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -0.4741304  1.5000000 -2.3421985  1.5000000  1.5000000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] -1.275783  1.500000 -0.203022  1.500000  1.500000</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <p>It is possible to have matrices containing any data type, e.g.</p>
-<p><span class="math display">\[
-M = \left(\begin{matrix}
+<p><span class="math display">\[M = \left(\begin{matrix}
 \mathrm{A} &amp; \mathrm{B}\\
 \mathrm{C} &amp; \mathrm{D}
 \end{matrix}\right),\qquad
 N = \left(\begin{matrix}
 1+i &amp; 5-3i\\
 10+2i &amp; i
-\end{matrix}\right)
-\]</span></p>
+\end{matrix}\right)\]</span></p>
 </section>
 <section id="data-frames" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="data-frames">Data frames</h4>
@@ -1223,7 +1213,7 @@ N = \left(\begin{matrix}
 </section>
 <section id="loops" class="level3" data-number="2.3.7">
 <h3 data-number="2.3.7" class="anchored" data-anchor-id="loops"><span class="header-section-number">2.3.7</span> Loops</h3>
-<p>Loops (cycles) provide use with the ability to execute single statement or a block of code encolsed in <code>{}</code> multiple times. There are three key words for loop construction. They differ in use cases.</p>
+<p>Loops (cycles) provide use with the ability to execute single statement or a block of code enclosed in <code>{}</code> multiple times. There are three key words for loop construction. They differ in use cases.</p>
 <section id="for-cycle" class="level4 unnumbered">
 <h4 class="unnumbered anchored" data-anchor-id="for-cycle"><code>for</code> cycle</h4>
 <p>Probably the most common loop is used when you <strong>know the number of iterations prior to calling</strong>. The iteration is therefore explicitly finite.</p>
@@ -1332,210 +1322,416 @@ Iteration 4 </code></pre>
 </main> <!-- /main -->
 <script>
 
+
+
 /* update total correct if #webex-total_correct exists */
+
 update_total_correct = function() {
+
   console.log("webex: update total_correct");
 
+
+
   var t = document.getElementsByClassName("webex-total_correct");
+
   for (var i = 0; i < t.length; i++) {
+
     p = t[i].parentElement;
+
     var correct = p.getElementsByClassName("webex-correct").length;
+
     var solvemes = p.getElementsByClassName("webex-solveme").length;
+
     var radiogroups = p.getElementsByClassName("webex-radiogroup").length;
+
     var selects = p.getElementsByClassName("webex-select").length;
 
+
+
     t[i].innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
+
   }
+
 }
+
+
 
 /* webex-solution button toggling function */
+
 b_func = function() {
+
   console.log("webex: toggle hide");
 
+
+
   var cl = this.parentElement.classList;
+
   if (cl.contains('open')) {
+
     cl.remove("open");
+
   } else {
+
     cl.add("open");
+
   }
+
 }
+
+
 
 /* check answers */
+
 check_func = function() {
+
   console.log("webex: check answers");
 
+
+
   var cl = this.parentElement.classList;
+
   if (cl.contains('unchecked')) {
+
     cl.remove("unchecked");
+
     this.innerHTML = "Hide Answers";
+
   } else {
+
     cl.add("unchecked");
+
     this.innerHTML = "Show Answers";
+
   }
+
 }
+
+
 
 /* function for checking solveme answers */
+
 solveme_func = function(e) {
+
   console.log("webex: check solveme");
 
+
+
   var real_answers = JSON.parse(this.dataset.answer);
+
   var my_answer = this.value;
+
   var cl = this.classList;
+
   if (cl.contains("ignorecase")) {
+
     my_answer = my_answer.toLowerCase();
+
   }
+
   if (cl.contains("nospaces")) {
+
     my_answer = my_answer.replace(/ /g, "")
+
   }
+
+
 
   if (my_answer == "") {
+
     cl.remove("webex-correct");
+
     cl.remove("webex-incorrect");
+
   } else if (real_answers.includes(my_answer)) {
+
     cl.add("webex-correct");
+
     cl.remove("webex-incorrect");
+
   } else {
+
     cl.add("webex-incorrect");
+
     cl.remove("webex-correct");
+
   }
+
+
 
   // match numeric answers within a specified tolerance
+
   if(this.dataset.tol > 0){
+
     var tol = JSON.parse(this.dataset.tol);
+
     var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+
     if (matches.reduce((a, b) => a + b, 0) > 0) {
+
       cl.add("webex-correct");
+
     } else {
+
       cl.remove("webex-correct");
+
     }
+
   }
+
+
 
   // added regex bit
+
   if (cl.contains("regex")){
+
     answer_regex = RegExp(real_answers.join("|"))
+
     if (answer_regex.test(my_answer)) {
+
       cl.add("webex-correct");
+
     }
+
   }
 
+
+
   update_total_correct();
+
 }
 
+
+
 /* function for checking select answers */
+
 select_func = function(e) {
+
   console.log("webex: check select");
+
+
 
   var cl = this.classList
 
+
+
   /* add style */
+
   cl.remove("webex-incorrect");
+
   cl.remove("webex-correct");
+
   if (this.value == "answer") {
+
     cl.add("webex-correct");
+
   } else if (this.value != "blank") {
+
     cl.add("webex-incorrect");
+
   }
 
+
+
   update_total_correct();
+
 }
+
+
 
 /* function for checking radiogroups answers */
+
 radiogroups_func = function(e) {
+
   console.log("webex: check radiogroups");
 
+
+
   var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+
   var cl = checked_button.parentElement.classList;
+
   var labels = checked_button.parentElement.parentElement.children;
 
+
+
   /* get rid of styles */
+
   for (i = 0; i < labels.length; i++) {
+
     labels[i].classList.remove("webex-incorrect");
+
     labels[i].classList.remove("webex-correct");
+
   }
+
+
 
   /* add style */
+
   if (checked_button.value == "answer") {
+
     cl.add("webex-correct");
+
   } else {
+
     cl.add("webex-incorrect");
+
   }
 
+
+
   update_total_correct();
+
 }
+
+
 
 window.onload = function() {
+
   console.log("webex onload");
+
   /* set up solution buttons */
+
   var buttons = document.getElementsByTagName("button");
 
+
+
   for (var i = 0; i < buttons.length; i++) {
+
     if (buttons[i].parentElement.classList.contains('webex-solution')) {
+
       buttons[i].onclick = b_func;
+
     }
+
   }
+
+
 
   var check_sections = document.getElementsByClassName("webex-check");
+
   console.log("check:", check_sections.length);
+
   for (var i = 0; i < check_sections.length; i++) {
+
     check_sections[i].classList.add("unchecked");
 
+
+
     let btn = document.createElement("button");
+
     btn.innerHTML = "Show Answers";
+
     btn.classList.add("webex-check-button");
+
     btn.onclick = check_func;
+
     check_sections[i].appendChild(btn);
 
+
+
     let spn = document.createElement("span");
+
     spn.classList.add("webex-total_correct");
+
     check_sections[i].appendChild(spn);
+
   }
+
+
 
   /* set up webex-solveme inputs */
+
   var solveme = document.getElementsByClassName("webex-solveme");
 
+
+
   for (var i = 0; i < solveme.length; i++) {
+
     /* make sure input boxes don't auto-anything */
+
     solveme[i].setAttribute("autocomplete","off");
+
     solveme[i].setAttribute("autocorrect", "off");
+
     solveme[i].setAttribute("autocapitalize", "off");
+
     solveme[i].setAttribute("spellcheck", "false");
+
     solveme[i].value = "";
 
+
+
     /* adjust answer for ignorecase or nospaces */
+
     var cl = solveme[i].classList;
+
     var real_answer = solveme[i].dataset.answer;
+
     if (cl.contains("ignorecase")) {
+
       real_answer = real_answer.toLowerCase();
+
     }
+
     if (cl.contains("nospaces")) {
+
       real_answer = real_answer.replace(/ /g, "");
+
     }
+
     solveme[i].dataset.answer = real_answer;
 
+
+
     /* attach checking function */
+
     solveme[i].onkeyup = solveme_func;
+
     solveme[i].onchange = solveme_func;
 
+
+
     solveme[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
   }
+
+
 
   /* set up radiogroups */
+
   var radiogroups = document.getElementsByClassName("webex-radiogroup");
+
   for (var i = 0; i < radiogroups.length; i++) {
+
     radiogroups[i].onchange = radiogroups_func;
+
   }
+
+
 
   /* set up selects */
+
   var selects = document.getElementsByClassName("webex-select");
+
   for (var i = 0; i < selects.length; i++) {
+
     selects[i].onchange = select_func;
+
     selects[i].insertAdjacentHTML("afterend", " <span class='webex-icon'></span>")
+
   }
 
+
+
   update_total_correct();
+
 }
 
+
+
 </script>
+
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1982,8 +2178,8 @@ window.onload = function() {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02_statistics.html" class="pagination-link" aria-label="Processing of hydrological dataset">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing of hydrological dataset</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02_statistics.html" class="pagination-link" aria-label="Processing of a hydrological dataset">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Processing of a hydrological dataset</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

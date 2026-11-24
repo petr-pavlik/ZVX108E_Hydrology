@@ -1,236 +1,213 @@
-# SCS Curve number method
+# SCS Curve Number method
 
-```{r, message=FALSE, echo=FALSE}
-library(rvest)
-```
+The **SCS Curve Number (CN) method** estimates the depth of direct runoff from a rainfall event. It was developed by the Soil Conservation Service, an agency within the United States Department of Agriculture (USDA). SCS was renamed the Natural Resources Conservation Service (NRCS) in [1994](https://www.nrcs.usda.gov/about/history/brief-history-nrcs).
 
-```{r, message=FALSE, include=FALSE}
-library(tidyverse)
-CN_tbl <- rvest::read_html(
-  x = "https://www.hec.usace.army.mil/confluence/hmsdocs/hmstrm/cn-tables") |>
-  html_element(xpath = '//*[@id="main-content"]/div/div/div[1]/table') |>
-  html_table(trim = TRUE, fill = TRUE)
-
-CN_tbl |>
-  janitor::clean_names() |>
-  mutate(cover_description = str_remove_all(cover_description, pattern = "\\."))
-
-```
-
-The SCS curve number (CN) is a method developed by the USDA in 1995, when is was formerly named Soil Conservation Service, hence the SCS in the name. [^05_cn-1] CN helps with the estimation of runoff at basins where no runoff has been measured. The CN (curve number) ranges from 0 to 100 and is a dimensionless index representing the combined effect of LU/LC, Soil type and hydrological conditions. CN is used to calculate the potential maximum retention capacity $S$
-
-[^05_cn-1]: https://edepot.wur.nl/183157
-
-$$
-S = \dfrac{25400}{CN}-254
-$$ where the CN = 0 means complete infiltration, CN = 100 no infiltration at all.
-
-The method estimates the precipitation excess $P_e$ as a function of the cumulative precipitation depth, soil cover, land use, and antecedent soil moisture as
-
-$$
-P_e = \begin{cases}
-          0, \text{ for }\qquad P < I_a\\
-          \dfrac{(P-I_a)^2}{P - I_a + S}\qquad  \text{otherwise }        
-      \end{cases}
-$$
-
-where $P_e$ is accumulated precipitation excess. $P$ is the accumulated precipitation depth, $I_a$ is the initial abstraction (loss) and $S$ is the potential maximum retention
-
-<!-- $$ -->
-
-<!-- \dfrac{F}{S} = \dfrac{Q}{P-I_a} -->
-
-<!-- $$ -->
-
-$$
-I_a = rS\approx0.2\cdot S
-$$
-
-$$
-S = \dfrac{1000}{\mathrm{CN}}-10\:\mathrm{[mm]}
-$$ where $S$ is a potential maximum retention after the initial runoff.
-
-$$
-Q = \dfrac{(P-I_a)^2}{(P-I_a)+S}
-$$
+CN is a dimensionless index combining land cover and land use, hydrologic soil group, and antecedent wetness. A larger CN produces more direct runoff for the same rainfall depth. Initial estimates can be obtained from the [SCS/TR-55 curve number tables](https://www.hec.usace.army.mil/confluence/hmsdocs/hmstrm/cn-tables). The tabulated values refer to specified cover and soil conditions and an average antecedent runoff condition; an application should check whether those conditions represent the catchment and event.
 
 ```{r}
-LCLU_tbl <- data.frame(LCLU = c("Pasture", "Road", "Legumes"), 
-                       AreaFrac = c(54, 20, 26))
-LCLU_tbl
-
-weather_db <- data.frame(
-  dtm = seq(as.Date("2024-01-01"), as.Date("2024-11-30"), "1 day"), 
-  P = sample(size = 335, c(0, 1), replace = TRUE)*rweibull(335, shape = 1))
-
-head(weather_db)
+#| label: setup-cn
+#| include: false
+library(webexercises)
 ```
 
+## Retention, initial abstraction and runoff
+
+The potential maximum retention $S$ is calculated from CN as
+
+$$
+S=\frac{25400}{\mathrm{CN}}-254,
+\qquad 0<\mathrm{CN}\leq100,
+$$
+
+where $S$ is in **millimetres**. The alternative expression $1000/\mathrm{CN}-10$ gives $S$ in **inches**. Do not combine that expression with precipitation in millimetres.
+
+For $\mathrm{CN}=100$, $S=0$ and all rainfall becomes direct runoff in this model. At $\mathrm{CN}=0$, the expression for $S$ is undefined; zero is excluded from the calculation. As CN approaches zero from above, retention increases and the predicted runoff from a fixed rainfall depth tends to zero.
+
+The **initial abstraction** $I_a$ represents losses before direct runoff begins, including interception, depression storage and infiltration. This chapter uses the conventional assumption associated with the TR-55 tables:
+
+$$
+I_a=0.2S.
+$$
+
+The **cumulative direct runoff depth** $Q$, also called precipitation excess $P_e$, is then
+
+$$
+Q(P)=
+\begin{cases}
+0, & P\leq I_a,\\[4pt]
+\dfrac{(P-I_a)^2}{P-I_a+S}, & P>I_a.
+\end{cases}
+$$
+
+Here $P$ is the **cumulative rainfall depth since the start of the event**. The quantities $P$, $I_a$, $S$ and $Q$ are all expressed in mm. The parameter $S$ describes potential retention after runoff begins, rather than an additional fixed loss to subtract from every rainfall observation. These equations follow the [HEC-HMS description of the SCS CN loss model](https://www.hec.usace.army.mil/confluence/hmsdocs/hmstrm/canopy-surface-infiltration-and-runoff-volume/infiltration/scs-curve-number-loss-model).
+
+In this chapter, $Q$ denotes a depth over the catchment area. It is not a volumetric discharge in $\mathrm{m^3\,s^{-1}}$. For an area $A$ in m$^2$, the corresponding runoff volume is $V=(Q/1000)A$ in m$^3$; the CN equations alone do not describe the timing of discharge at the catchment outlet.
+
+### Calculation in R
+
+The function below accepts one CN and a vector of rainfall depths. Missing rainfall values remain `NA`. CN must be a finite number in the interval $(0,100]$, and non-missing rainfall values must be finite and non-negative.
+
 ```{r}
-# Function to calculate direct runoff using SCS CN method
 scs_cn_method <- function(P, CN) {
-  
-  S <- (25400 / CN) - 254 #<1> 
-  
-  Ia <- 0.1 * S #<1> 
-  
-  ifelse(P <= Ia, 0, ((P - Ia)^2) / (P - Ia + S)) #<3> 
+  stopifnot(is.numeric(CN), length(CN) == 1L,
+            is.finite(CN), CN > 0, CN <= 100,
+            is.numeric(P),
+            all(is.na(P) | (is.finite(P) & P >= 0)))
+
+  S <- 25400 / CN - 254 # <1>
+  Ia <- 0.2 * S # <2>
+
+  ifelse(P <= Ia, 0, (P - Ia)^2 / (P - Ia + S)) # <3>
 }
 ```
 
-1.  Maximum potential retention (mm)
-2.  Initial abstraction/losses (mm)
-3.  Calculate runoff
+1. Calculate potential maximum retention in mm.
+2. Calculate initial abstraction using the same coefficient as in the equations above.
+3. Return zero until rainfall exceeds initial abstraction. This condition also gives zero for $P=0$ and $\mathrm{CN}=100$.
 
-```{r, fig.align='center', fig.width=10}
-precipitation <- seq(0, 200, by = 1)  # <1>
+For example, with $P=50$ mm and $\mathrm{CN}=75$:
 
-curve_numbers <- seq(from = 40, to = 100, by = 5) # <2>
+```{r}
+CN <- 75
+S <- 25400 / CN - 254
+Ia <- 0.2 * S
+Q <- scs_cn_method(P = 50, CN = CN)
 
-# Calculate runoff for each CN
+round(c(S_mm = S, Ia_mm = Ia, Q_mm = Q), digits = 3)
+```
+
+The retention is approximately 84.667 mm, initial abstraction is 16.933 mm, and the direct runoff depth is **9.287 mm**.
+
+## Effect of the curve number
+
+The following curves show the response to event rainfall totals from 0 to 200 mm. Every curve uses $I_a=0.2S$. The colours and line types in the legend are the same as those used for the curves.
+
+```{r}
+#| label: fig-cn-response
+#| fig-align: center
+#| fig-width: 8
+#| fig-cap: "Event runoff depth for different curve numbers, assuming initial abstraction of 0.2S. Higher CN values produce more runoff for the same rainfall depth."
+precipitation <- seq(0, 200, by = 1)
+curve_numbers <- seq(40, 100, by = 10)
+
 runoff_results <- sapply(curve_numbers, function(CN) {
-  sapply(precipitation, scs_cn_method, CN = CN)
+  scs_cn_method(precipitation, CN = CN)
 })
 
-# Plot results
-plot(NULL, 
-     xlim = c(0, max(precipitation)), 
-     ylim = c(0, max(runoff_results)),
-     xlab = "Precipitation (mm)", 
-     ylab = "Runoff (mm)", 
-     main = "SCS Curve Number Method: Runoff vs. Precipitation")
+line_colors <- hcl.colors(length(curve_numbers), palette = "Dark 3")
+line_types <- rep(1:3, length.out = length(curve_numbers))
 
-for (i in seq_along(curve_numbers)) { #<5>
-  lines(precipitation, 
-        runoff_results[, i], 
-        col = "black", 
-        lty = i, 
-        lwd = 1)
+plot(NULL, xlim = range(precipitation), ylim = range(runoff_results),
+     xlab = "Event precipitation [mm]", ylab = "Direct runoff depth [mm]",
+     main = "SCS Curve Number method")
+
+for (i in seq_along(curve_numbers)) {
+  lines(precipitation, runoff_results[, i],
+        col = line_colors[i], lty = line_types[i], lwd = 1.5)
 }
 
-# Add legend
-legend("topright", 
-       legend = paste("CN =", curve_numbers), 
-       col = "black", 
-       lty = i, 
-       lwd = 1)
-
+legend("topleft", legend = paste("CN =", curve_numbers),
+       col = line_colors, lty = line_types, lwd = 1.5,
+       ncol = 2, bty = "n", cex = 0.85)
 ```
 
-5.  Add lines for each CN
-6.  Theoretical rainfall from 0 to 200 mm
-7.  CN values
-8.  Compute runoff using the SCS CN method
+## A rainfall event spanning several days
+
+The basic CN method is an **event model**. Initial abstraction is applied from the start of the event, and the equations do not restore retention between events or track soil drying. Applying the function separately to every day would implicitly treat each day as a new event, even when rainfall continues across midnight.
+
+We will use the local MOPEX file introduced in the statistics chapter. Its measurement columns are precipitation, potential evaporation, runoff, maximum temperature and minimum temperature, in that order. Read the missing-value codes as `NA` before calculating cumulative quantities.
 
 ```{r}
-dat01138000 <- read.fwf("data/01138000.dly", 
-                        widths = c(8, rep(10, 5))) |> 
-  mutate(V1 = as.Date(gsub(V1, 
-                           pattern = " ", 
-                           replacement = "0"), 
-                      format = "%Y%m%d")) 
-
-names(dat01138000) <- c("dtm", "prec", "r", "pet", "tmax", "tmin")
-
-dat01138000[which(dat01138000$prec == -99), "prec"] <- NA
-
-head(dat01138000) 
+dat01138000 <- read.fwf("data/01138000.dly",
+                        widths = c(8, rep(10, 5)),
+                        header = FALSE, strip.white = TRUE,
+                        na.strings = c("-99", "-99.0000"))
+names(dat01138000) <- c("date", "prec", "pet", "r", "tmax", "tmin")
+dat01138000$date <- as.Date(
+  gsub(" ", "0", dat01138000$date), format = "%Y%m%d"
+)
 ```
 
-```{r, fig.align='center', fig.width=10}
-# Example measured precipitation time series (daily data in mm)
-precipitation <- dat01138000$prec[100:1000]
+For this demonstration, treat the wet spell from **3 to 6 August 1953** as one rainfall event. Its total precipitation is 58.52 mm, and the immediately preceding and following days have zero precipitation. These daily observations illustrate the calculation; deciding where independent events begin and end requires attention to the data and the catchment. We use a fixed, illustrative $\mathrm{CN}=75$ rather than a calibrated value for this catchment.
 
-# Define Curve Number
-CN <- 75  # Example value for a watershed
+At each time step, calculate runoff from the **cumulative rainfall**. Then obtain the runoff excess for an individual day by taking the difference between successive cumulative runoff depths:
 
-# Calculate runoff for each day
-runoff <- sapply(precipitation, scs_cn_method, CN = CN)
+$$
+\Delta Q_t=Q(P_{\mathrm{cum},t})-Q(P_{\mathrm{cum},t-1}),
+\qquad Q(P_{\mathrm{cum},0})=0.
+$$
 
-# Create a time vector for plotting
-days <- seq_along(precipitation)
+```{r}
+event <- subset(dat01138000,
+                date >= as.Date("1953-08-03") &
+                date <= as.Date("1953-08-06"),
+                select = c(date, prec))
 
-# Plot precipitation and runoff
-plot(days, 
-     precipitation, 
-     type = "h", 
-     col = "black", 
-     lwd = 0.5, 
-     ylim = c(0, max(c(precipitation, runoff), na.rm = TRUE)),
-     xlab = "Day", 
-     ylab = "Value (mm)", 
-     main = "CN based Precipitation and Runoff", 
-     lty = 3)
-lines(x = days, 
-      y = runoff, 
-      type = "h", 
-      col = "#0088BB", 
-      lty = 1, 
-      lwd = 1.5)
-legend("topright", 
-       legend = c("Precipitation", "Runoff"), 
-       col = c("black", "#0088BB"), 
-       lty = c(3, 1), 
-       lwd = c(0.5, 1.5))
+# Check that the selected event is complete before accumulating rainfall.
+stopifnot(nrow(event) == 4L, !anyNA(event$prec),
+          all(event$prec >= 0), all(diff(event$date) == 1))
+
+CN <- 75
+event$cumulative_prec <- cumsum(event$prec)
+event$cumulative_runoff <- scs_cn_method(event$cumulative_prec, CN = CN)
+event$runoff <- diff(c(0, event$cumulative_runoff))
+event
 ```
 
-```{r, fig.align='center', fig.width=9, echo=FALSE}
-# library(sf)
-# library(rworldxtra)
-# library(ggplot2)
-# library(tidyterra)
-# 
-# data(countriesHigh)
-# 
-# domain <- countriesHigh |> 
-#   st_as_sf() |> 
-#   filter(NAME == "Czech Rep.")
-# 
-# sfc <- st_sfc(st_polygon(list(rbind(c(st_bbox(domain)[1], st_bbox(cz)[2]),
-#                                    c(st_bbox(domain)[3], st_bbox(domain)[2]), 
-#                                    c(st_bbox(domain)[3], st_bbox(domain)[4]), 
-#                                    c(st_bbox(domain)[1], st_bbox(domain)[4]),
-#                                    c(st_bbox(domain)[1], st_bbox(domain)[2])))), crs = 4326) 
-# domain_pts <- st_sample(sfc, 100, type = "random")
-# x <- domain_pts |> 
-# st_union() |> 
-#  st_convex_hull()
-# 
-# 
-# plot(domain)
-# domain_pts <- domain_pts |> 
-#   st_transform(crs = 5514) |>  
-#   st_union() |>
-#   st_triangulate()
-# 
-# domain_tr <- st_cast(st_geometry(domain_pts), to = "MULTIPOINT") |> 
-#   st_cast(to = "MULTILINESTRING") |>
-#   st_cast(to = "POLYGON") 
-# 
-# sf_polygons <- st_as_sf(data.frame(id = seq_along(domain_tr)), geometry = domain_tr)
-# plot(sf_polygons)
-#   # st_voronoi(envelope = x) |> 
-#   ggplot() +
-#     geom_sf(fill = "#efefef") +
-#     geom_sf(data = cz_pts) +
-#     theme_minimal(base_size = 16)
+The sum of the daily runoff increments must equal the runoff calculated from the total event rainfall:
+
+```{r}
+c(daily_increments_mm = sum(event$runoff),
+  event_total_mm = scs_cn_method(sum(event$prec), CN = CN))
 ```
 
-<!-- Now we have domain, created from using a convex hull of sampled points.  -->
+```{r}
+#| label: fig-cn-event
+#| fig-align: center
+#| fig-width: 8
+#| fig-cap: "Daily rainfall and calculated runoff excess within one event. Initial abstraction is applied once, from the start of the event. The runoff bars show precipitation excess, not a streamflow hydrograph."
+barplot(t(as.matrix(event[c("prec", "runoff")])), beside = TRUE,
+        names.arg = format(event$date, "%d %b"),
+        col = c("grey65", "#0088BB"),
+        ylim = c(0, 1.2 * max(event$prec, event$runoff)),
+        xlab = "Date in 1953", ylab = "Daily depth [mm]",
+        main = "One rainfall event, CN = 75",
+        legend.text = c("Precipitation", "Direct runoff excess"),
+        args.legend = list(x = "topleft", bty = "n"))
+```
 
-::: callout-tip
-## Exercise
+## A catchment with several CN values
 
-In practice we would have more than one CN type in the watershed. Estimate the runoff from the watershed using the SCS CN method. Using the following data.
+A catchment can contain several hydrological response units (HRUs), each with its own CN. Let $A_i$ be the area of HRU $i$ and $f_i=A_i/\sum_j A_j$ its area fraction. Two approaches can be compared for **uniform event rainfall**:
 
-| HRU | Area | CN$_i$ |
-|-----|------|--------|
-| 1   | 20   | 70     |
-| 2   | 16   | 84     |
-| 3   | 64   | 74     |
+1. Calculate an area-weighted composite CN, then calculate runoff once:
 
-Compare two approaches to calculate runoff.\
+   $$
+   \mathrm{CN}_{\mathrm{composite}}=\sum_i f_i\mathrm{CN}_i,
+   \qquad Q_A=Q(P,\mathrm{CN}_{\mathrm{composite}}).
+   $$
 
-a)  Weighted average CN curve.\
-b)  Weighted contribution to discharge (separate contribution, first compute runoff and weight apply weights by fraction of area).
+2. Calculate runoff for each HRU, then average the runoff depths using area fractions:
+
+   $$
+   Q_B=\sum_i f_i Q(P,\mathrm{CN}_i).
+   $$
+
+Both $Q_A$ and $Q_B$ are catchment-average runoff **depths in mm**. They generally differ because runoff depends nonlinearly on CN. Area weights must sum to one; percentages must be divided by 100 before using them as fractions.
+
+::: {.callout-tip .webex-box}
+## Exercise: composite CN and weighted runoff
+
+Assume a **single event of 50 mm**, uniform rainfall across all HRUs, and $I_a=0.2S$. Treat the listed CN values as given and ignore transfers of runoff between HRUs.
+
+| HRU | Fraction of catchment area [%] | CN$_i$ |
+|:--|--:|--:|
+| 1 | 20 | 70 |
+| 2 | 16 | 84 |
+| 3 | 64 | 74 |
+
+1. Calculate the composite CN, rounded to one decimal place: `r fitb(c("74.8", "74,8"))`.
+2. Use this composite CN to calculate $Q_A$, rounded to two decimal places: `r fitb(c("9.13", "9,13"))` mm.
+3. Calculate each HRU's runoff separately and take the area-weighted mean $Q_B$, rounded to two decimal places: `r fitb(c("9.55", "9,55"))` mm.
+4. Explain why the two runoff estimates differ. Check the area fractions and use the same initial abstraction coefficient in both approaches.
 :::

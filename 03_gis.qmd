@@ -7,10 +7,7 @@ Geocomputation with R
 
 In this session we use the **WhiteboxTools** (WBT) a modern and advanced geospatial package, tools collection, which contains \~450 functions. The WBT has an interface to both R and Python.
 
-The tool can be downloaded from <http://whiteboxgeo.com/>. We have to install through the packge.
-First the necessary packages need to be installed, the installation require compilation 
-and take some time.
-## Raster and vector data
+The toolset can be downloaded from <http://whiteboxgeo.com/products-wbw.html>. (Scroll to the bottom of the page) We have to install through the package. First the necessary packages need to be installed, the installation require compilation and take some time. \## Raster and vector data
 
 **Raster** data are represented by a matrix of pixels (cells) with values. Raster is used for data which display continuous information across an area which cannot be easily divided into vector features. For the purpose of watershed delineation the raster input of Digital Elevation Model is used.
 
@@ -67,9 +64,9 @@ library(scico)              # <6>
 **The paths on your OS may vary, you may need to change the direction of the installation.**
 
 ```{r, collapse=TRUE}
-wd_path <- "~/Desktop/GIS"
+wd_path <- "~/../Downloads/"
 
-wbt_init(exe_path = paste(wd_path, "WBT/whitebox_tools", sep = "/")) # <5>
+wbt_init(exe_path = paste(wd_path, "WBT", sep = "/")) # <5>
 
 check_whitebox_binary() # <6>
 ```
@@ -178,7 +175,7 @@ wbt_watershed(d8_pntr = paste(wd_path, "d8pointer.tif", sep = "/"),
 
 The watershed is usually used in vector format, but now it is in raster. Let's finish with the conversion.
 
-```{r}
+```{r, eval=FALSE}
 wtshd <- rast(paste(wd_path, "watershed.tif", sep = "/"))
 watershed <- terra::as.polygons(wtshd)
 ```
@@ -187,7 +184,7 @@ watershed <- terra::as.polygons(wtshd)
 
 Under the term **river morphology** we understand the description of the shape of river channels. Hydrologists use indices such as **stream length** or **Strahler order**.
 
-```{r}
+```{r, eval=FALSE}
 wbt_strahler_stream_order(d8_pntr = paste(wd_path, "d8pointer.tif", sep = "/"), 
                           streams = paste(wd_path, "streams.tif", sep = "/"), 
                           output = paste(wd_path, "strahler.tif", sep = "/"))
@@ -243,6 +240,5 @@ cowplot::plot_grid(p1, NULL, p2,
                    p5, NULL, p6, 
                    nrow = 3, align = "hv", rel_widths = c(1,0,1), greedy = TRUE)
 ```
-
 
 ![data/output.png](./data/output.png)

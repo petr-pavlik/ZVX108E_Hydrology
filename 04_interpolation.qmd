@@ -1,271 +1,321 @@
 # Data interpolation
 
-Variables which enter hydrological analysis like *temperature* or *precipitation* are measured **locally at point locations**. Many of these qualities are then recalculated on different domains using **interpolation** or **extrapolation** algorithms. We interpolate within the boundary given by the values which are known to us and extrapolate outside this boundary. Here the two common methods for interpolation are demonstrated.
+Hydrological variables such as *temperature* and *precipitation* are often measured at individual stations. Spatial interpolation estimates their values at locations between these stations. Predictions outside the area covered by the observations are spatial extrapolations and usually require greater caution. This chapter demonstrates inverse distance weighting (IDW) and ordinary kriging.
+
+```{r}
+#| label: setup-interpolation
+#| include: false
+library(webexercises)
+```
 
 ## Inverse distance weighting (IDW)
 
-IDW is a simple **deterministic** interpolation method, which is also non-parametric. The interpolated points are calculated with a weighted average of the values which are at disposal. The space is a weighted average of the distribution of points and the weight assigned to each point decrease with increasing distance from the interpolated point.
-
-The point value $Z_p$ is calculated with the knowledge of $z_i$ and distance $d_i$ to the power of $P$.
+IDW is a **deterministic** interpolation method: an estimate is a weighted average of the observed values, and nearby observations receive more weight than distant ones. For an unsampled location $L$,
 
 $$
-Z_L = \dfrac{\sum\limits_{i=1}^{n}\dfrac{z_i}{d_i^p}}{\sum\limits_{i=1}^{n}\dfrac{1}{d_i^p}}
-$$ Let's imagine we have three values $z_1 = 10$, $z_2 = 15$, $z_3 = 20$ and we need to estimate a value in a location $L$. The distances to the location from these points are: $d_1 = 3.0$, $d_2 = 2.0$, $d_3 = 1.5$. The commonly used power $p$ is $2$.\
-So the respective values of weights for these are:
-
-$$
-\begin{array}{c}
-w_1 = \dfrac{10}{3.0^2}\\
-w_2 = \dfrac{15}{2.0^2}\\
-w_3 = \dfrac{20}{1.5^2}
-\end{array}
+\widehat{Z}(L) = \frac{\sum_{i=1}^{n} w_i z_i}{\sum_{i=1}^{n} w_i},
+\qquad w_i = \frac{1}{d_i^p},
 $$
 
-Hence the numerator and denominator look as follows:
+where $z_i$ is the value at station $i$, $d_i$ is its distance from $L$, and $p$ controls how quickly its influence decreases with distance. A common choice is $p=2$. Larger values of $p$ give greater relative influence to the nearest stations. With $p=0$, all stations have equal weight and the estimate is their arithmetic mean. If $L$ coincides with a station, we return its observed value directly to avoid division by zero. We assume that station locations are unique.
+
+### A worked example
+
+Suppose that $z_1=10$, $z_2=15$ and $z_3=20$ mm, and their distances from $L$ are $d_1=3.0$, $d_2=2.0$ and $d_3=1.5$ km. For $p=2$:
+
+| Station | Value $z_i$ [mm] | Distance $d_i$ [km] | Weight $w_i=1/d_i^2$ [km$^{-2}$] | Contribution $w_i z_i$ [mm km$^{-2}$] |
+|:--|--:|--:|--:|--:|
+| 1 | 10 | 3.0 | 0.111111 | 1.111111 |
+| 2 | 15 | 2.0 | 0.250000 | 3.750000 |
+| 3 | 20 | 1.5 | 0.444444 | 8.888889 |
+
+Thus,
 
 $$
-\begin{array}{l}
-N = \dfrac{10}{2.0^2} + \dfrac{15}{2.0^2} + \dfrac{20}{1.5^2}\approx 2.5 + 2.2222 + 6.6666 = 11.3888\\
-D = 0.25 + 0.1111 + 0.4444 = 0.8055\\
-\end{array}
+\widehat{Z}(L)
+=\frac{10/3.0^2+15/2.0^2+20/1.5^2}{1/3.0^2+1/2.0^2+1/1.5^2}
+=\frac{13.75}{29/36}
+\approx 17.069\ \mathrm{mm}.
 $$
 
-Since this method is very simple, let's calculate it on our own, in a step-by-step manner.
+The *normalised* weights are $w_i/\sum_j w_j$: approximately $0.138$, $0.310$ and $0.552$. They sum to one, so the estimate must lie between the smallest and largest input values. The nearest station has the greatest influence here.
 
-1.  First we generate some point in the spatial domain, which will represent our measurements.
-2.  Next we create a new domain, spatially regular to which we will interpolate.
-3.  Finally we will perform the calculations and visualize the results.
+::: {.callout-tip .webex-box}
+## Exercise: IDW weights
 
-### Generation of random measurements network
+Use the three stations from the example above.
 
-We will create 25 points in the space and also assign some coordinate reference system. These points will be used for both of the methods.
+1. Calculate the estimate for $p=2$, rounded to two decimal places: `r fitb(c("17.07", "17,07"))` mm.
+2. Calculate the estimate for $p=0$: `r fitb(15)` mm.
+3. For positive weights, IDW can predict a value above the largest observation: `r torf(FALSE)`.
+:::
 
-```{r, fig.align='center', message=FALSE}
-library(sf)          # Spatial Feature library for spatial data
-library(scico)       # Scientific palette collection called "scico"
+### Generation of a measurement network
 
-n <- 30 # <1>
-dom <- data.frame(x = runif(n, 0, 50), # <1>
-                  y = runif(n, 0, 50), # <1>
-                  value = rnorm(n, mean = 5)) |> # <1>
-  sf::st_as_sf(coords = c("x", "y"), # <2>
-               crs = 4326) # <2>
-plot(dom,  # <3>
-     nbreaks = n + 1, # <3>
-     pal = scico(n = n,      # <3>
-                 palette = "davos", # <3>
-                 end = 0.9, # <3>
-                 direction = -1), # <3>
-     main = "Precipitation [mm]", # <3>  
-     pch  = 20,          # Point character selection # <3>
-     graticule = TRUE,   # Display graticules # <3>
-     axes = TRUE,        # Display plot axes # <3>
-     bgc = "#f0f0f033",  # Background color # <3> 
-     key.pos = 1)        # Legend position # <3>
+We will use the same 30 synthetic stations for both methods. Their locations are random, but precipitation follows a smooth spatial pattern with a small random disturbance. Generating independent random values alone would not create spatial dependence.
+
+The example covers a small area in **WGS 84 / UTM zone 33N (EPSG:32633)**. Coordinates, distances and cell sizes are in **metres**. Using a suitable projected CRS lets us use the same Euclidean distances in our calculation and in `gstat`.
+
+```{r}
+#| label: fig-interpolation-stations
+#| fig-align: center
+#| fig-cap: "The 30 synthetic precipitation stations. Coordinates are in metres."
+#| message: false
+library(sf)
+library(scico)
+
+set.seed(123) # <1>
+n <- 30
+x <- runif(n, 430000, 480000)
+y <- runif(n, 5520000, 5570000)
+
+# A smooth precipitation pattern with small random disturbances
+value <- 5 + 5 * exp(-((x - 455000)^2 + (y - 5545000)^2) /
+                       (2 * 12000^2)) + rnorm(n, sd = sqrt(0.15))
+
+dom <- data.frame(x, y, value) |>
+  st_as_sf(coords = c("x", "y"), crs = 32633) # <2>
+
+# Use the same precipitation scale in all maps of this example.
+precip_breaks <- seq(0, 12, by = 1)
+precip_colors <- scico(length(precip_breaks) - 1,
+                       palette = "davos", end = 0.9, direction = -1)
+
+plot(dom["value"], breaks = precip_breaks, pal = precip_colors,
+     main = "Precipitation [mm]", pch = 20,
+     axes = TRUE, graticule = FALSE, key.pos = 1)
 ```
 
-1.  Create $25$ points with random values, which will serve as the computation origin,
-2.  store them as **SimpleFeatures** object with coordinate reference system via EPSG, search in <https://epsg.io>
-3.  Specify `sf:::plot.sf()` function and use scientific colormaps from `scico` package.
+1. Set the seed **before** generating random locations and values so that the example is reproducible.
+2. Store the stations as an `sf` object. These coordinates were generated in UTM zone 33N, so we assign that CRS when creating the object. Assigning a CRS describes existing coordinates; transforming a CRS recalculates them.
 
-We do have the original points, which are scarcely distributed across the domain. Now we need a grid of new points, which will represent the centroids of a raster, on which we want to recalculate.
+### A grid of prediction locations
 
-```{r, fig.align='center', fig.cap='Point location of Precipitation measuring stations'}
-grid <- st_make_grid(x = dom,  # <1>
-                     cellsize = 2, # <1> 
-                     crs = 4326) |> # <1>
+We need to distinguish **grid cells**, which are polygons used to display the map, from their **centre points**, where we calculate predictions. A value predicted at a cell centre is not an average over the whole cell.
+
+```{r}
+#| label: fig-interpolation-grid
+#| fig-align: center
+#| fig-cap: "Stations and a grid with 2 km cells. Crosses mark the prediction locations at cell centres."
+grid <- st_make_grid(dom, cellsize = 2000, what = "polygons") |>
   st_sf()
-plot(x = dom, # <2>
-     breaks = seq(min(dom$value), max(dom$value), length.out = n), # <2>
-     pal = scico(n = n - 1,      # <2>
-                 palette   = "davos", # <2>
-                 end       = 0.9, # <2>
-                 direction = -1), # <2>
-     main      = "Precipitation [mm]", # <2>
-     pch       = 20,          # Point character selection # <2>
-     graticule = TRUE,        # Display graticules # <2>
-     axes      = TRUE,        # Display plot axes # <2>
-     bgc       = "#f0f0f033", # Background color # <2>
-     key.pos   = 1, reset = FALSE)           # Legend position # <2>
-plot(x = st_geometry(grid), lwd = 0.1, add = TRUE, reset = TRUE) # <2>
+grid$cell_id <- seq_len(nrow(grid))
 
+grid_points <- st_sf(cell_id = grid$cell_id,
+                     geometry = st_centroid(st_geometry(grid)))
 
+plot(dom["value"], breaks = precip_breaks, pal = precip_colors,
+     main = "Precipitation [mm]", pch = 20,
+     axes = TRUE, graticule = FALSE, key.pos = 1, reset = FALSE)
+plot(st_geometry(grid), border = "grey60", lwd = 0.3, add = TRUE)
+plot(st_geometry(grid_points), pch = 3, cex = 0.2,
+     col = "grey60", add = TRUE)
 ```
 
-1.  Construct a regular grid using extreme points as boundary limits.
-2.  Plot with the points.
+The grid covers the bounding box of the stations, rounded outwards to whole cells. Some cell centres are outside the area enclosed by the stations; predictions there are extrapolations. The rows of `grid_points` have the same cell identifiers and order as the rows of `grid`.
 
-Now we compute the distances between the points using the `outer()` function
+### Calculating IDW
 
-```{r, eval=TRUE, fig.align='center'}
-distances <- sapply(1:nrow(st_coordinates(grid)), function(i) {
-  sqrt((st_coordinates(grid)[i, "X"] - st_coordinates(dom)[, "X"])^2 +
-       (st_coordinates(grid)[i, "Y"] - st_coordinates(dom)[, "Y"])^2)
+First, calculate distances from each station to each cell centre. In the resulting matrix, **rows represent stations and columns represent prediction locations**. Extract coordinates from `grid_points`; `st_coordinates(grid)` would return polygon vertices instead.
+
+```{r}
+station_xy <- st_coordinates(dom)
+grid_xy <- st_coordinates(grid_points)
+
+distances <- sapply(seq_len(nrow(grid_xy)), function(i) {
+  sqrt((grid_xy[i, "X"] - station_xy[, "X"])^2 +
+       (grid_xy[i, "Y"] - station_xy[, "Y"])^2)
+})
+```
+
+Apply the weighted average to each **column**. If a prediction location coincides with a station, return the observed value before calculating inverse distances.
+
+```{r}
+power <- 2
+
+interpolated_values <- apply(distances, 2, function(d) {
+  if (any(d == 0)) {
+    return(dom$value[which.min(d)])
+  }
+
+  weights <- 1 / d^power
+  sum(weights * dom$value) / sum(weights)
 })
 
+# One prediction per cell, in the order of grid_points
+manual_grid <- grid
+manual_grid$value <- interpolated_values
 ```
 
-and use these distances for missing values computation
+No spatial join is needed: the prediction locations were created directly from the cells and their order has been preserved.
 
-```{r, eval=TRUE, fig.align='center', fig.ext='svg'}
-epsilon <- 1e-6 #<1> 
-distances <- distances + epsilon # <1>
-power <- 2 #<2>
-# Compute weighted sums for all grid points
-weighted_sum <- sapply(1:ncol(distances), function(i) {
-  sum(dom$value / (distances[, i]^power))
-})
-
-# Compute weights sum for all grid points
-weights_sum <- sapply(1:ncol(distances), function(i) { 
-  sum(1 / (distances[, i]^power))
-})
-
-# Calculate interpolated values for all grid points
-interpolated_values <- weighted_sum / weights_sum
-
-# Create a spatial data frame for results
-results <- data.frame(
-  x = st_coordinates(grid)[, "X"],
-  y = st_coordinates(grid)[, "Y"],
-  value = interpolated_values
-) |> 
-  sf::st_as_sf(coords = c("x", "y"), crs = 4326)
-
-# Replace NaN values with NA for plotting
-results$value[is.nan(results$value)] <- NA
-
-# Join results with the grid for visualization
-join <- st_join(grid, results)
+```{r}
+#| label: fig-interpolation-manual-idw
+#| fig-align: center
+#| fig-cap: "IDW predictions at cell centres, calculated with p = 2. Station locations are shown as dots."
+plot(manual_grid["value"], breaks = precip_breaks, pal = precip_colors,
+     main = "Manual IDW: precipitation [mm]", border = NA,
+     axes = TRUE, graticule = FALSE, key.pos = 1, reset = FALSE)
+plot(st_geometry(dom), pch = 20, cex = 0.5, add = TRUE)
 ```
 
-1.  Set a tolerance for when the distance is equal to 0.
-2.  A power for the distance.
+### IDW with `gstat`
 
-At last we visualize the results.
+The `gstat` package provides IDW, kriging and variogram tools. Its `idw()` function performs the same weighted average. We pass the original stations, the **same centre points** and the **same power** as in the manual calculation. The formula `value ~ 1` identifies the variable to interpolate without adding explanatory variables.
 
-```{r, eval=TRUE, fig.align='center', fig.ext='svg'}
-plot(x = join, 
-     breaks = seq(min(results$value), max(results$value), length.out = n),
-     lwd = 0.001,
-     pal = scico(n - 1, 
-                 palette = "davos",
-                 end       = 0.9, 
-                 direction = -1),
-     main      = "Precipitation [mm]", 
-     #pch       = 20,          # Point character selection
-     graticule = TRUE,        # Display graticules
-     axes      = TRUE,        # Display plot axes
-     bgc       = "#f0f0f033", # Background color
-     key.pos   = 1, 
-     reset = FALSE)           # Legend position
-```
-
-## `gstat`
-
-There are many libraries listed in CRAN **geostatistics** task view. One of these is called gstat, it was developed and is maintained by Edzer Pebesma, who is also behind the `raster` and `terra` packages. The gstat package contains functions no olny for interpolations.
-
-```{r, eval=TRUE, fig.align='center'}
+```{r}
+#| label: fig-interpolation-gstat-idw
+#| fig-align: center
+#| fig-cap: "IDW calculated with gstat using the same stations, centre points and power."
+#| message: false
 library(gstat)
-idw_res <- gstat::idw(formula = value ~ 1, 
-                      locations = dom, 
-                      newdata = grid)
-idw_res <- st_as_sf(idw_res)
-plot(idw_res |> 
-       dplyr::select(var1.pred), 
-     breaks = seq(min(idw_res$var1.pred), 
-                  max(idw_res$var1.pred), 
-                  length.out = n),
-     lwd = 0.001,
-     pal = scico(n - 1, 
-                 palette = "davos",
-                 end       = 0.9, 
-                 direction = -1),
-     main      = "Precipitation [mm]", 
-     #pch       = 20,          # Point character selection
-     graticule = TRUE,        # Display graticules
-     axes      = TRUE,        # Display plot axes
-     bgc       = "#f0f0f033", # Background color
-     key.pos   = 1, 
-     reset = FALSE)
+
+idw_res <- gstat::idw(value ~ 1, locations = dom,
+                      newdata = grid_points, idp = power)
+
+idw_grid <- grid
+idw_grid$value <- idw_res$var1.pred
+
+plot(idw_grid["value"], breaks = precip_breaks, pal = precip_colors,
+     main = "gstat IDW: precipitation [mm]", border = NA,
+     axes = TRUE, graticule = FALSE, key.pos = 1, reset = FALSE)
+plot(st_geometry(dom), pch = 20, cex = 0.5, add = TRUE)
 ```
 
-```{r, eval=FALSE}
-power <- 2  # You can adjust the power parameter
-weighted_sum <- apply(distances, 1, function(d) sum(dom$value / (d^power)))
-weighted_sum
+The two calculations should agree apart from floating-point rounding:
+
+```{r}
+max(abs(manual_grid$value - idw_res$var1.pred))
 ```
+
+::: callout-tip
+## Exercise: the power parameter
+
+Change `power` to 1 and then to 8. Rerun the manual calculation and `gstat::idw()` with the same power. Describe how the influence of nearby stations changes. Keep the same colour scale when comparing the maps.
+:::
 
 ## Kriging
 
-Another interpolation technique is called Kriging. In contrast to the Inverse Distance Weighted (IDW) method, kriging is not a purely deterministic procedure. Instead, it assumes an underlying stochastic (statistical) model for the spatial process.\
-The key idea is that observations that are closer together in space tend to be more similar, and this spatial autocorrelation can be explicitly quantified and used to produce statistically optimal predictions at unsampled locations.\
-Before applying kriging, we need to prepare our data in a suitable coordinate reference system and define the set of points that will serve as input to the interpolation.
+Kriging uses a **statistical model of spatial dependence** to calculate interpolation weights. Given the same observations and model, its predictions are reproducible. Ordinary kriging assumes an unknown constant mean and chooses weights that minimise the prediction error variance among linear unbiased predictors under the specified model. The weights sum to one, but some can be negative, so predictions can fall outside the range of the observations.
 
-```{r, eval=TRUE, fig.align='center'}
-projected_crs <- 32633  # Replace with the appropriate UTM zone for your data
+We will use the original `dom` stations and the same `grid_points` as for IDW. Predictions from IDW are not additional measurements and must not be added to the observations used for kriging.
 
-dom_projected <- st_transform(dom, crs = projected_crs)
-grid_projected <- st_transform(grid, crs = projected_crs)
+### The semivariogram
 
-set.seed(123)  # For reproducibility
-idw_points <- st_centroid(idw_res)
-sampled_points <- idw_points[sample(1:nrow(idw_points), 50), ]
+A semivariogram describes how dissimilar values become as the distance between locations increases. In this introduction, we assume a constant mean and spatial dependence that depends only on separation distance $h$, rather than direction. The theoretical semivariogram is
 
-combined_points <- rbind(
-  dom,
-  sampled_points |> 
-  dplyr::select(value = var1.pred, geometry)
-)
-combined_points <- st_transform(combined_points, crs = projected_crs)
+$$
+\gamma(h)=\frac{1}{2}\operatorname{Var}
+\left[Z(\mathbf{s}+\mathbf{h})-Z(\mathbf{s})\right],
+\qquad h=\lVert\mathbf{h}\rVert.
+$$
+
+Here $\mathbf{s}$ is a location and $\mathbf{h}$ is the separation vector. To estimate semivariance from observations, group pairs of stations into distance intervals, or **lag bins**:
+
+$$
+\widehat{\gamma}(h)=\frac{1}{2|N(h)|}
+\sum_{(i,j)\in N(h)}
+\left[z(\mathbf{s}_i)-z(\mathbf{s}_j)\right]^2.
+$$
+
+The set $N(h)$ contains the station pairs in the distance interval around $h$, and $|N(h)|$ is the number of those pairs. For example, observations of 10 and 14 mm contribute $(10-14)^2/2=8$ mm$^2$ to the average for their lag bin. Similar nearby values produce small semivariances; larger differences produce larger semivariances.
+
+An **empirical semivariogram** consists of estimates for these lag bins. A **variogram model** is a continuous function used in the kriging equations. Here, as in `gstat`, we use the word *variogram* for the semivariogram $\gamma(h)$; some texts reserve *variogram* for $2\gamma(h)$.
+
+### Elements of a variogram model
+
+| Element | Meaning | Units in this example |
+|:--|:--|:--|
+| **Lag** $h$ | Separation distance between two locations; the horizontal axis. | m |
+| **Nugget** $C_0$ | The semivariance approached as the separation tends to zero from above. A positive nugget represents measurement error and/or variation at scales smaller than the sampling distances. | mm$^2$ |
+| **Partial sill** $C_1$ | The part of the long-distance semivariance associated with the spatially correlated component. This is `psill` in `gstat::vgm()`. | mm$^2$ |
+| **Total sill** $C_0+C_1$ | The plateau approached at large distances for a bounded model. For a stationary process whose covariance tends to zero, it equals the process variance. | mm$^2$ |
+| **Range** | A distance controlling how far spatial dependence extends. Its interpretation depends on the model family. | m |
+
+At exactly $h=0$, a value is compared with itself, so $\gamma(0)=0$. A positive nugget therefore appears as a **jump immediately to the right of the origin**.
+
+For the **exponential model** used below,
+
+$$
+\gamma(h)=C_0+C_1\left(1-\exp(-h/a)\right),\qquad h>0.
+$$
+
+In `gstat`, `range` is the parameter $a$, not a distance at which spatial dependence abruptly ends. At $h=a$, the curve has reached about 63% of the rise from the nugget to the total sill. At about $h=3a$, it has reached 95%; this is commonly called the **practical range**. The exponential curve approaches the sill gradually. In contrast, a spherical model reaches its sill at a finite range.
+
+The following parameters are **chosen for demonstration**, not fitted to the synthetic observations. They give a nugget of 0.15 mm$^2$, a partial sill of 2 mm$^2$, a total sill of 2.15 mm$^2$, and a practical range of about 30 km. In an application, the model and its parameters should be checked against an empirical semivariogram of the observations.
+
+```{r}
+variogram_model <- gstat::vgm(psill = 2, model = "Exp",
+                              range = 10000, nugget = 0.15)
+variogram_model
 ```
 
-An essential part of kriging is the definition (and estimation) of a variogram (or semivariogram). The variogram is a function that describes the degree of spatial dependence of the variable as a function of distance.
-Intuitively, it answers: *"How quickly do values become dissimilar as we move farther apart in space?"* Due to the `range` parameter, the spatial data needs to be projected. The distance (in meters, because of the projection) at which spatial correlation effectively becomes negligible. Beyond this range, points are considered essentially uncorrelated.
+```{r}
+#| label: fig-interpolation-variogram
+#| fig-align: center
+#| fig-width: 7
+#| fig-height: 5
+#| fig-cap: "Elements of the exponential variogram model. The blue line marks the range parameter a; the orange line marks the practical range. The horizontal axis is displayed in kilometres; model parameters use metres. The open circle marks the nugget limit just above zero distance."
+nugget <- variogram_model$psill[variogram_model$model == "Nug"]
+partial_sill <- variogram_model$psill[variogram_model$model == "Exp"]
+total_sill <- nugget + partial_sill
+range_parameter <- variogram_model$range[variogram_model$model == "Exp"]
+practical_range <- -log(0.05) * range_parameter
 
-```{r, eval=TRUE, fig.align='center'}
-variogram <- vgm(psill = 5.05, model = "Exp", range = 300000, nugget = 0.15)
-```
-
-```{r, eval=TRUE, fig.align='center'}
-krig_res <- gstat::krige(
-  formula = value ~ 1,
-  locations = combined_points,
-  newdata = grid_projected,
-  model = variogram  # Use the appropriate fitted variogram model
+# Start just above zero to show the nugget discontinuity separately.
+model_curve <- gstat::variogramLine(
+  variogram_model, dist_vector = seq(1, 50000, length.out = 300)
 )
 
-# Step 3: Reproject the kriged result back to the original CRS (WGS84)
-krig_res <- st_transform(st_as_sf(krig_res), crs = 4326)
-# Generate unique breaks
-min_val <- min(krig_res$var1.pred, na.rm = TRUE)
-max_val <- max(krig_res$var1.pred, na.rm = TRUE)
-
-# Ensure that min and max are sufficiently different to create unique breaks
-if (max_val - min_val > 0) {
-  breaks <- seq(min_val, max_val, length.out = 25)
-} else {
-  breaks <- unique(c(min_val, max_val))  # Fallback for nearly constant data
-}
-
-# Use the scico color palette with the correct number of colors
-colors <- scico(length(breaks) - 1, 
-                palette = "davos", 
-                end = 0.9, 
-                direction = -1)
-
-# Plotting using the 'pal' argument for sf objects
-plot(
-  krig_res |> dplyr::select(var1.pred), 
-  breaks = breaks,
-  pal = colors,        # Use 'pal' to specify the color palette
-  lwd = 0.001,
-  main = "Precipitation [mm]", 
-  graticule = TRUE, 
-  axes = TRUE, 
-  bgc = "#f0f0f033", 
-  key.pos = 1, 
-  reset = FALSE
-)
-
+old_par <- par(mar = c(5, 5, 2, 1) + 0.1)
+plot(model_curve$dist / 1000, model_curve$gamma, type = "l", lwd = 2,
+     xlim = c(0, 50), ylim = c(0, total_sill * 1.2),
+     xlab = "Separation distance h [km]",
+     ylab = expression(paste("Semivariance ", gamma(h), " [mm"^2, "]")))
+abline(h = c(nugget, total_sill), lty = c(3, 2), col = "grey50")
+points(0, 0, pch = 16)
+points(0, nugget, pch = 1)
+text(7, nugget, "Nugget C0", pos = 3, cex = 0.85)
+text(36, total_sill, "Total sill C0 + C1", pos = 3, cex = 0.85)
+arrows(46, nugget, 46, total_sill, code = 3, angle = 90, length = 0.08)
+text(44, (nugget + total_sill) / 2, "Partial sill C1", srt = 90, cex = 0.85)
+segments(range_parameter / 1000, 0, range_parameter / 1000,
+         nugget + partial_sill * (1 - exp(-1)), lty = 3, col = "#2368A2")
+text(range_parameter / 1000 + 1, total_sill / 3,
+     "Range parameter a", srt = 90, cex = 0.85, col = "#2368A2")
+abline(v = practical_range / 1000, lty = 3, col = "#A54B00")
+text(practical_range / 1000 - 1, total_sill / 2,
+     "Practical range: about 3a", srt = 90, cex = 0.85, col = "#A54B00")
+par(old_par)
 ```
+
+::: {.callout-tip .webex-box}
+## Exercise: reading a variogram
+
+1. Two observations of 10 and 14 mm contribute how much to semivariance? `r fitb(8)` mm$^2$.
+2. For the model above, calculate the **total sill**: `r fitb(c("2.15", "2,15"))` mm$^2$.
+3. Using the approximation $3a$, calculate the **practical range**: `r fitb(30)` km.
+4. Increasing the nugget while keeping the partial sill fixed increases the total sill: `r torf(TRUE)`.
+:::
+
+### Ordinary kriging with `gstat`
+
+The formula `value ~ 1`, together with a variogram model and no supplied mean, requests ordinary kriging. All observations and prediction locations already use the same metric CRS.
+
+```{r}
+#| label: fig-interpolation-kriging
+#| fig-align: center
+#| fig-cap: "Ordinary kriging predictions at the same cell centres as IDW, using only the original stations and the illustrative variogram model."
+krig_res <- gstat::krige(value ~ 1, locations = dom,
+                         newdata = grid_points, model = variogram_model)
+
+krig_grid <- grid
+krig_grid$value <- krig_res$var1.pred
+
+plot(krig_grid["value"], breaks = precip_breaks, pal = precip_colors,
+     main = "Ordinary kriging: precipitation [mm]", border = NA,
+     axes = TRUE, graticule = FALSE, key.pos = 1, reset = FALSE)
+plot(st_geometry(dom), pch = 20, cex = 0.5, add = TRUE)
+```
+
+The output column `var1.pred` contains predictions and `var1.var` contains kriging prediction variances in mm$^2$. These variances depend on the station locations and the specified variogram model; they are not the observed prediction errors. Our variogram is illustrative, so the resulting predictions and variances demonstrate the calculation rather than a validated precipitation model.
